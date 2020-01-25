@@ -7,8 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     build: DataTypes.STRING,
     age: DataTypes.INTEGER,
     personality: DataTypes.STRING,
-    profession: DataTypes.STRING,
-    meta: DataTypes.BOOLEAN
+    profession: DataTypes.STRING
   });
 
   // NPC.associate = function(models) {
