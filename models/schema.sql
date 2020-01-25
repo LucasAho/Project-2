@@ -23,7 +23,7 @@ CREATE TABLE buildings (
     purpose VARCHAR(10) NOT NULL,
     landLord VARCHAR(20) NOT NULL,
     ofNote VARCHAR(25) NOT NULL,
-    meta BOOLEAN DEFAULT, -
+    meta BOOLEAN DEFAULT, 
     reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
@@ -33,5 +33,5 @@ CREATE TABLE users (
     pass VARCHAR(20) NOT NULL,
     email VARCHAR(50) NOT NULL,
     PRIMARY KEY (id)
-    
+
 )
