@@ -1,13 +1,9 @@
-module.exports = function(sequelize, DataTypes) {
-  var NPC = sequelize.define("npcs", {
-    fullname: DataTypes.STRING,
-    race: DataTypes.STRING,
-    eye_color: DataTypes.STRING,
-    hair_color: DataTypes.STRING,
-    build: DataTypes.STRING,
-    age: DataTypes.INTEGER,
-    personality: DataTypes.STRING,
-    profession: DataTypes.STRING
+var userSequel = function(sequelize, DataTypes) {
+  var User = sequelize.define("users", {
+    username: DataTypes.STRING,
+    pass: DataTypes.STRING,
+    email: DataTypes.STRING,
+    actType: DataTypes.BOOLEAN
   });
 
   // NPC.associate = function(models) {
@@ -15,5 +11,7 @@ module.exports = function(sequelize, DataTypes) {
   //     onDelete: "cascade"
   //   });
   // };
-  return NPC;
+  return User;
 };
+
+module.exports = userSequel;
