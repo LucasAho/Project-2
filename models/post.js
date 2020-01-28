@@ -14,13 +14,13 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Post.associate = function(models) {
-    Post.belongsTo(models.user, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
+  // Post.associate = function(models) {
+  //   Post.belongsTo(models.user, {
+  //     foreignKey: {
+  //       allowNull: false
+  //     }
+  //   });
+  // };
 
   return Post;
 };
