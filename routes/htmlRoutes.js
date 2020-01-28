@@ -6,7 +6,7 @@ module.exports = function(app) {
     db.NPC.findAll({}).then(function(npcs) {
       res.render("index", {
         msg: "Welcome!",
-        npcs: npcs
+        npcs: npcs[0].dataValues
       });
     });
   });
