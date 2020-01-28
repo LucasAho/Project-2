@@ -3,22 +3,22 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.users.findAll({}).then(function(users) {
+    db.NPC.findAll({}).then(function(npcs) {
       res.render("index", {
         msg: "Welcome!",
-        examples: users
+        npcs: npcs
       });
     });
   });
 
-  // Load example page and pass in an example by id
-  app.get("/npcs/:id", function(req, res) {
-    db.NPC.findOne({ where: { id: req.params.id } }).then(function(npcs) {
-      res.render("npcs", {
-        example: npcs
-      });
-    });
-  });
+  // // Load example page and pass in an example by id
+  // app.get("/npcs/:id", function(req, res) {
+  //   db.NPC.findOne({ where: { id: req.params.id } }).then(function(npcs) {
+  //     res.render("npcs", {
+  //       npcs: npcs
+  //     });
+  //   });
+  // });
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {

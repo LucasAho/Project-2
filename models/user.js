@@ -1,17 +1,15 @@
-var userSequel = function(sequelize, DataTypes) {
-  var User = sequelize.define("users", {
+module.exports = function(sequelize, DataTypes) {
+  var User = sequelize.define("User", {
     username: DataTypes.STRING,
     pass: DataTypes.STRING,
     email: DataTypes.STRING,
     actType: DataTypes.BOOLEAN
   });
 
-  // NPC.associate = function(models) {
-  //   NPC.hasMany(models.post, {
+  // User.associate = function(models) {
+  //   User.hasMany(models.post, {
   //     onDelete: "cascade"
   //   });
   // };
   return User;
 };
-
-module.exports = userSequel;
