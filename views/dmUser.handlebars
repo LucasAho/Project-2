@@ -62,20 +62,7 @@
                     </div>
                     
                     <hr>
-                    <div class="my-3">
-                        <div class="card" style="width: 18rem;">
                     
-                            <div class="card-body">
-                                <h5 class="card-title" id="npcCardTitle">NPC Name</h5>
-                                <p class="card-text" id="npcRace"></p>
-                                <p class="card-text" id="npcDescript"></p>
-                                <p class="card-text" id="npcPerson"></p>
-                                <p class="card-text" id="npcProfess"></p>
-                                <button id="finalizeNpc" class="btn btn-primary">Create</button>
-                            </div>
-
-                        </div>
-                    </div>
                 </div>
             
             </div>
@@ -83,15 +70,31 @@
 
         </div>
 
-        <div class="col-6">
-            <p>Work Table</p>
-            <ul>
-                {{#each npcs}}
-                <li>
-                    {{npc}}
-                </li>
-                {{/each}}
-            </ul>
+        <div class="col-6 py-3 d-flex justify-content-center">
+            <div class="card" style="width: 18rem;">
+                    
+                <div class="card-body">
+                    <h5 class="card-title npcCard" id="npcCardTitle">NPC Name</h5>
+                    <p class="card-text npcCard" id="npcRace"></p>
+                    <p class="card-text npcCard" id="npcDescript"></p>
+                    <p class="card-text npcCard" id="npcPerson"></p>
+                    <p class="card-text npcCard" id="npcProfess"></p>
+                    <button id="finalizeNpc" class="btn btn-primary">Create</button>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div class="row">
+        <h1>Created Content</h1>
+        <ul>
+        {{#each npcs}}
+            <li>
+            {{fullname}}
+            </li>
+        {{/each}}
+        </ul>
+    </div>
+
+
 </div>

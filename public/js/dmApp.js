@@ -112,23 +112,21 @@ $(function() {
 
   $("#finalizeNpc").on("click", event => {
     event.preventDefault();
-    
-    var newNpc = {
-      fullname: newName,
-      race: newRace,
-      descript: newDescript,
-      personality: newPerson,
-      profession: newProfess
-    }
-    $(".npcAttr").val("");
-    $.ajax("api/npcs", {
-      type: "POST",
-      data: newNpc
-    }).then(function() {
-      console.log("new npc added");
-    });
-
+  
+      var newNpc = {
+        fullname: newName,
+        race: newRace,
+        descript: newDescript,
+        personality: newPerson,
+        profession: newProfess
+      }
+      $(".npcAttr").val("");
+      $.ajax("api/npcs", {
+        type: "POST",
+        data: newNpc
+      }).then(function() {
+        console.log("new npc added");
+      });
   });
-
 });
 
