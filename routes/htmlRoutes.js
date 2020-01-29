@@ -11,6 +11,9 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/home", function(req, res){
+    res.sendFile(path.join(__dirname,))
+  })
   // // Load example page and pass in an example by id
   // app.get("/npcs/:id", function(req, res) {
   //   db.NPC.findOne({ where: { id: req.params.id } }).then(function(npcs) {

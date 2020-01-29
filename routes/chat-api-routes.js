@@ -1,22 +1,33 @@
-var Chat = require("../models/chat.js");
+var db = require("../models");
 
-module.exports = function (app) {
-  app.get("/api/all", function(req, res) {
-    Chat.findAll({}).then(function(results) {
-      res.json(results);
+module.exports = function(app) {
+  //find all post from specific user?
+  app.get("/api/post", function(req, res) {
+    var query = {};
+    if (req.query.user_id) {
+      query.UserId = req.query.user_id;
+    }
+    //should this be findOne instead??
+    db.Post.findAll({
+      where: query,
+      include: [db.User]
+    }).then(function(dbPost) {
+      res.json(dbPost);
     });
   });
 
-  app.post("/api/new", function(req, res) {
+  //posting new chat message
+  app.post("/api/post", function(req, res) {
     console.log("Chat Data:");
     console.log(req.body);
 
-    Chat.create({
+    db.Post.create({
       author: req.body.author,
       body: req.body.body,
       created_at: req.body.created_at
-    }).then(function(results) {
-      res.end();
+    }).then(function(dbUser) {
+      res.json(dbUser);
     });
   });
+
 };
