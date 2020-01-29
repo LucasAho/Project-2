@@ -5,26 +5,61 @@
             <h2>Create Content</h2>
             <hr>
            
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <!-- Example split danger button -->
+            <div id="npcGroup">
+                <button class="btn btn-primary" id="npcNewBtn">
                     New NPC
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <form>
-                        <div class="form-group">
-                            <label for="npcMaker">Fill out your Npc</label>
-                            <select class="form-control" id="npcMaker">
-                                <option>full name</option>
-                                <option>race</option>
-                                <option>descript</option>
-                                <option>personality</option>
-                                <option>profession</option>
-                            </select>
+                <div class="row mt-3" id="npcBtns">
+                    <div class="dropdown" id="nameHover">
+                        <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Name
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#">Random</a>
+                            <a class="dropdown-item" href="#"><input type="text" name="name" placeholder="Custom Name"></a>
                         </div>
-                    </form>
+                    </div>
+                    <div class="dropdown mx-1" id="raceHover">
+                        <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Race
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#">Random</a>
+                            <a class="dropdown-item" href="#"><input type="text" name="race" placeholder="Custom Race"></a>
+                        </div>
+                    </div>
+                    <div class="dropdown mx-1" id="descriptHover">
+                        <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Description
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#">Random</a>
+                            <a class="dropdown-item" href="#"><input type="text" name="describe" placeholder="Custom Description"></a>
+                        </div>
+                    </div>
+                    <div class="dropdown mx-1" id="personHover">
+                        <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Personality
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#">Random</a>
+                            <a class="dropdown-item" href="#"><input type="text" name="person" placeholder="Custom Personality"></a>
+                        </div>
+                    </div>
+                    <div class="dropdown" id="professHover">
+                        <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Profession
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#">Random</a>
+                            <a class="dropdown-item" href="#"><input type="text" name="profession" placeholder="Custom Profession"></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
         <div class="col-6">
             <p>File Cabinent</p>
         </div>
