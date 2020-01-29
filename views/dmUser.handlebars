@@ -15,7 +15,7 @@
                             Name
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#">Random</a>
+                            <a class="dropdown-item" id="randomName">Random</a>
                             <a class="dropdown-item" href="#"><input type="text" class="npcAttr" id="nameForm" placeholder="Custom Name"></a>
                             <a id="nameIn" class="btn-sm btn-primary float-right mr-2">Submit</a>
                         </div>
@@ -88,7 +88,7 @@
             <ul>
                 {{#each npcs}}
                 <li>
-                    {{npcs}}
+                    {{npc}}
                 </li>
                 {{/each}}
             </ul>
