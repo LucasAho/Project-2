@@ -22,6 +22,11 @@ const personList = [
   "Arrogant", "Patient", "Well-Spoken", "Untrustworthy", "Rude", "Loud/Outgoing", "Helpful", "Cynical", "Shy", "Loyal"
 ];
 
+const professList = [
+  "Farmer", "Blacksmith", "Ranger", "Guard", "Politician", "Merchant", "Servant", "Smuggler", "Fletcher", "Chef", "Royal", "Cleric", "Carpenter", 
+  "Rogue", "Herbalist", "Historian", "Alchemist", "Shop Owner", "Sheppard", "Miner", "Banker", "Bandit", "Sailor", "Veteran", "Beggar", "Fisherman",
+  "Peddler", "Bard", "Wizard", "Pickpocket"
+];
 
 const descriptList = {
   face: ["ragged looking ", "large nose ", "attractive ", "missing teeth ", "ugly ", "sharp face ", "square face ", "exhausted looking ", "plain face "],
@@ -31,7 +36,7 @@ const descriptList = {
     var randomFace = this.face[Math.floor(Math.random() * this.face.length)];
     var randomBuild = this.build[Math.floor(Math.random() * this.build.length)];
     var randomMisc = this.misc[Math.floor(Math.random() * this.misc.length)];
-    return [randomFace, randomBuild + "build ", randomMisc];
+    return randomFace + ", " + randomBuild + "build, " + randomMisc;
   }
 }
 
@@ -56,7 +61,7 @@ $(function() {
   });
   $("#randomName").on("click", event => {
     event.preventDefault();
-    newName = namesList[Math.floor(Math.random() * 100)];
+    newName = namesList[Math.floor(Math.random() * namesList.length)];
     $("#npcCardTitle").text(newName);
   });
 
@@ -67,7 +72,7 @@ $(function() {
   });
   $("#randomRace").on("click", event => {
     event.preventDefault();
-    newRace = raceList[Math.floor(Math.random() * 9)];
+    newRace = raceList[Math.floor(Math.random() * raceList.length)];
     $("#npcRace").text(newRace);
   });
 
@@ -79,6 +84,7 @@ $(function() {
   $("#randomDescript").on("click", event => {
     event.preventDefault();
     newDescript = descriptList.golgiApp();
+    console.log(newDescript)
     $("#npcDescript").text(newDescript);
   });
 
@@ -96,6 +102,11 @@ $(function() {
   $("#professIn").on("click", event => {
     event.preventDefault();
     newProfess = $("#professForm").val().trim();
+    $("#npcProfess").text(newProfess);
+  });
+  $("#randomProfess").on("click", event => {
+    event.preventDefault();
+    newProfess = professList[Math.floor(Math.random() * professList.length)];
     $("#npcProfess").text(newProfess);
   });
 
