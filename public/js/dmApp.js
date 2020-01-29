@@ -1,6 +1,6 @@
 let newName = "";
 let newRace = "";
-let newDescript = "";
+let newDescript = [];
 let newPerson = "";
 let newProfess = "";
 
@@ -17,6 +17,19 @@ const namesList = [
 const raceList = [
   "Dragonborn", "Dwarf", "Elf", "Gnome", "Half-Elf", "Half-Orc", "Halfling", "Human", "Tiefling"
 ]
+
+const descriptList = {
+  face: ["ragged looking ", "large nose ", "attractive ", "missing teeth ", "ugly ", "sharp face ", "square face ", "exhausted looking ", "plain face "],
+  build: ["athletic ", "muscular ", "skinny ", "lean ", "round ", "average ", "stocky "],
+  misc: ["small limp ", "good stature ", "tattoos ", "shady ", "hunched ", "piercings "],
+  golgiApp: function() {
+    var randomFace = this.face[Math.floor(Math.random() * this.face.length)];
+    var randomBuild = this.build[Math.floor(Math.random() * this.build.length)];
+    var randomMisc = this.misc[Math.floor(Math.random() * this.misc.length)];
+    return [randomFace, randomBuild + "build ", randomMisc];
+  }
+}
+
 
 $(document).ready(function() {
   $("#npcBtns").hide();
@@ -41,6 +54,7 @@ $(function() {
     newName = namesList[Math.floor(Math.random() * 101)];
     $("#npcCardTitle").text(newName);
   });
+
   $("#raceIn").on("click", event => {
     event.preventDefault();
     newRace = $("#raceForm").val().trim();
@@ -51,16 +65,24 @@ $(function() {
     newRace = raceList[Math.floor(Math.random() * 10)];
     $("#npcRace").text(newRace);
   });
+
   $("#descriptIn").on("click", event => {
     event.preventDefault();
     newDescript = $("#descriptForm").val().trim();
     $("#npcDescript").text(newDescript);
   });
+  $("#randomDescript").on("click", event => {
+    event.preventDefault();
+    newDescript = descriptList.golgiApp();
+    $("#npcDescript").text(newDescript);
+  });
+
   $("#personIn").on("click", event => {
     event.preventDefault();
     newPerson = $("#personForm").val().trim();
     $("#npcPerson").text(newPerson);
   });
+
   $("#professIn").on("click", event => {
     event.preventDefault();
     newProfess = $("#professForm").val().trim();
