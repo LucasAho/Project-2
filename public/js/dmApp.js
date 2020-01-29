@@ -16,7 +16,12 @@ const namesList = [
 
 const raceList = [
   "Dragonborn", "Dwarf", "Elf", "Gnome", "Half-Elf", "Half-Orc", "Halfling", "Human", "Tiefling"
-]
+];
+
+const personList = [
+  "Arrogant", "Patient", "Well-Spoken", "Untrustworthy", "Rude", "Loud/Outgoing", "Helpful", "Cynical", "Shy", "Loyal"
+];
+
 
 const descriptList = {
   face: ["ragged looking ", "large nose ", "attractive ", "missing teeth ", "ugly ", "sharp face ", "square face ", "exhausted looking ", "plain face "],
@@ -51,7 +56,7 @@ $(function() {
   });
   $("#randomName").on("click", event => {
     event.preventDefault();
-    newName = namesList[Math.floor(Math.random() * 101)];
+    newName = namesList[Math.floor(Math.random() * 100)];
     $("#npcCardTitle").text(newName);
   });
 
@@ -62,7 +67,7 @@ $(function() {
   });
   $("#randomRace").on("click", event => {
     event.preventDefault();
-    newRace = raceList[Math.floor(Math.random() * 10)];
+    newRace = raceList[Math.floor(Math.random() * 9)];
     $("#npcRace").text(newRace);
   });
 
@@ -80,6 +85,11 @@ $(function() {
   $("#personIn").on("click", event => {
     event.preventDefault();
     newPerson = $("#personForm").val().trim();
+    $("#npcPerson").text(newPerson);
+  });
+  $("#randomPerson").on("click", event => {
+    event.preventDefault();
+    newPerson = personList[Math.floor(Math.random() * personList.length)];
     $("#npcPerson").text(newPerson);
   });
 
