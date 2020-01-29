@@ -9,7 +9,11 @@ module.exports = function(app) {
   });
 
   app.get("/dm", (req, res) => {
-    res.render("dmUser");
+    db.NPC.findAll({}).then(dbNpcs => {
+      res.render("dmUser", {
+        npcs: dbNpcs
+      });
+    })
   });
 
   app.get("/player", (req,res) => {

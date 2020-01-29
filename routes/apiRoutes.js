@@ -10,8 +10,8 @@ module.exports = function(app) {
 
   // Create a new example
   app.post("/api/npcs", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+    db.NPC.create(req.body).then(function(dbNPC) {
+      res.json(dbNPC);
     });
   });
 

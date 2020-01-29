@@ -5,7 +5,6 @@
             <h2>Create Content</h2>
             <hr>
            
-            <!-- Example split danger button -->
             <div id="npcGroup">
                 <button class="btn btn-primary" id="npcNewBtn">
                     New NPC
@@ -17,7 +16,8 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="#">Random</a>
-                            <a class="dropdown-item" href="#"><input type="text" name="name" placeholder="Custom Name"></a>
+                            <a class="dropdown-item" href="#"><input type="text" class="npcAttr" id="nameForm" placeholder="Custom Name"></a>
+                            <a id="nameIn" class="btn-sm btn-primary float-right mr-2">Submit</a>
                         </div>
                     </div>
                     <div class="dropdown mx-1" id="raceHover">
@@ -26,7 +26,8 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="#">Random</a>
-                            <a class="dropdown-item" href="#"><input type="text" name="race" placeholder="Custom Race"></a>
+                            <a class="dropdown-item" href="#"><input type="text" class="npcAttr" id="raceForm" placeholder="Custom Race"></a>
+                            <a id="raceIn" class="btn-sm btn-primary float-right mr-2">Submit</a>
                         </div>
                     </div>
                     <div class="dropdown mx-1" id="descriptHover">
@@ -35,7 +36,8 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="#">Random</a>
-                            <a class="dropdown-item" href="#"><input type="text" name="describe" placeholder="Custom Description"></a>
+                            <a class="dropdown-item" href="#"><input type="text" class="npcAttr" id="descriptForm" placeholder="Custom Description"></a>
+                            <a id="descriptIn" class="btn-sm btn-primary float-right mr-2">Submit</a>
                         </div>
                     </div>
                     <div class="dropdown mx-1" id="personHover">
@@ -44,7 +46,8 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="#">Random</a>
-                            <a class="dropdown-item" href="#"><input type="text" name="person" placeholder="Custom Personality"></a>
+                            <a class="dropdown-item" href="#"><input type="text" class="npcAttr" id="personForm" placeholder="Custom Personality"></a>
+                            <a id="personIn" class="btn-sm btn-primary float-right mr-2">Submit</a>
                         </div>
                     </div>
                     <div class="dropdown" id="professHover">
@@ -53,15 +56,42 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="#">Random</a>
-                            <a class="dropdown-item" href="#"><input type="text" name="profession" placeholder="Custom Profession"></a>
+                            <a class="dropdown-item" href="#"><input type="text" class="npcAttr" id="professForm" placeholder="Custom Profession"></a>
+                            <a id="professIn" class="btn-sm btn-primary float-right mr-2">Submit</a>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    <div class="my-3">
+                        <div class="card" style="width: 18rem;">
+                    
+                            <div class="card-body">
+                                <h5 class="card-title" id="npcCardTitle">NPC Name</h5>
+                                <p class="card-text" id="npcRace"></p>
+                                <p class="card-text" id="npcDescript"></p>
+                                <p class="card-text" id="npcPerson"></p>
+                                <p class="card-text" id="npcProfess"></p>
+                                <button id="finalizeNpc" class="btn btn-primary">Create</button>
+                            </div>
+
                         </div>
                     </div>
                 </div>
+            
             </div>
+            
+
         </div>
 
         <div class="col-6">
-            <p>File Cabinent</p>
+            <p>Work Table</p>
+            <ul>
+                {{#each npcs}}
+                <li>
+                    {{npcs}}
+                </li>
+                {{/each}}
+            </ul>
         </div>
     </div>
 </div>
