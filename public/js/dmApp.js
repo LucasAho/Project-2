@@ -13,7 +13,6 @@ const namesList = [
 "Monty", "Newton", "Nolan", "Porter", "Quinton", "Raphael", "Reid", "Rory", "Scotty", "Shad", "Stanton", "Stefan", "Thaddeus", "Tobias", "Trenton", "Vance", 
 "Walker", "Walton", "Weldon", "Wes", "Weston", "Willian", "Winford", "Wyatt"
 ];
-<<<<<<< HEAD
 //Last names for later
 //"Tate", "Sandoval", "Ellis", "Soto", "Choi", "Cuevas", "Juarez", "Castillo", "Stanley", "Mcmillan", "Odom", "Gilmore", "Archer", "Myers", "Padilla", 
 //"Kline", "Dunlap", "Duffy", "Black", "Hampton", "Foley", "Osborne", "Huang", "Arnold", "Frederick", "Ellison", "Brooks", "Ballard", "Forbes", "Roman", 
@@ -22,9 +21,6 @@ const namesList = [
 //"Pope", "Nelson", "Ferguson", "Schaefer", "James", "Stewart", "Whitehead", "Glass", "Ball", "Ayala", "Faulkner", "Lambert", "Duncan", "Andrews", "Garrett", 
 //"Logan", "Summers", "Randolph", "Carrillo", "Petty", "Carpenter", "Miller", "Carney", "Hardy", "Bender", "Collins", "Paul", "Jenkins", "Harper", "Mullen", 
 //"Lucero", "Hale", "Jarvis", "Madden", "Cochran", "Molina", "Ochoa", "Hoover", "Edwards"
-=======
-
->>>>>>> master
 const raceList = [
   "Dragonborn", "Dwarf", "Elf", "Gnome", "Half-Elf", "Half-Orc", "Halfling", "Human", "Tiefling"
 ];
@@ -144,14 +140,14 @@ $(function() {
     event.preventDefault();
     btnVal = $(this).val();
     $.ajax("api/npcs/" + btnVal, {
-<<<<<<< HEAD
         type: "GET"
     }).then(res => {
-
-=======
-        type: "GET",
-        data: 
->>>>>>> master
+        $("#displayName").text(res.fullname);
+        $("#displayRace").text(res.racec);
+        $("#displayDescript").text(res.descript);
+        $("#displayPerson").text(res.personality);
+        $("#displayProfess").text(res.profession);
+        console.log(res.fullname);
     });
   });
   

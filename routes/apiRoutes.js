@@ -7,6 +7,11 @@ module.exports = function(app) {
       res.json(dbNpcs);
     });
   });
+  app.get("/api/npcs/:id", function(req, res) {
+    db.NPC.findOne({ where: { id: req.params.id } }).then(function(dbNpcs) {
+      res.json(dbNpcs);
+    });
+  });
 
   // Create a new example
   app.post("/api/npcs", function(req, res) {
