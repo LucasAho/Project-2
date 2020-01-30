@@ -42,13 +42,17 @@ $("#log-in").on("click", function(event) {
     }
 
     $.ajax("/api/users/" + thisUser.email, {
-        type: "GET",
-        function(data) {
-            console.log(data);
+        type: "GET"
+    }).then(res => {
+            console.log(res);
+            if (res == null) {
+                alert("That user and password do not match");
+
+            } else {
+                window.location.href += "player";
+            }
 
             //if data === thisUser
             //else display wrong user/pass
-        }
-
-    })
+    });
 });
