@@ -17,7 +17,6 @@ module.exports = function(app) {
       res.json(dbNpcs);
     });
   });
-
   // Create a new example
   app.post("/api/npcs", function(req, res) {
     db.NPC.create(req.body).then(function(dbNPC) {
@@ -34,6 +33,25 @@ module.exports = function(app) {
   app.delete("/api/examples/:id", function(req, res) {
     db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
       res.json(dbExample);
+    });
+  });
+  
+  //chat
+  app.get("/api/chats", function(req, res) {
+    db.User.findAll({ include: [db.Post] }).then(function(dbChat) {
+      res.json(dbChat);
+    });
+  });
+  app.get("/api/chats/:id", function(req, res) {
+    db.User.findOne({ where: { id: req.params.id }, include: [db.Post] }).then(
+      function(dbChat) {
+        res.json(dbChat);
+      }
+    );
+  });
+  app.post("/api/chats", function(req, res) {
+    db.User.create(req.body).then(function(dbChat) {
+      res.json(dbChat);
     });
   });
 };

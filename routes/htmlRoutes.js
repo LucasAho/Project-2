@@ -17,7 +17,11 @@ module.exports = function(app) {
   });
 
   app.get("/player", (req,res) => {
-    res.render("player");
+    db.Post.findAll({
+      
+    }).then(dbPost => {
+      res.render("player", {post:dbPost})
+    });
   });
 
 
