@@ -1,8 +1,14 @@
 var db = require("../models");
+var Chatkit = require("@pusher/chatkit-server");
+var chatkit = new Chatkit.default({
+  instanceLocator: 'v1:us1:c70a1536-cdbd-4df5-8b0c-11a8df75c578',
+  key:
+    '7f860eac-0ece-4142-9736-52b7ba80411f:7hXr4tAtbxOAU79ldb+08uRqas7wX6wvEEQ1RW17l9w='
+});
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Load index page
-  app.get("/", function(req, res) {
+  app.get("/", function (req, res) {
     res.render("index", {
       msg: "Welcome!"
     });
@@ -16,12 +22,34 @@ module.exports = function(app) {
     })
   });
 
-  app.get("/player", (req,res) => {
+  app.get("/player", (req, res) => {
     db.Post.findAll({
-      
+
     }).then(dbPost => {
-      res.render("player", {post:dbPost})
+      res.render("player", { post: dbPost })
     });
+  });
+
+  //chatkit added sj
+  app.post('/users', (req, res) => {
+    var { username } = req.body
+    chatkit
+      .createUser({
+        id: username,
+        name: username
+      })
+      .then(() => {
+        console.log(`User created: ${username}`)
+        res.sendStatus(201)
+      })
+      .catch(err => {
+        if (err.error === 'services/chatkit/user_already_exists') {
+          console.log(`User already exists: ${username}`)
+          res.sendStatus(200)
+        } else {
+          res.status(err.status).json(err)
+        }
+      });
   });
 
 
@@ -36,7 +64,7 @@ module.exports = function(app) {
   // });
 
   // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
+  app.get("*", function (req, res) {
     res.render("404");
   });
 };
