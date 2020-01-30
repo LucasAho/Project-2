@@ -2,7 +2,12 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/api/users", function(req, res) {
+  app.get("/api/users/:email", function(req, res) {
+    db.User.findOne({ where: { pass: req.params.email } }).then(function(dbUsers) {
+      res.json(dbUsers);
+    });
+  });
+  app.get("/api/npcs", function(req, res) {
     db.NPC.findAll({}).then(function(dbNpcs) {
       res.json(dbNpcs);
     });
@@ -17,6 +22,11 @@ module.exports = function(app) {
   app.post("/api/npcs", function(req, res) {
     db.NPC.create(req.body).then(function(dbNPC) {
       res.json(dbNPC);
+    });
+  });
+  app.post("/api/users", function(req, res) {
+    db.User.create(req.body).then(function(dbUser) {
+      res.json(dbUser);
     });
   });
 

@@ -147,7 +147,6 @@ $(function() {
         $("#displayDescript").text(res.descript);
         $("#displayPerson").text(res.personality);
         $("#displayProfess").text(res.profession);
-        console.log(res.fullname);
     });
   });
   

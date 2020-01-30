@@ -6,17 +6,30 @@
       <div class="overlay"></div>
       <div class="login-box">
         <i class="fab fa-d-and-d fa-5x"></i>
-        <form action="#">
+        <form class="loginForm" action="#">
           <p>E-mail:</p>
-          <input type="email" name="email" placeholder="Your E-mail"><br>
-          <p>Password</p><input type="password" name=""
-            placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"><br>
-          <input type="submit" name="submit" value="Login">
+          <input type="email" name="email" id="emailLog" placeholder="Your E-mail"><br>
+          <p>Password</p>
+          <input type="password" id="passLog" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"><br>
+          <input type="submit" id="log-in" name="submit" value="Login">
+        </form>
+        <form class="signupForm" action="#">
+          <p>Username:</p>
+          <input type="user" name="name" id="suUser" placeholder="New Username"><br>
+          <p>E-mail:</p>
+          <input type="email" name="email" id="suEmail" placeholder="New E-mail"><br>
+          <p>Password</p>
+          <input type="password" id="suPass" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"><br>
+          <p>Confirm Password</p>
+          <input type="password" id="suPass2" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"><br>
+          <p>Admin Account?</p><input class="form-check-input" type="checkbox" value="" id="suType">
+          <input type="submit" id="sign-up" name="submit" value="Signup">
+          
         </form>
         <div class="links">
           <a href="#">Forgot Password</a>
           <br>
-          <a href="#">New User? Sign Up here!</a>
+          <a id="newSignUp" href="#">New User? Sign Up here!</a>
         </div>
       </div>
     </div>

@@ -1,42 +1,51 @@
-$("#create-account").on("click", event => {
+$(document).ready(function() {
+    $(".loginForm").show();
+    $(".signupForm").hide();
+});
+$("#newSignUp").on("click", function() {
+    $(".loginForm").hide();
+    $(".signupForm").show();
+});
+
+$("#sign-up").on("click", function(event) {
     event.preventDefault();
-    var acctCheck = (bool) => {
-        if (bool === false) {
-            //do nothing
+    var passCheck = (p1,p2) => {
+        if (p1 === p2) {
+            return p1;
         } else {
-            //check if user is supposed to be admin
+            alert("Please enter matching passwords")
         }
     }
 
     var newUser = {
-        username: $("#newName").val().trim(),
-        pass: $("#newPass").val().trim(),
-        email: $("#newMail").val().trim(), 
-        actType: acctCheck($("#userType").val())
+        username: $("#suUser").val().trim(),
+        pass: passCheck($("#suPass").val().trim(), $("#suPass2").val().trim()),
+        email: $("#suEmail").val().trim(), 
+        actType: 1,
     }
-
 
     $.ajax("/api/users", {
         type: "POST",
         data: newUser
     }).then(function() {
+
         console.log("New User added");
         //Code that loads account page
     })
 });
 
-$("#log-in").on("click", event => {
+$("#log-in").on("click", function(event) {
     event.preventDefault();
-
     var thisUser = {
-        username: $("#thisName").val().trim(),
-        pass: $("#thisPass").val().trim(),
-        actType
+        email: $("#emailLog").val().trim(),
+        pass: $("#passLog").val().trim(),
     }
 
-    $.ajax("/api/users", {
+    $.ajax("/api/users/" + thisUser.email, {
         type: "GET",
         function(data) {
+            console.log(data);
+
             //if data === thisUser
             //else display wrong user/pass
         }
