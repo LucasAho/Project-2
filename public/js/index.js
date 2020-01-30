@@ -28,9 +28,9 @@ $("#sign-up").on("click", function(event) {
         type: "POST",
         data: newUser
     }).then(function() {
-
+        $(".loginForm").show();
+        $(".signupForm").hide();
         console.log("New User added");
-        //Code that loads account page
     })
 });
 
@@ -42,13 +42,13 @@ $("#log-in").on("click", function(event) {
     }
 
     $.ajax("/api/users/" + thisUser.email, {
-        type: "GET",
-        function(data) {
-            console.log(data);
-
-            //if data === thisUser
-            //else display wrong user/pass
+        type: "GET"
+    }).then(res => {
+        console.log(res);
+        if (res == null) {
+            alert("That user and password do not match");
+        } else {
+            window.location.href += "player";
         }
-
-    })
+    });
 });

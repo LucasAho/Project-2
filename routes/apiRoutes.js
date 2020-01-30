@@ -3,7 +3,7 @@ var db = require("../models");
 module.exports = function(app) {
   // Get all examples
   app.get("/api/users/:email", function(req, res) {
-    db.User.findOne({ where: { pass: req.params.email } }).then(function(dbUsers) {
+    db.User.findOne({ where: { email: req.params.email } }).then(function(dbUsers) {
       res.json(dbUsers);
     });
   });
