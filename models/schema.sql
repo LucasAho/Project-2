@@ -1,4 +1,4 @@
-node server.jsDROP DATABASE IF EXISTS dnds_db;
+DROP DATABASE IF EXISTS dnds_db;
 CREATE DATABASE dnds_db;
 
 USE dnds_db;
@@ -7,7 +7,7 @@ CREATE TABLE npcs (
     id INT AUTO_INCREMENT NOT NULL,
     fullname VARCHAR(30) NOT NULL,
     race VARCHAR(15) NOT NULL,
-    descript VARCHAR(25) NOT NULL,
+    descript VARCHAR(250) NOT NULL,
     personality VARCHAR(20) NOT NULL, 
     profession VARCHAR(20) NOT NULL, 
     createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
