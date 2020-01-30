@@ -128,5 +128,13 @@ $(function() {
         console.log("new npc added");
       });
   });
+
+  $(".displayNpc").on("click", event => {
+    event.preventDefault();
+    var thisId = $("#npcBtn").val();
+    console.log(thisId);
+  });
+
+
 });
 

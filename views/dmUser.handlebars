@@ -85,15 +85,28 @@
         </div>
     </div>
 
-    <div class="row">
-        <h1>Created Content</h1>
-        <ul>
-        {{#each npcs}}
-            <li>
-            {{fullname}}
-            </li>
-        {{/each}}
-        </ul>
+    <div class="row my-5">
+        <div class="col-6">
+            <div class="col-9"><h2>Created Content</h2></div>
+
+            <div class="col-9 btn-group-vertical mx-auto">
+            {{#each npcs}}
+                <button type="button" class="btn-md displayNpc btn-info my-1" id="npcBtn" value={{id}} type="submit">
+                {{fullname}}
+                </button>
+            {{/each}}
+            </div>
+        </div>
+
+        <div class="col-6">
+            Display
+            <span id="displayName"></span>
+            <span id="displayRace"></span>
+            <span id="displayDescript"></span>
+            <span id="displayPerson"></span>
+            <span id="displayProfess"></span>
+
+        </div>
     </div>
 
 
