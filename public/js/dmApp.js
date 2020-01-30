@@ -44,6 +44,7 @@ const descriptList = {
 $(document).ready(function() {
   $("#npcBtns").hide();
   console.log("jquery ready");
+  
 });
 $(document).on("click", "#npcNewBtn", function() {
   if ($("#npcBtns").css('display') == 'none') {
@@ -128,12 +129,15 @@ $(function() {
         console.log("new npc added");
       });
   });
-
-  $(".displayNpc").on("click", event => {
+  $(".displayNpc").on("click", function(event) {
     event.preventDefault();
-    var thisId = $("#npcBtn").val();
-    console.log(thisId);
+    btnVal = $(this).val();
+    $.ajax("api/npcs/" + btnVal, {
+        type: "GET",
+        data: 
+    });
   });
+  
 
 
 });
