@@ -13,7 +13,14 @@ const namesList = [
 "Monty", "Newton", "Nolan", "Porter", "Quinton", "Raphael", "Reid", "Rory", "Scotty", "Shad", "Stanton", "Stefan", "Thaddeus", "Tobias", "Trenton", "Vance", 
 "Walker", "Walton", "Weldon", "Wes", "Weston", "Willian", "Winford", "Wyatt"
 ];
-
+//Last names for later
+//"Tate", "Sandoval", "Ellis", "Soto", "Choi", "Cuevas", "Juarez", "Castillo", "Stanley", "Mcmillan", "Odom", "Gilmore", "Archer", "Myers", "Padilla", 
+//"Kline", "Dunlap", "Duffy", "Black", "Hampton", "Foley", "Osborne", "Huang", "Arnold", "Frederick", "Ellison", "Brooks", "Ballard", "Forbes", "Roman", 
+//"Evans", "Gates", "Yu", "Barrera", "Blevins", "Ross", "Munoz", "Ortiz", "Garner", "Velasquez", "Beasley", "Potts", "Park", "Robbins", "Harmon", "Watson", 
+//"Parks", "Atkinson", "Rowe", "Olsen", "Orozco", "Snyder", "Castro", "Meadows", "Hobbs", "Harrison", "Obrien", "Huynh", "Henry", "Morales", "Dougherty", 
+//"Pope", "Nelson", "Ferguson", "Schaefer", "James", "Stewart", "Whitehead", "Glass", "Ball", "Ayala", "Faulkner", "Lambert", "Duncan", "Andrews", "Garrett", 
+//"Logan", "Summers", "Randolph", "Carrillo", "Petty", "Carpenter", "Miller", "Carney", "Hardy", "Bender", "Collins", "Paul", "Jenkins", "Harper", "Mullen", 
+//"Lucero", "Hale", "Jarvis", "Madden", "Cochran", "Molina", "Ochoa", "Hoover", "Edwards"
 const raceList = [
   "Dragonborn", "Dwarf", "Elf", "Gnome", "Half-Elf", "Half-Orc", "Halfling", "Human", "Tiefling"
 ];
@@ -133,8 +140,13 @@ $(function() {
     event.preventDefault();
     btnVal = $(this).val();
     $.ajax("api/npcs/" + btnVal, {
-        type: "GET",
-        data: 
+        type: "GET"
+    }).then(res => {
+        $("#displayName").text(res.fullname);
+        $("#displayRace").text(res.racec);
+        $("#displayDescript").text(res.descript);
+        $("#displayPerson").text(res.personality);
+        $("#displayProfess").text(res.profession);
     });
   });
   
