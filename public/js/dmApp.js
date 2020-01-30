@@ -140,8 +140,9 @@ $(function() {
     event.preventDefault();
     btnVal = $(this).val();
     $.ajax("api/npcs/" + btnVal, {
-        type: "GET",
-        data: 
+        type: "GET"
+    }).then(res => {
+
     });
   });
   
