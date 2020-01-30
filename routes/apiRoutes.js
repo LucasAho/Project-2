@@ -2,7 +2,7 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/api/npcs", function(req, res) {
+  app.get("/api/users", function(req, res) {
     db.NPC.findAll({}).then(function(dbNpcs) {
       res.json(dbNpcs);
     });
@@ -10,8 +10,8 @@ module.exports = function(app) {
 
   // Create a new example
   app.post("/api/npcs", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+    db.NPC.create(req.body).then(function(dbNPC) {
+      res.json(dbNPC);
     });
   });
 

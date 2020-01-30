@@ -1,1 +1,113 @@
-<!--I am a file-->
+<div class="container text-center">
+    <h1>Dungeon Master's Workshop</h1>
+    <div class="row">
+        <div class="col-6">
+            <h2>Create Content</h2>
+            <hr>
+           
+            <div id="npcGroup">
+                <button class="btn btn-primary" id="npcNewBtn">
+                    New NPC
+                </button>
+                <div class="row mt-3" id="npcBtns">
+                    <div class="dropdown" id="nameHover">
+                        <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Name
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" id="randomName">Random</a>
+                            <a class="dropdown-item" href="#"><input type="text" class="npcAttr" id="nameForm" placeholder="Custom Name"></a>
+                            <a id="nameIn" class="btn-sm btn-primary float-right mr-2">Submit</a>
+                        </div>
+                    </div>
+                    <div class="dropdown mx-1" id="raceHover">
+                        <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Race
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" id="randomRace">Random</a>
+                            <a class="dropdown-item" href="#"><input type="text" class="npcAttr" id="raceForm" placeholder="Custom Race"></a>
+                            <a id="raceIn" class="btn-sm btn-primary float-right mr-2">Submit</a>
+                        </div>
+                    </div>
+                    <div class="dropdown mx-1" id="descriptHover">
+                        <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Description
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" id="randomDescript">Random</a>
+                            <a class="dropdown-item" href="#"><input type="text" class="npcAttr" id="descriptForm" placeholder="Custom Description"></a>
+                            <a id="descriptIn" class="btn-sm btn-primary float-right mr-2">Submit</a>
+                        </div>
+                    </div>
+                    <div class="dropdown mx-1" id="personHover">
+                        <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Personality
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" id="randomPerson">Random</a>
+                            <a class="dropdown-item" href="#"><input type="text" class="npcAttr" id="personForm" placeholder="Custom Personality"></a>
+                            <a id="personIn" class="btn-sm btn-primary float-right mr-2">Submit</a>
+                        </div>
+                    </div>
+                    <div class="dropdown" id="professHover">
+                        <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Profession
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" id="randomProfess">Random</a>
+                            <a class="dropdown-item" href="#"><input type="text" class="npcAttr" id="professForm" placeholder="Custom Profession"></a>
+                            <a id="professIn" class="btn-sm btn-primary float-right mr-2">Submit</a>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    
+                </div>
+            
+            </div>
+            
+
+        </div>
+
+        <div class="col-6 py-3 d-flex justify-content-center">
+            <div class="card" style="width: 18rem;">
+                    
+                <div class="card-body">
+                    <h5 class="card-title npcCard" id="npcCardTitle">NPC Name</h5>
+                    <p class="card-text npcCard" id="npcRace"></p>
+                    <p class="card-text npcCard" id="npcDescript"></p>
+                    <p class="card-text npcCard" id="npcPerson"></p>
+                    <p class="card-text npcCard" id="npcProfess"></p>
+                    <button id="finalizeNpc" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row my-5">
+        <div class="col-6">
+            <div class="col-9"><h2>Created Content</h2></div>
+
+            <div class="col-9 btn-group-vertical mx-auto">
+            {{#each npcs}}
+                <button class="btn-md displayNpc btn-info my-1" value={{id}} type="submit">
+                    {{fullname}}
+                </button>
+            {{/each}}
+            </div>
+        </div>
+
+        <div class="col-6">
+            Display
+            <span id="displayName"></span>
+            <span id="displayRace"></span>
+            <span id="displayDescript"></span>
+            <span id="displayPerson"></span>
+            <span id="displayProfess"></span>
+
+        </div>
+    </div>
+
+
+</div>
