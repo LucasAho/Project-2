@@ -17,7 +17,6 @@ module.exports = function(app) {
       res.json(dbNpcs);
     });
   });
-
   // Create a new example
   app.post("/api/npcs", function(req, res) {
     db.NPC.create(req.body).then(function(dbNPC) {
@@ -36,4 +35,10 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
+  
+  // //chatkit added sj
+  app.post('/authenticate', (req, res) => {
+    var authData = chatkit.authenticate({ userId: req.query.user_id })
+    res.status(authData.status).send(authData.body)
+  })
 };
