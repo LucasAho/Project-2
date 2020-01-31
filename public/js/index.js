@@ -48,7 +48,7 @@ $("#log-in").on("click", function(event) {
         if (res == null) {
             alert("That user and password do not match");
         } else {
-            window.location.href += "player";
+            window.location.href = window.location.href + "player";
         }
     });
 });
