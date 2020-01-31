@@ -36,7 +36,7 @@ module.exports = function(app) {
     });
   });
   
-  //chatkit added sj
+  // //chatkit added sj
   app.post('/authenticate', (req, res) => {
     var authData = chatkit.authenticate({ userId: req.query.user_id })
     res.status(authData.status).send(authData.body)

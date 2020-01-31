@@ -1,6 +1,6 @@
 var util = require("util");
 var readline = require("readline");
-var { JSDOM } = require("jsdom");
+var {JSDOM} = require("jsdom");
 var { ChatManager, TokenProvider } = require("@pusher/chatkit-client");
 var axios = require("axios");
 var prompt = require("prompt");
@@ -138,6 +138,7 @@ var main = async () => {
 };
 
 main();
+
 // $("#message-submit").on("click", function (event) {
 //     event.preventDefault();
     
