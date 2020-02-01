@@ -36,6 +36,7 @@ CREATE TABLE users (
 
 CREATE TABLE characters (
     id INT AUTO_INCREMENT NOT NULL,
+    ownerId VARCHAR(25) NOT NULL,
     charName VARCHAR (300) NOT NULL,
     class VARCHAR (300) NOT NULL,
     lvl INTEGER NOT NULL,
@@ -54,6 +55,7 @@ CREATE TABLE characters (
     charisma INTEGER NOT NULL,
     inventory VARCHAR (100) NOT NULL,
     notes VARCHAR (200) NOT NULL,
+    FOREIGN KEY (ownderId) REFERENCES users(id),
     PRIMARY KEY (id)
 );
 
