@@ -45,8 +45,7 @@ CREATE TABLE characters (
     profBonus INTEGER NOT NULL,
     AC INTEGER NOT NULL,
     speed INTEGER NOT NULL,
-    currentHP INTEGER NOT NULL,
-    maxHp INTEGER NOT NULL,
+    maxHd INTEGER NOT NULL,
     strength INTEGER NOT NULL,
     dexterity INTEGER NOT NULL,
     constitution INTEGER NOT NULL,
@@ -55,4 +54,5 @@ CREATE TABLE characters (
     charisma INTEGER NOT NULL,
     inventory VARCHAR (100) NOT NULL,
     notes VARCHAR (200) NOT NULL,
+    PRIMARY KEY (id)
 )

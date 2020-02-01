@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
     var Char = sequelize.define("Char", {
         charName: DataTypes.STRING,
         class: DataTypes.STRING,
@@ -8,10 +8,8 @@ module.exports = function (sequelize, DataTypes) {
         experience: DataTypes.INTEGER,
         profBonus: DataTypes.INTEGER,
         AC: DataTypes.INTEGER,
-        initBonus: DataTypes.INTEGER,
         speed: DataTypes.INTEGER,
-        currentHP: DataTypes.INTEGER,
-        maxHp: DataTypes.INTEGER,
+        maxHd: DataTypes.INTEGER,
         strength: DataTypes.INTEGER,
         dex: DataTypes.INTEGER,
         constitution: DataTypes.INTEGER,

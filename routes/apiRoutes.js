@@ -12,6 +12,11 @@ module.exports = function(app) {
       res.json(dbNpcs);
     });
   });
+  app.get("/api/chars", function(req, res) {
+    db.Char.findAll({}).then(function(dbChars) {
+      res.json(dbChars);
+    });
+  });
   app.get("/api/npcs/:id", function(req, res) {
     db.NPC.findOne({ where: { id: req.params.id } }).then(function(dbNpcs) {
       res.json(dbNpcs);
@@ -29,15 +34,11 @@ module.exports = function(app) {
       res.json(dbUser);
     });
   });
-  app.post("api/chars", function(req,res) {
+  app.post("api/chars", function(req, res) {
+    console.log(req.body);
     db.Char.create(req.body).then(function(dbChar) {
       res.json(dbChar);
-      
-      })
-  });
-  app.post('/search/:class', (req, res) => {
-    
-
+    });
   });
 
   // App deletes
@@ -47,9 +48,9 @@ module.exports = function(app) {
     });
   });
   
-  // //chatkit added sj
-  app.post('/authenticate', (req, res) => {
-    var authData = chatkit.authenticate({ userId: req.query.user_id })
-    res.status(authData.status).send(authData.body)
-  })
+//   // //chatkit added sj
+//   app.post('/authenticate', (req, res) => {
+//     var authData = chatkit.authenticate({ userId: req.query.user_id })
+//     res.status(authData.status).send(authData.body)
+//   })
 };
