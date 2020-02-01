@@ -5,6 +5,12 @@ var exphbs = require("express-handlebars");
 var cors = require("cors");
 
 var db = require("./models");
+// var Chatkit = require("@pusher/chatkit-server");
+// var chatkit = new Chatkit.default({
+//   instanceLocator: 'v1:us1:c70a1536-cdbd-4df5-8b0c-11a8df75c578',
+//   key:
+//     '7f860eac-0ece-4142-9736-52b7ba80411f:7hXr4tAtbxOAU79ldb+08uRqas7wX6wvEEQ1RW17l9w='
+// });
 
 var app = express();
 var PORT = process.env.PORT || 3000;
