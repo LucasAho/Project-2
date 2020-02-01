@@ -2,19 +2,11 @@ var db = require("../models");
 
 module.exports = function(app) {
   // App gets
-  app.get("/api/users/:email", function(req, res) {
-    console.log(req.params.email);
-    db.User.findOne({ where: { email: req.params.email } }).then(function(dbUsers) {
-      // res.json(dbUsers);
-      //validate
-      db.Char.findAll({ where: {user_id: dbUsers.id} }).then(dbChars => {
-        console.log(dbChars);
-        res.render("player", { 
-          chars: dbChars
-        });
-      
+  app.post("/api/users/", function(req, res) {
+    db.User.findOne({ where: { email: req.body.email, pass: req.body.pass } }).then(function(dbUsers) {
+      console.log("test regular one");
+      res.json(dbUsers);
     });
-  });
   });
 
   app.get("/api/npcs", function(req, res) {

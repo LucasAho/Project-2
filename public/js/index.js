@@ -45,24 +45,12 @@ $("#log-in").on("click", function(event) {
         pass: $("#passLog").val().trim(),
     }
 
-    $.ajax("/api/users/" + thisUser.email, {
-        type: "GET"
-    })
-
+    $.ajax("/api/users/", {
+        type: "POST",
+        data: thisUser
+    }).then(res => {
+        location.href = "/player/" + res.id;
+    });
     
-    // .then(res => {
-    //     console.log(res);
-    //     if (res == null) {
-    //         alert("That user and password do not match");
-    //     } else {
-    //         console.log(res.id);
-    //         $.get("/player/" + res.id)
-    //         .catch(function(err) {
-    //             console.log(err);
-    //         }).then(res => {
-               
-    //         });
-    //     }
-    // });
 });
 });

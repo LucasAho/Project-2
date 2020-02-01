@@ -25,12 +25,10 @@ module.exports = function (app) {
     });  
   });
 
-
-  //char
-  app.get("/player;id", (req, res) => {
-    db.Char.findAll({
-    }).then(dbChars => {
-
+  // //chat
+  app.get("/player/:user", (req, res) => {
+    var thisUser = req.params.user;
+    db.Char.findAll({ where: {user_id: thisUser} }).then(dbChars => {
       res.render("player", { 
         chars: dbChars
       });
