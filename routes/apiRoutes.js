@@ -41,10 +41,14 @@ module.exports = function(app) {
       res.json(dbUser);
     });
   });
-  app.post("api/chars", function(req, res) {
-    console.log(req.body);
+  app.post("/api/chars", function(req, res) {
     db.Char.create(req.body).then(function(dbChar) {
       res.json(dbChar);
+    });
+  });
+  app.post("/api/locales", function(req, res) {
+    db.Locale.create(req.body).then(function(dbLocale) {
+      res.json(dbLocale);
     });
   });
 

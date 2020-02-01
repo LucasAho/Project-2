@@ -162,15 +162,17 @@ $(function() {
   });
   $("#submitLocale").on("click", function(event) {
     event.preventDefault();
-    var newTitle = $("#localeTitle");
-    var newNotes = $("#localeNotes");
-    var newParent = $("#localeParent");
+    var newTitle = $("#localeTitle").val();
+    var newNotes = $("#localeNotes").val();
+    var newParent = $("#localeParent").val();
 
     var newLocale = {
       title: newTitle,
       notes: newNotes,
       parentLocale: newParent
     }
+
+    console.log(newLocale);
     $(".locale").val("");
     $.ajax("api/locales", {
       type: "POST",

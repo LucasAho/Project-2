@@ -1,11 +1,11 @@
 $(document).ready(function() {
     $(".loginForm").show();
     $(".signupForm").hide();
-
-    $("#newSignUp").on("click", function() {
-        $(".loginForm").hide();
-        $(".signupForm").show();
-    });
+});
+$("#newSignUp").on("click", function() {
+    $(".loginForm").hide();
+    $(".signupForm").show();
+});
 
 $("#sign-up").on("click", function(event) {
     event.preventDefault();
@@ -55,5 +55,4 @@ $("#log-in").on("click", function(event) {
             window.location.href = window.location.href + "player";
         }
     });
-});
 });
