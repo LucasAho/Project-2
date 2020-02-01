@@ -5,7 +5,6 @@ $(function(){
         
 
         var newMessage = {
-            userName: $("#userName").val().trim(),
             content: $("#message-box").val().trim(),
             created_at: moment().format("YYYY-MM-DD HH:mm:ss")
         };
