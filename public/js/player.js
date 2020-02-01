@@ -38,8 +38,12 @@ watIsScope = (classes) => {
 $(function() {
     $("#charMaker").on("click", function(event) {
         event.preventDefault();
-        $("#newCharForm").show(); 
-        if ($("#newCharForm").css('display') == 'none')
+        
+        if ($("#newCharForm").css('display') == 'none') {
+            $("#newCharForm").show(); 
+        } else {
+            $("#newCharForm").hide(); 
+        }
     });
 });
 $("#createCharBtn").on("click", function(event) {
