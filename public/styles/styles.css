@@ -93,3 +93,52 @@ body {
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
+
+.login-box-b {
+  position: absolute; 
+  width: 700px;
+  height: 500px; 
+  top: 1%; 
+  background: rgba(0, 0, 0, 0.6);
+  -webkit-sizing: border-box;
+  margin: 20px;
+  padding: 80px 30px 10px 30px;
+  border-radius: 5px;
+}
+.login-box-b p {
+  color: #ccc;
+  font-family: sans-serif;
+  font-size: 18px;
+}
+
+.login-box-b input {
+  width: 100%;
+  color: white;
+  background: transparent;
+  border: none;
+  border-bottom: 0.5px solid #fff;
+  padding: 10px;
+  font-size: 16px;
+  letter-spacing: 0.2px;
+}
+
+.login-box-b input:focus {
+  outline: none;
+}
+
+.login-box-b input[type="submit"] {
+  color: #ccc;
+  border: 1px solid #aaa;
+  margin-top: 10px;
+  letter-spacing: 1px;
+  font-size: 18px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.login-box-b input[type="submit"]:hover {
+  color: #fff;
+  border-color: #fff;
+  cursor: pointer;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
