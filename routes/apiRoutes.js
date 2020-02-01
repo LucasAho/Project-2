@@ -35,10 +35,23 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
-  
-  // //chatkit added sj
-  app.post('/authenticate', (req, res) => {
-    var authData = chatkit.authenticate({ userId: req.query.user_id })
-    res.status(authData.status).send(authData.body)
-  })
+
+  //chat
+  app.get("/api/chats", function(req, res) {
+    db.User.findAll({ include: [db.Post] }).then(function(dbChat) {
+      res.json(dbChat);
+    });
+  });
+  app.get("/api/chats/:id", function(req, res) {
+    db.User.findOne({ where: { id: req.params.id }, include: [db.Post] }).then(
+      function(dbChat) {
+        res.json(dbChat);
+      }
+    );
+  });
+  app.post("/api/chats", function(req, res) {
+    db.User.create(req.body).then(function(dbChat) {
+      res.json(dbChat);
+    });
+  });
 };

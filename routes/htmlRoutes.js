@@ -22,6 +22,7 @@ module.exports = function (app) {
     })
   });
 
+  //chat
   app.get("/player", (req, res) => {
     db.Post.findAll({
 
@@ -29,30 +30,7 @@ module.exports = function (app) {
       res.render("player", { post: dbPost })
     });
   });
-
-  //chatkit added sj
-  app.post('/users', (req, res) => {
-    var { username } = req.body
-    chatkit
-      .createUser({
-        id: username,
-        name: username
-      })
-      .then(() => {
-        console.log(`User created: ${username}`)
-        res.sendStatus(201)
-      })
-      .catch(err => {
-        if (err.error === 'services/chatkit/user_already_exists') {
-          console.log(`User already exists: ${username}`)
-          res.sendStatus(200)
-        } else {
-          res.status(err.status).json(err)
-        }
-      });
-  });
-
-
+ 
 
   // // Load example page and pass in an example by id
   // app.get("/npcs/:id", function(req, res) {
