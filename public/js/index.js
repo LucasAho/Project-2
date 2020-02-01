@@ -1,12 +1,12 @@
 $(document).ready(function() {
     $(".loginForm").show();
     $(".signupForm").hide();
-});
-$("#newSignUp").on("click", function() {
-    $(".loginForm").hide();
-    $(".signupForm").show();
-});
 
+    $("#newSignUp").on("click", function() {
+        $(".loginForm").hide();
+        $(".signupForm").show();
+    });
+});
 $("#sign-up").on("click", function(event) {
     event.preventDefault();
     var passCheck = (p1,p2) => {
