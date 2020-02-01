@@ -170,15 +170,14 @@ $(function() {
       title: newTitle,
       notes: newNotes,
       parentLocale: newParent
-  }
-  $(".locale").val("");
-  $.ajax("api/locales", {
-    type: "POST",
-    data: newLocale
-  }).then(function() {
-    console.log("new locale added");
+    }
+    $(".locale").val("");
+    $.ajax("api/locales", {
+      type: "POST",
+      data: newLocale
+    }).then(function() {
+      console.log("new locale added");
+    });
   });
 
 });
-
-
