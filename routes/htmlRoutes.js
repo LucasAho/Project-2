@@ -1,4 +1,5 @@
 var db = require("../models");
+var axios = require("axios");
 // var Chatkit = require("@pusher/chatkit-server");
 // var chatkit = new Chatkit.default({
 //   instanceLocator: 'v1:us1:c70a1536-cdbd-4df5-8b0c-11a8df75c578',
@@ -24,13 +25,49 @@ module.exports = function (app) {
 
   //chat
   app.get("/player", (req, res) => {
-    db.Post.findAll({
-
-    }).then(dbPost => {
-      res.render("player", { post: dbPost })
+    db.Char.findAll({
+    }).then(dbChars => {
+      res.render("player", { 
+        chars: dbChars
+      });
     });
+    
   });
- 
+
+  app.get('/search/:category/:search', (req, res) => {
+    var queryURL = "http://dnd5eapi.co/api/" + req.params.category + '/' + req.params.search;
+    axios.get(queryURL).then(function (response) {
+      res.json(response.data);
+    }).catch(err => {
+      console.log(err);
+    });
+
+  });
+
+
+  //chatkit added sj
+  app.post('/users', (req, res) => {
+    var { username } = req.body
+    chatkit
+      .createUser({
+        id: username,
+        name: username
+      })
+      .then(() => {
+        console.log(`User created: ${username}`)
+        res.sendStatus(201)
+      })
+      .catch(err => {
+        if (err.error === 'services/chatkit/user_already_exists') {
+          console.log(`User already exists: ${username}`)
+          res.sendStatus(200)
+        } else {
+          res.status(err.status).json(err)
+        }
+      });
+  });
+
+
 
   // // Load example page and pass in an example by id
   // app.get("/npcs/:id", function(req, res) {
@@ -46,3 +83,4 @@ module.exports = function (app) {
     res.render("404");
   });
 };
+
