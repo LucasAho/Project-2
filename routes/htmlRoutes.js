@@ -25,19 +25,10 @@ module.exports = function (app) {
     });  
   });
 
-<<<<<<< HEAD
   // //chat
   app.get("/player/:user", (req, res) => {
     var thisUser = req.params.user;
     db.Char.findAll({ where: {user_id: thisUser} }).then(dbChars => {
-=======
-
-  //char
-  app.get("/player;id", (req, res) => {
-    db.Char.findAll({
-    }).then(dbChars => {
-
->>>>>>> master
       res.render("player", { 
         chars: dbChars
       });
