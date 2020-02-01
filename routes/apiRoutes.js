@@ -37,6 +37,18 @@ module.exports = function(app) {
       res.json(dbNpcs);
     });
   });
+  app.get("/api/chats", function(req, res) {
+    db.Post.findAll({ include: [db.Post] }).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
+  app.get("/api/chats/:id", function(req, res) {
+    db.Post.findOne({ where: { id: req.params.id }, include: [db.Post] }).then(
+      function(dbPost) {
+        res.json(dbPost);
+      }
+    );
+  });
 
   // App posts
   app.post("/api/npcs", function(req, res) {
@@ -59,30 +71,16 @@ module.exports = function(app) {
       res.json(dbLocale);
     });
   });
+  app.post("/api/chats", function(req, res) {
+    db.Post.create(req.body).then(function(dbChats) {
+      res.json(dbChats);
+    });
+  });
 
   // App deletes
   app.delete("/api/examples/:id", function(req, res) {
     db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
       res.json(dbExample);
-    });
-  });
-
-  //chat
-  app.get("/api/chats", function(req, res) {
-    db.User.findAll({ include: [db.Post] }).then(function(dbChat) {
-      res.json(dbChat);
-    });
-  });
-  app.get("/api/chats/:id", function(req, res) {
-    db.User.findOne({ where: { id: req.params.id }, include: [db.Post] }).then(
-      function(dbChat) {
-        res.json(dbChat);
-      }
-    );
-  });
-  app.post("/api/chats", function(req, res) {
-    db.User.create(req.body).then(function(dbChat) {
-      res.json(dbChat);
     });
   });
 };

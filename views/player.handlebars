@@ -65,21 +65,14 @@
             <label for="acIn">Armor Class</label>
             <input class="form-control" id="acIn" placeholder="Armor + Dex/Con">
           </div>
-          <div class="form-row">
-            <div class="col">
-              <label for="str">Strength</label><input class="form-control" id="str">
-              <label for="dex">Dexterity</label><input class="form-control" id="dex">
-              <label for="con">Constitution</label><input class="form-control" id="con">
-            </div>
-            <div class="col">
-              <label for="int">Intelligence</label><input class="form-control" id="int">
-              <label for="wis">Wisdom</label><input class="form-control" id="wis">
-              <label for="cha">Charisma</label><input class="form-control" id="cha">        
-            </div>
+          <div class="col">
+            <label for="int">Intelligence</label><input class="form-control" id="int">
+            <label for="wis">Wisdom</label><input class="form-control" id="wis">
+            <label for="cha">Charisma</label><input class="form-control" id="cha">
           </div>
-          <button id="createCharBtn" class="btn btn-primary mt-2">Submit</button>
-        </form>
-      </div>
+        </div>
+        <button id="createCharBtn" class="btn btn-primary">Submit</button>
+      </form>
     </div>
     
     <div class="col-6">
@@ -98,20 +91,20 @@
           <form class="create-form">
         <div class="form-group">
           <label for="chat-message">comment:</label>
-          <textarea class="form-control" id="message-content" rows="3"></textarea>
+          <textarea class="form-control" id="message-box" rows="3"></textarea>
         </div>
-        <button type="post-submit" class="btn btn-primary">Send</button>
+        <button type="post-submit" class="btn btn-primary" id="message-submit">Send</button>
       </form>
     </div>
   </div>
   <div class="card text-white bg-info mb-3">
-    <div class="messaged">
+    <div class="message-board">
       <div class="card-header">recent messages</div>
       <div class="card-body">
         {{#each Post}}
-        {{!-- {{#unless removed}}
+        {{#unless removed}}
         {{>chats/chat-block deleted=false}}
-        {{/unless}} --}}
+        {{/unless}}
         {{/each}}
       </div>
     </div>
