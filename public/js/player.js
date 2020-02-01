@@ -35,17 +35,18 @@ watIsScope = (classes) => {
         return 6;
     }
 }
-$(function() {
-    $("#charMaker").on("click", function(event) {
-        event.preventDefault();
-        
-        if ($("#newCharForm").css('display') == 'none') {
-            $("#newCharForm").show(); 
-        } else {
-            $("#newCharForm").hide(); 
-        }
-    });
+
+$(document).ready(function() {
+    $("#newCharForm").hide();
 });
+
+$(document).on("click", "#charMaker", function() {
+    if ($("#newCharForm").css('display') == 'none') {
+      $("#newCharForm").show('fast');
+    } else {
+      $("#newCharForm").hide('fast');
+    }
+  });
 $("#createCharBtn").on("click", function(event) {
     event.preventDefault();     
     dndSearch = (q1, q2) => {
@@ -100,7 +101,3 @@ $("#createCharBtn").on("click", function(event) {
     $(".form-control").val("");
 });
 
-
-$(document).ready(function() {
-    $("#newCharForm").hide();
-});
