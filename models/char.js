@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
         Char.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false
-            }
+            } 
         });
     }
 
