@@ -11,7 +11,6 @@ module.exports = function (app) {
   });
 
   app.get("/dm", (req, res) => {
-    
     db.NPC.findAll({}).then(dbNpcs => {
       res.render("dmUser", {
         npcs: dbNpcs
@@ -27,16 +26,15 @@ module.exports = function (app) {
   });
 
   //chat
-  app.get("/player", (req, res) => {
-    db.Char.findAll({
-    }).then(dbChars => {
+  app.get("/player/:user", (req, res) => {
+    var thisUser = req.params.user;
+    db.Char.findAll({ where: {user_id: thisUser} }).then(dbChars => {
       res.render("player", { 
         chars: dbChars
       });
     });
-    
   });
-
+ 
   app.get('/search/:category/:search', (req, res) => {
     var queryURL = "http://dnd5eapi.co/api/" + req.params.category + '/' + req.params.search;
     axios.get(queryURL).then(function (response) {

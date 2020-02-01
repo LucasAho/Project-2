@@ -54,6 +54,7 @@ $("#createCharBtn").on("click", function(event) {
             .catch(function (error) {
                 console.log(error);
             }).then (res => {
+            console.log(res);
         });
     }
     
@@ -73,6 +74,7 @@ $("#createCharBtn").on("click", function(event) {
     dndSearch('classes', newClass);
 
     var newCharacter = {
+        //need owner id
         charName: newName, 
         class: newClass, 
         lvl: newLvl, 

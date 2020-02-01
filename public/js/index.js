@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $(".loginForm").show();
     $(".signupForm").hide();
-});
+
 $("#newSignUp").on("click", function() {
     $(".loginForm").hide();
     $(".signupForm").show();
@@ -47,12 +47,22 @@ $("#log-in").on("click", function(event) {
 
     $.ajax("/api/users/" + thisUser.email, {
         type: "GET"
-    }).then(res => {
-        console.log(res);
-        if (res == null) {
-            alert("That user and password do not match");
-        } else {
-            window.location.href = window.location.href + "player";
-        }
-    });
+    })
+
+    
+    // .then(res => {
+    //     console.log(res);
+    //     if (res == null) {
+    //         alert("That user and password do not match");
+    //     } else {
+    //         console.log(res.id);
+    //         $.get("/player/" + res.id)
+    //         .catch(function(err) {
+    //             console.log(err);
+    //         }).then(res => {
+               
+    //         });
+    //     }
+    // });
+});
 });
