@@ -1,4 +1,14 @@
 var db = require("../models");
+<<<<<<< HEAD
+=======
+var axios = require("axios");
+// var Chatkit = require("@pusher/chatkit-server");
+// var chatkit = new Chatkit.default({
+//   instanceLocator: 'v1:us1:c70a1536-cdbd-4df5-8b0c-11a8df75c578',
+//   key:
+//     '7f860eac-0ece-4142-9736-52b7ba80411f:7hXr4tAtbxOAU79ldb+08uRqas7wX6wvEEQ1RW17l9w='
+// });
+>>>>>>> nh2
 
 module.exports = function (app) {
   // Load index page
@@ -16,14 +26,28 @@ module.exports = function (app) {
     })
   });
 
+  //chat
   app.get("/player", (req, res) => {
-    db.Post.findAll({
-
-    }).then(dbPost => {
-      res.render("player", { post: dbPost })
+    db.Char.findAll({
+    }).then(dbChars => {
+      res.render("player", { 
+        chars: dbChars
+      });
     });
+    
   });
 
+  app.get('/search/:category/:search', (req, res) => {
+    var queryURL = "http://dnd5eapi.co/api/" + req.params.category + '/' + req.params.search;
+    axios.get(queryURL).then(function (response) {
+      res.json(response.data);
+    }).catch(err => {
+      console.log(err);
+    });
+
+  });
+
+<<<<<<< HEAD
   //chat
   // index route loads view.html
   app.get("/", function(req, res) {
@@ -44,6 +68,8 @@ module.exports = function (app) {
   app.get("/authors", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/author-manager.html"));
   });
+=======
+>>>>>>> nh2
 
   //chatkit added sj
   app.post('/users', (req, res) => {
@@ -82,3 +108,4 @@ module.exports = function (app) {
     res.render("404");
   });
 };
+

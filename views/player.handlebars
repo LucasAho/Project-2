@@ -1,19 +1,121 @@
 <div class="container">
   <div class="row">
-    <div class="col-8 offset-2">
-      <div class="card mt-4">
-        <div class="card-body">
-          <h5 class="card-title">Example</h5>
-          <p>
-            <strong>ID</strong>: {{post}}</p>
-          <p>
-          <p>
-            <strong>Text</strong>: {{example.text}}</p>
-          <p>
-            <strong>Description:</strong> {{example.description}}</p>
-            <a href="/">← Back To Home</a>
+    <div class="col-6">
+      <form>
+        <strong>New Character</strong>
+        <div class="form-group">
+          <label for="charName">Character Name</label>
+          <input class="form-control" id="charName" placeholder="Charles Bettleman">
         </div>
-      </div>
+        <div class="form-group">
+          <label for="classSelect">Class</label>
+          <select class="form-control" id="classSelect">
+            <option>Barbarian</option>
+            <option>Bard</option>
+            <option>Cleric</option>
+            <option>Druid</option>
+            <option>Fighter</option>
+            <option>Monk</option>
+            <option>Paladin</option>
+            <option>Ranger</option>
+            <option>Rogue</option>
+            <option>Sorcerer</option>
+            <option>Warlock</option>
+            <option>Wizard</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="startLvl">Starting Level</label>
+          <input class="form-control" id="startLvl" placeholder="1-20">
+        </div>
+        <div class="form-group">
+          <label for="startExp">Starting Experience</label>
+          <input class="form-control" id="startExp" placeholder="">
+        </div>
+        <div class="form-group">
+          <label for="raceSelect">Race</label>
+          <select class="form-control" id="raceSelect">
+            <option>Dragonborn</option>
+            <option>Dwarf</option>
+            <option>Elf</option>
+            <option>Gnome</option>
+            <option>Half-elf</option>
+            <option>Half-orc</option>
+            <option>Halfling</option>
+            <option>Human</option>
+            <option>Tiefling</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="alignment">Alignment</label>
+          <select class="form-control" id="alignment">
+            <option>LG</option>
+            <option>NG</option>
+            <option>CG</option>
+            <option>LN</option>
+            <option>NN</option>
+            <option>CN</option>
+            <option>LE</option>
+            <option>NE</option>
+            <option>CE</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="acIn">Armor Class</label>
+          <input class="form-control" id="acIn" placeholder="Armor + Dex/Con">
+        </div>
+        <div class="form-row">Ability Scores
+          <div class="col">
+            <label for="str">Strength</label><input class="form-control" id="str">
+            <label for="dex">Dexterity</label><input class="form-control" id="dex">
+            <label for="con">Constitution</label><input class="form-control" id="con">
+          </div>
+          <div class="col">
+            <label for="int">Intelligence</label><input class="form-control" id="int">
+            <label for="wis">Wisdom</label><input class="form-control" id="wis">
+            <label for="cha">Charisma</label><input class="form-control" id="cha">
+          </div>
+        </div>
+        <button id="createCharBtn" class="btn btn-primary">Submit</button>
+      </form>
     </div>
   </div>
 </div>
+
+<div class="container">
+  <div class="col-6">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Want to join the conversation?</h1>
+      <p class="lead">submit your comment below. </p>
+    </div>
+    <div class="card">
+    <div class="card-header">
+    Chat Message Center
+    </div>
+    <div class="card-body" id="order">
+      <h5 class="card-title"></h5>
+      <p class="card-text">please be respectful of your fellow players.</p>
+      <form class="create-form">
+        <div class="form-group">
+          <label for="chat-message">comment:</label>
+          <textarea class="form-control" id="message-content" rows="3"></textarea>
+        </div>
+        <button type="post-submit" class="btn btn-primary">Send</button>
+      </form>
+    </div>
+  </div>
+  <div class="card text-white bg-info mb-3">
+    <div class="messaged">
+      <div class="card-header">recent messages</div>
+      <div class="card-body">
+        {{#each Post}}
+        {{!-- {{#unless removed}}
+        {{>chats/chat-block deleted=false}}
+        {{/unless}} --}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  </div>
+      <script src="/js/player.js"></script>

@@ -1,27 +1,20 @@
 
 module.exports = function(sequelize, DataTypes) {
   var Post = sequelize.define("Post", {
-    title: {
+    content: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
-    },
-    body: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      len: [1]
+      allowNull: false
     }
+    // username: DataTypes.STRING
   });
 
-  // Post.associate = function(models) {
-  //   Post.belongsTo(models.user, {
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   });
-  // };
+  Post.associate = function(models) {
+    Post.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
 
   return Post;
 };
