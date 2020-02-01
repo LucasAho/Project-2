@@ -1,7 +1,7 @@
 <div class="container text-center">
     <h1>Dungeon Master's Workshop</h1>
     <div class="row">
-        <div class="col-6">
+        <div class="col-9">
             <h2>Create Content</h2>
             <hr>
            
@@ -65,18 +65,26 @@
                     
                 </div>
             </div>
-            <div id="localGroup">
-                <button class="btn btn-primary my-2" id="localNewBtn">
+            <div id="localeGroup">
+                <button class="btn btn-primary my-2" id="localeNewBtn">
                     New Location
                 </button>
-                <div class="row" id="localForm">
+                <form class="form-inline" id="localeForm">
+                    <label class="sr-only" for="localeTitle">Title</label>
+                    <input type="text" class="form-control locale mb-2 mr-sm-2" id="localeTitle" placeholder="Title">
 
-                </div>
+                    <label class="sr-only" for="localeNotes">Notes</label>
+                    <input type="text" class="form-control locale mb-2 mr-sm-2" id="localeNotes" placeholder="Notes">
+
+                    <label class="sr-only" for="localeParent">Parent Locale</label>
+                    <input type="text" class="form-control locale mb-2 mr-sm-2" id="localeParent" placeholder="Parent Location">
+                    <button type="submit" id="submitLocale" class="btn btn-primary mb-2">Submit</button>
+                    </form>
             </div>
 
         </div>
-
-        <div class="col-6 py-3 d-flex justify-content-center">
+0
+        <div class="col-3 py-3 d-flex justify-content-center">
             <div class="card" style="width: 18rem;">
                     
                 <div class="card-body">

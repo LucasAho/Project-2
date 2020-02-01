@@ -22,12 +22,13 @@ module.exports = function (app) {
         npcs: dbNpcs
       });
     });
-
+  });
+  app.get("/dm", (req, res) => {
     db.Locale.findAll({}).then(dbLocales => {
       res.render("dmUser", {
         locales: dbLocales
       });
-    });
+    });  
   });
 
   app.get("/player", (req, res) => {
