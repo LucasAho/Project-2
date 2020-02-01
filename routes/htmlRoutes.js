@@ -16,11 +16,18 @@ module.exports = function (app) {
   });
 
   app.get("/dm", (req, res) => {
+    
     db.NPC.findAll({}).then(dbNpcs => {
       res.render("dmUser", {
         npcs: dbNpcs
       });
-    })
+    });
+
+    db.Locale.findAll({}).then(dbLocales => {
+      res.render("dmUser", {
+        locales: dbLocales
+      });
+    });
   });
 
   app.get("/player", (req, res) => {

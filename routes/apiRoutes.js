@@ -12,6 +12,11 @@ module.exports = function(app) {
       res.json(dbNpcs);
     });
   });
+  app.get("/api/locales", function(req, res) {
+    db.Locale.findAll({}).then(function(dbLocales) {
+      res.json(dbLocales);
+    });
+  });
   app.get("/api/chars", function(req, res) {
     db.Char.findAll({}).then(function(dbChars) {
       res.json(dbChars);
