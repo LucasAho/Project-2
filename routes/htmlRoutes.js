@@ -1,4 +1,5 @@
 var db = require("../models");
+var axios = require("axios");
 // var Chatkit = require("@pusher/chatkit-server");
 // var chatkit = new Chatkit.default({
 //   instanceLocator: 'v1:us1:c70a1536-cdbd-4df5-8b0c-11a8df75c578',
@@ -24,11 +25,25 @@ module.exports = function (app) {
 
   app.get("/player", (req, res) => {
     db.Post.findAll({
-
     }).then(dbPost => {
       res.render("player", { post: dbPost })
     });
+    
   });
+
+  app.get('/search/:category/:search', (req, res) => {
+    var queryURL = "http://dnd5eapi.co/api/" + req.params.category + '/' + req.params.search;
+    console.log(queryURL);
+
+    axios.get(queryURL).then(function (response) {
+      console.log(response.data);
+      res.json(response.data);
+    }).catch(err => {
+      // console.log(err);
+    });
+
+  });
+
 
   //chatkit added sj
   app.post('/users', (req, res) => {
@@ -68,3 +83,4 @@ module.exports = function (app) {
     res.render("404");
   });
 };
+

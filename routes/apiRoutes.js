@@ -1,7 +1,7 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
+  // App gets
   app.get("/api/users/:email", function(req, res) {
     db.User.findOne({ where: { email: req.params.email } }).then(function(dbUsers) {
       res.json(dbUsers);
@@ -17,7 +17,8 @@ module.exports = function(app) {
       res.json(dbNpcs);
     });
   });
-  // Create a new example
+  
+  // App posts
   app.post("/api/npcs", function(req, res) {
     db.NPC.create(req.body).then(function(dbNPC) {
       res.json(dbNPC);
@@ -28,8 +29,18 @@ module.exports = function(app) {
       res.json(dbUser);
     });
   });
+  app.post("api/chars", function(req,res) {
+    db.Char.create(req.body).then(function(dbChar) {
+      res.json(dbChar);
+      
+      })
+  });
+  app.post('/search/:class', (req, res) => {
+    
 
-  // Delete an example by id
+  });
+
+  // App deletes
   app.delete("/api/examples/:id", function(req, res) {
     db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
       res.json(dbExample);

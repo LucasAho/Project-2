@@ -15,14 +15,11 @@ CREATE TABLE npcs (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE users (
+CREATE TABLE locations (
     id INT AUTO_INCREMENT NOT NULL,
-    username VARCHAR(25) NOT NULL,
-    pass VARCHAR(16) NOT NULL,
-    email VARCHAR(25) NOT NULL,
-    actType BOOLEAN NOT NULL,    
-    createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    title VARCHAR(50) NOT NULL,
+    notes VARCHAR(150) NOT NULL,
+    parentLocal VARCHAR(50) NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -30,19 +27,32 @@ CREATE TABLE users (
     id INT AUTO_INCREMENT NOT NULL,
     username VARCHAR(25) NOT NULL,
     pass VARCHAR(16) NOT NULL,
-    email VARCHAR(25) NOT NULL,
+    email VARCHAR(50) NOT NULL,
     actType BOOLEAN NOT NULL,    
     createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id)
 );
 
-CREATE TABLE chats (
+CREATE TABLE characters (
     id INT AUTO_INCREMENT NOT NULL,
-    ownerId INT NOT NULL,
-    username VARCHAR(25) NOT NULL,
-    contents VARCHAR(125) NOT NULL,   
-    createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (id, ownerId)
-);
+    charName VARCHAR (30) NOT NULL,
+    class VARCHAR (30) NOT NULL,
+    lvl INTEGER (20) NOT NULL,
+    experience INTEGER NOT NULL,
+    race VARCHAR (30) NOT NULL,
+    align VARCHAR (2) NOT NULL,    
+    profBonus INTEGER NOT NULL,
+    AC INTEGER NOT NULL,
+    speed INTEGER NOT NULL,
+    currentHP INTEGER NOT NULL,
+    maxHp INTEGER NOT NULL,
+    strength INTEGER NOT NULL,
+    dexterity INTEGER NOT NULL,
+    constitution INTEGER NOT NULL,
+    intelligence INTEGER NOT NULL,
+    wisdom INTEGER NOT NULL,
+    charisma INTEGER NOT NULL,
+    inventory VARCHAR (100) NOT NULL,
+    notes VARCHAR (200) NOT NULL,
+)
