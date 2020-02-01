@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 $("#message-submit").on("click", function (event) {
     event.preventDefault();
     
@@ -53,7 +52,6 @@ $.get("/api/all", function(data) {
     }
   
   });
-=======
 $(function(){
     //create message
     $("#message-submit").on("click", function (event) {
@@ -110,4 +108,3 @@ $(function(){
     
     });
 })
->>>>>>> nh2

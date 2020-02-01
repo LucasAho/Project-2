@@ -1,6 +1,8 @@
 /* eslint-disable indent */
 /* eslint-disable prettier/prettier */
 
+
+
 getProfBonus = function (lvl) {
     if (lvl < 5) {
         return 2;
@@ -33,6 +35,13 @@ watIsScope = (classes) => {
         return 6;
     }
 }
+$(function() {
+    $("#charMaker").on("click", function(event) {
+        event.preventDefault();
+        $("#newCharForm").show(); 
+        if ($("#newCharForm").css('display') == 'none')
+    });
+});
 $("#createCharBtn").on("click", function(event) {
     event.preventDefault();     
     dndSearch = (q1, q2) => {
@@ -84,5 +93,10 @@ $("#createCharBtn").on("click", function(event) {
       }).then(function() {
         console.log("new character added");
       });
-    //$(".form-control").val("");
+    $(".form-control").val("");
+});
+
+
+$(document).ready(function() {
+    $("#newCharForm").hide();
 });
