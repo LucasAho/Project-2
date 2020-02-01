@@ -37,8 +37,8 @@ watIsScope = (classes) => {
 }
 
 $(document).ready(function() {
-    $("#newCharForm").hide();
-});
+
+
 
 $(document).on("click", "#charMaker", function() {
     if ($("#newCharForm").css('display') == 'none') {
@@ -98,6 +98,6 @@ $("#createCharBtn").on("click", function(event) {
       }).then(function() {
         console.log("new character added");
       });
-    $(".form-control").val("");
+    // $(".form-control").val("");
 });
-
+});
