@@ -19,7 +19,7 @@ CREATE TABLE locations (
     id INT AUTO_INCREMENT NOT NULL,
     title VARCHAR(50) NOT NULL,
     notes VARCHAR(150) NOT NULL,
-    parentLocal VARCHAR(50) NOT NULL,
+    parentLocale VARCHAR(50) NOT NULL,
     PRIMARY KEY (id)
 );
 

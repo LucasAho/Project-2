@@ -52,7 +52,7 @@ const descriptList = {
 //Runs when doc loads
 $(document).ready(function() {
   $("#npcBtns").hide();
-  $("#localForm").hide();
+  $("#localeForm").hide();
   console.log("jquery ready");
   
 });
@@ -60,6 +60,7 @@ $(document).ready(function() {
 $(document).on("click", "#npcNewBtn", function() {
   if ($("#npcBtns").css('display') == 'none') {
     $("#npcBtns").show('fast');
+    $("#localeForm").hide();
   } else {
     $("#npcBtns").hide('fast');
   }
@@ -153,8 +154,30 @@ $(function() {
         $("#displayProfess").text(res.profession);
     });
   });
-  
 
+  //Code for Locales
+  $("#localeNewBtn").on("click", function(event) {
+    event.preventDefault();
+    $("#localeForm").show('fast');
+  });
+  $("#submitLocale").on("click", function(event) {
+    event.preventDefault();
+    var newTitle = $("#localeTitle");
+    var newNotes = $("#localeNotes");
+    var newParent = $("#localeParent");
+
+    var newLocale = {
+      title: newTitle,
+      notes: newNotes,
+      parentLocale: newParent
+    }
+    $(".locale").val("");
+    $.ajax("api/locales", {
+      type: "POST",
+      data: newLocale
+    }).then(function() {
+      console.log("new locale added");
+    });
+  });
 
 });
-

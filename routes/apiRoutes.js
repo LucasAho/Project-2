@@ -14,6 +14,11 @@ module.exports = function(app) {
       res.json(dbNpcs);
     });
   });
+  app.get("/api/locales", function(req, res) {
+    db.Locale.findAll({}).then(function(dbLocales) {
+      res.json(dbLocales);
+    });
+  });
   app.get("/api/chars", function(req, res) {
     db.Char.findAll({}).then(function(dbChars) {
       res.json(dbChars);
@@ -49,36 +54,6 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
-<<<<<<< HEAD
-  
-  //chat
-  app.get("/api/user", function(req, res) {
-    db.User.findAll({
-      include: [db.Post]
-    }).then(function(dbUser) {
-      res.json(dbUser);
-    });
-  });
-
-  app.get("/api/users/:id", function(req, res) {
-    db.User.findOne({ where: { id: req.params.id }, include: [db.Post]}).then(function(dbUser) {
-      res.json(dbUser);
-    });
-  });
-
-  app.post("/api/authors", function(req, res) {
-    db.User.create(req.body).then(function(dbUser) {
-      res.json(dbUser);
-    });
-  });
-
-  
-  // //chatkit added sj
-  app.post('/authenticate', (req, res) => {
-    db.chatkit.authenticate({ userId: req.query.user_id })
-    res.status(authData.status).send(authData.body)
-  })
-=======
 
   //chat
   app.get("/api/chats", function(req, res) {
@@ -98,5 +73,4 @@ module.exports = function(app) {
       res.json(dbChat);
     });
   });
->>>>>>> nh2
 };
