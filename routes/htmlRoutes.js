@@ -27,7 +27,7 @@ module.exports = function (app) {
   });
 
   //chat
-  app.get("/player", (req, res) => {
+  app.get("/player;id", (req, res) => {
     db.Char.findAll({
     }).then(dbChars => {
       res.render("player", { 

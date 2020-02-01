@@ -11,20 +11,20 @@ $(function(){
 
         console.log(newMessage);
 
-        $.post("/api/post", newMessage)
+        $.post("/api/chats", newMessage)
             // On success, run the following code
             .then(function () {
 
                 var row = $("<div>");
                 row.addClass("Message");
 
-                row.append("<p>" + newMessage.userName + " Messaged: </p>");
+                // row.append("<p>" + newMessage.userName + " Messaged: </p>");
                 row.append("<p>" + newMessage.content + "</p>");
         row.append(
             "<p>At " +
             moment(newMessage.created_at).format("h:mma on dddd") +
             "</p>"
-                $("#message-board").prepend(row);
+                $("#message-board").prepend(row));
 
             });
 
@@ -32,7 +32,7 @@ $(function(){
         $("#message-box").val("");
     });
 
-    $.get("/api/all", function(data) {
+    $.get("/api/chats", function(data) {
 
         if (data.length !== 0) {
     
