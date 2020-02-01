@@ -36,9 +36,31 @@ module.exports = function(app) {
     });
   });
   
+  //chat
+  app.get("/api/user", function(req, res) {
+    db.User.findAll({
+      include: [db.Post]
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+
+  app.get("/api/users/:id", function(req, res) {
+    db.User.findOne({ where: { id: req.params.id }, include: [db.Post]}).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+
+  app.post("/api/authors", function(req, res) {
+    db.User.create(req.body).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+
+  
   // //chatkit added sj
   app.post('/authenticate', (req, res) => {
-    var authData = chatkit.authenticate({ userId: req.query.user_id })
+    db.chatkit.authenticate({ userId: req.query.user_id })
     res.status(authData.status).send(authData.body)
   })
 };
