@@ -56,3 +56,11 @@ CREATE TABLE characters (
     notes VARCHAR (200) NOT NULL,
     PRIMARY KEY (id)
 );
+
+CREATE TABLE chats (
+    id INT AUTO_INCREMENT NOT NULL,
+    message_content VARCHAR(150) NOT NULL,
+    user_id int NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);

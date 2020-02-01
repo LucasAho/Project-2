@@ -73,7 +73,7 @@
           <div class="col">
             <label for="int">Intelligence</label><input class="form-control" id="int">
             <label for="wis">Wisdom</label><input class="form-control" id="wis">
-            <label for="cha">Charisma</label><input class="form-control" id="cha">        
+            <label for="cha">Charisma</label><input class="form-control" id="cha">
           </div>
         </div>
         <button id="createCharBtn" class="btn btn-primary">Submit</button>
@@ -81,4 +81,41 @@
     </div>
   </div>
 </div>
-<script src="/js/player.js"></script>
+
+<div class="container">
+  <div class="col-6">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Want to join the conversation?</h1>
+      <p class="lead">submit your comment below. </p>
+    </div>
+    <div class="card">
+    <div class="card-header">
+    Chat Message Center
+    </div>
+    <div class="card-body" id="order">
+      <h5 class="card-title"></h5>
+      <p class="card-text">please be respectful of your fellow players.</p>
+      <form class="create-form">
+        <div class="form-group">
+          <label for="chat-message">comment:</label>
+          <textarea class="form-control" id="message-content" rows="3"></textarea>
+        </div>
+        <button type="post-submit" class="btn btn-primary">Send</button>
+      </form>
+    </div>
+  </div>
+  <div class="card text-white bg-info mb-3">
+    <div class="messaged">
+      <div class="card-header">recent messages</div>
+      <div class="card-body">
+        {{#each Post}}
+        {{!-- {{#unless removed}}
+        {{>chats/chat-block deleted=false}}
+        {{/unless}} --}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  </div>
+      <script src="/js/player.js"></script>

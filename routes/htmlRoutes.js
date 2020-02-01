@@ -1,4 +1,6 @@
 var db = require("../models");
+<<<<<<< HEAD
+=======
 var axios = require("axios");
 // var Chatkit = require("@pusher/chatkit-server");
 // var chatkit = new Chatkit.default({
@@ -6,6 +8,7 @@ var axios = require("axios");
 //   key:
 //     '7f860eac-0ece-4142-9736-52b7ba80411f:7hXr4tAtbxOAU79ldb+08uRqas7wX6wvEEQ1RW17l9w='
 // });
+>>>>>>> nh2
 
 module.exports = function (app) {
   // Load index page
@@ -23,6 +26,7 @@ module.exports = function (app) {
     })
   });
 
+  //chat
   app.get("/player", (req, res) => {
     db.Char.findAll({
     }).then(dbChars => {
@@ -43,18 +47,40 @@ module.exports = function (app) {
 
   });
 
+<<<<<<< HEAD
+  //chat
+  // index route loads view.html
+  app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/blog.html"));
+  });
+
+  // cms route loads cms.html
+  app.get("/cms", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/cms.html"));
+  });
+
+  // blog route loads blog.html
+  app.get("/blog", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/blog.html"));
+  });
+
+  // authors route loads author-manager.html
+  app.get("/authors", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/author-manager.html"));
+  });
+=======
+>>>>>>> nh2
 
   //chatkit added sj
   app.post('/users', (req, res) => {
     var { username } = req.body
-    chatkit
-      .createUser({
+    chatkit.createUser({
         id: username,
         name: username
       })
       .then(() => {
-        console.log(`User created: ${username}`)
-        res.sendStatus(201)
+        res.render(`User created: ${username}`)
+        // res.sendStatus(201)
       })
       .catch(err => {
         if (err.error === 'services/chatkit/user_already_exists') {

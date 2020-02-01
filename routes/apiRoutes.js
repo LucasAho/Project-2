@@ -3,7 +3,9 @@ var db = require("../models");
 module.exports = function(app) {
   // App gets
   app.get("/api/users/:email", function(req, res) {
-    db.User.findOne({ where: { email: req.params.email } }).then(function(dbUsers) {
+    db.User.findOne({ where: { email: req.params.email } }).then(function(
+      dbUsers
+    ) {
       res.json(dbUsers);
     });
   });
@@ -22,7 +24,7 @@ module.exports = function(app) {
       res.json(dbNpcs);
     });
   });
-  
+
   // App posts
   app.post("/api/npcs", function(req, res) {
     db.NPC.create(req.body).then(function(dbNPC) {
@@ -47,10 +49,54 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
+<<<<<<< HEAD
   
-//   // //chatkit added sj
-//   app.post('/authenticate', (req, res) => {
-//     var authData = chatkit.authenticate({ userId: req.query.user_id })
-//     res.status(authData.status).send(authData.body)
-//   })
+  //chat
+  app.get("/api/user", function(req, res) {
+    db.User.findAll({
+      include: [db.Post]
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+
+  app.get("/api/users/:id", function(req, res) {
+    db.User.findOne({ where: { id: req.params.id }, include: [db.Post]}).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+
+  app.post("/api/authors", function(req, res) {
+    db.User.create(req.body).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+
+  
+  // //chatkit added sj
+  app.post('/authenticate', (req, res) => {
+    db.chatkit.authenticate({ userId: req.query.user_id })
+    res.status(authData.status).send(authData.body)
+  })
+=======
+
+  //chat
+  app.get("/api/chats", function(req, res) {
+    db.User.findAll({ include: [db.Post] }).then(function(dbChat) {
+      res.json(dbChat);
+    });
+  });
+  app.get("/api/chats/:id", function(req, res) {
+    db.User.findOne({ where: { id: req.params.id }, include: [db.Post] }).then(
+      function(dbChat) {
+        res.json(dbChat);
+      }
+    );
+  });
+  app.post("/api/chats", function(req, res) {
+    db.User.create(req.body).then(function(dbChat) {
+      res.json(dbChat);
+    });
+  });
+>>>>>>> nh2
 };
