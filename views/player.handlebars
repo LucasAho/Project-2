@@ -99,9 +99,9 @@
       <form class="create-form">
         <div class="form-group">
           <label for="chat-message">comment:</label>
-          <textarea class="form-control" id="message-content" rows="3"></textarea>
+          <textarea class="form-control" id="message-box" rows="3"></textarea>
         </div>
-        <button type="post-submit" class="btn btn-primary">Send</button>
+        <button type="post-submit" class="btn btn-primary" id="message-submit">Send</button>
       </form>
     </div>
   </div>
@@ -110,9 +110,9 @@
       <div class="card-header">recent messages</div>
       <div class="card-body">
         {{#each Post}}
-        {{!-- {{#unless removed}}
+        {{#unless removed}}
         {{>chats/chat-block deleted=false}}
-        {{/unless}} --}}
+        {{/unless}}
         {{/each}}
       </div>
     </div>
