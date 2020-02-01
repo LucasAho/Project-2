@@ -29,12 +29,14 @@ const personList = [
   "Arrogant", "Patient", "Well-Spoken", "Untrustworthy", "Rude", "Loud/Outgoing", "Helpful", "Cynical", "Shy", "Loyal"
 ];
 
+//List of random professions
 const professList = [
   "Farmer", "Blacksmith", "Ranger", "Guard", "Politician", "Merchant", "Servant", "Smuggler", "Fletcher", "Chef", "Royal", "Cleric", "Carpenter", 
   "Rogue", "Herbalist", "Historian", "Alchemist", "Shop Owner", "Sheppard", "Miner", "Banker", "Bandit", "Sailor", "Veteran", "Beggar", "Fisherman",
   "Peddler", "Bard", "Wizard", "Pickpocket"
 ];
 
+//Builds a combination of 3 descriptors
 const descriptList = {
   face: ["ragged looking ", "large nose ", "attractive ", "missing teeth ", "ugly ", "sharp face ", "square face ", "exhausted looking ", "plain face "],
   build: ["athletic ", "muscular ", "skinny ", "lean ", "round ", "average ", "stocky "],
@@ -47,12 +49,14 @@ const descriptList = {
   }
 }
 
-
+//Runs when doc loads
 $(document).ready(function() {
   $("#npcBtns").hide();
+  $("#localForm").hide();
   console.log("jquery ready");
   
 });
+//Npc Create on click
 $(document).on("click", "#npcNewBtn", function() {
   if ($("#npcBtns").css('display') == 'none') {
     $("#npcBtns").show('fast');

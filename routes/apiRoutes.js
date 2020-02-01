@@ -1,7 +1,7 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
+  // App gets
   app.get("/api/users/:email", function(req, res) {
     db.User.findOne({ where: { email: req.params.email } }).then(function(dbUsers) {
       res.json(dbUsers);
@@ -12,12 +12,18 @@ module.exports = function(app) {
       res.json(dbNpcs);
     });
   });
+  app.get("/api/chars", function(req, res) {
+    db.Char.findAll({}).then(function(dbChars) {
+      res.json(dbChars);
+    });
+  });
   app.get("/api/npcs/:id", function(req, res) {
     db.NPC.findOne({ where: { id: req.params.id } }).then(function(dbNpcs) {
       res.json(dbNpcs);
     });
   });
-  // Create a new example
+  
+  // App posts
   app.post("/api/npcs", function(req, res) {
     db.NPC.create(req.body).then(function(dbNPC) {
       res.json(dbNPC);
@@ -28,17 +34,23 @@ module.exports = function(app) {
       res.json(dbUser);
     });
   });
+  app.post("api/chars", function(req, res) {
+    console.log(req.body);
+    db.Char.create(req.body).then(function(dbChar) {
+      res.json(dbChar);
+    });
+  });
 
-  // Delete an example by id
+  // App deletes
   app.delete("/api/examples/:id", function(req, res) {
     db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
       res.json(dbExample);
     });
   });
   
-  // //chatkit added sj
-  app.post('/authenticate', (req, res) => {
-    var authData = chatkit.authenticate({ userId: req.query.user_id })
-    res.status(authData.status).send(authData.body)
-  })
+//   // //chatkit added sj
+//   app.post('/authenticate', (req, res) => {
+//     var authData = chatkit.authenticate({ userId: req.query.user_id })
+//     res.status(authData.status).send(authData.body)
+//   })
 };
