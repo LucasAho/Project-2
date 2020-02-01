@@ -6,7 +6,7 @@ $(document).ready(function() {
         $(".loginForm").hide();
         $(".signupForm").show();
     });
-});
+
 $("#sign-up").on("click", function(event) {
     event.preventDefault();
     var passCheck = (p1,p2) => {
@@ -55,4 +55,5 @@ $("#log-in").on("click", function(event) {
             window.location.href = window.location.href + "player";
         }
     });
+});
 });
