@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     //create message
     $("#message-submit").on("click", function (event) {
@@ -22,6 +23,7 @@ $(document).ready(function () {
 
                     var row = $("<div>");
                     row.addClass("Message");
+
 
                     // row.append("<p>" + newMessage.userName + " Messaged: </p>");
                     row.append("<p>" + newMessage.content + "</p>");

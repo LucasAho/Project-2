@@ -6,10 +6,10 @@ module.exports = function(sequelize, DataTypes) {
     actType: DataTypes.BOOLEAN
   });
 
-  // User.associate = function(models) {
-  //   User.hasMany(models.char, {
-  //     onDelete: "cascade"
-  //   });
-  // };
+  User.associate = function(models) {
+    User.hasMany(models.Char, {
+      onDelete: "cascade"
+    });
+  };
   return User;
 };

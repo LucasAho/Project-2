@@ -3,12 +3,20 @@ var db = require("../models");
 module.exports = function(app) {
   // App gets
   app.get("/api/users/:email", function(req, res) {
-    db.User.findOne({ where: { email: req.params.email } }).then(function(
-      dbUsers
-    ) {
-      res.json(dbUsers);
+    console.log(req.params.email);
+    db.User.findOne({ where: { email: req.params.email } }).then(function(dbUsers) {
+      // res.json(dbUsers);
+      //validate
+      db.Char.findAll({ where: {user_id: dbUsers.id} }).then(dbChars => {
+        console.log(dbChars);
+        res.render("player", { 
+          chars: dbChars
+        });
+      
     });
   });
+  });
+
   app.get("/api/npcs", function(req, res) {
     db.NPC.findAll({}).then(function(dbNpcs) {
       res.json(dbNpcs);

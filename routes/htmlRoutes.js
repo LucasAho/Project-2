@@ -11,7 +11,6 @@ module.exports = function (app) {
   });
 
   app.get("/dm", (req, res) => {
-    
     db.NPC.findAll({}).then(dbNpcs => {
       res.render("dmUser", {
         npcs: dbNpcs
@@ -26,15 +25,16 @@ module.exports = function (app) {
     });  
   });
 
+
   //char
   app.get("/player;id", (req, res) => {
     db.Char.findAll({
     }).then(dbChars => {
+
       res.render("player", { 
         chars: dbChars
       });
     });
-    
   });
 
   app.get("/player:id", (req, res) => {
@@ -55,6 +55,7 @@ module.exports = function (app) {
     });
     
   });
+
 
   app.get('/search/:category/:search', (req, res) => {
     var queryURL = "http://dnd5eapi.co/api/" + req.params.category + '/' + req.params.search;
