@@ -22,7 +22,13 @@
           <input type="password" id="suPass" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"><br>
           <p>Confirm Password</p>
           <input type="password" id="suPass2" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"><br>
-          <p>Admin Account?</p><input class="form-check-input" type="checkbox" value="" id="suType">
+          <div class="form-group">
+            <label for="acctType">Account Type</label>
+            <select class="form-control" id="acctType">
+              <option>Dungeon Master</option>
+              <option>Player</option>
+            </select>
+          </div>
           <input type="submit" id="sign-up" name="submit" value="Signup">
           
         </form>

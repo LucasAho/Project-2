@@ -7,6 +7,16 @@ $("#newSignUp").on("click", function() {
     $(".signupForm").show();
 });
 
+acctCheck = (userIn) => {
+    if (userIn === "Dungeon Master") {
+        return 0;
+    } else if (userIn === "Player") {
+        return 1;
+    } else {
+        console.log("this isn't in my programming");
+    }
+}
+
 $("#sign-up").on("click", function(event) {
     event.preventDefault();
     var passCheck = (p1,p2) => {
@@ -24,9 +34,9 @@ $("#sign-up").on("click", function(event) {
             username: $("#suUser").val().trim(),
             pass: passCheck($("#suPass").val().trim(), $("#suPass2").val().trim()),
             email: $("#suEmail").val().trim(), 
-            actType: 1,
+            actType: acctCheck($("#acctType").val())
         }
-
+    
 
         $.ajax("/api/users", {
             type: "POST",
