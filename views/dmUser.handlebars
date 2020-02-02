@@ -140,7 +140,7 @@
           <label for="content">comment:</label>
           <textarea class="form-control" id="postBox" rows="3"></textarea>
         </div>
-        <button type="send" class="btn btn-primary" id="sendPost">Send</button>
+        <button type="send" class="btn btn-primary" id="sendPost" value={{id}}>Send</button>
       </form>
     </div>
   </div>
@@ -149,6 +149,10 @@
       <div class="card-header">recent messages</div>
       <div class="card-body">
         {{#each Post}}
+       <h4>{{post}}</h4>
+     <button type="button" class="change-delete btn btn-success" value={{id}} data-newdelete="{{delete}}">
+           Delete!
+           </button>
         {{/each}}
       </div>
     </div>

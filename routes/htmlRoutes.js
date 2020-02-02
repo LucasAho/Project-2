@@ -53,9 +53,8 @@ module.exports = function (app) {
     });   
   });
 
-  app.get("/dm:id", (req, res) => {
-    db.Post.findAll({where: {user_id: thisUser}
-    }).then(dbPost => {
+  app.get("/dm/:id", (req, res) => {
+    db.Post.findAll({}).then(dbPost => {
       res.render("dm", { 
         Post: dbPost
       });

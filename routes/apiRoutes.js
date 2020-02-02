@@ -68,7 +68,8 @@ module.exports = function(app) {
       res.json(dbLocale);
     });
   });
-  app.post("/api/post", function(req, res) {
+  app.post("/api/chat", function(req, res) {
+    console.log("checking");
     db.Post.create(req.body).then(function(dbPost) {
       res.json(dbPost);
     });
