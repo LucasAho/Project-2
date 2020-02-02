@@ -10,14 +10,14 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/dm", (req, res) => {
+  app.get("/dm/:id", (req, res) => {
     db.NPC.findAll({}).then(dbNpcs => {
       res.render("dmUser", {
         npcs: dbNpcs
       });
     });
   });
-  app.get("/dm", (req, res) => {
+  app.get("/dm/:id", (req, res) => {
     db.Locale.findAll({}).then(dbLocales => {
       res.render("dmUser", {
         locales: dbLocales
@@ -34,8 +34,9 @@ module.exports = function (app) {
       });
     });
   });
+  
 
-  app.get("/player:id", (req, res) => {
+  app.get("/player/:id", (req, res) => {
     db.Post.findAll({
     }).then(dbPost => {
       res.render("player", { 

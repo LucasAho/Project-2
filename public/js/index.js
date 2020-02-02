@@ -60,7 +60,13 @@ $("#log-in").on("click", function(event) {
         type: "POST",
         data: thisUser
     }).then(res => {
-        location.href = "/player/" + res.id;
+        console.log(res);
+        if (res.actType == 0) {
+            location.href = "/dm/" + res.id;
+        } else {
+            location.href = "/player/" + res.id;
+        }
+        
     });
     
 });
