@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-6">
+    <div class="col-4">
       <button id="charMaker" class="btn btn-primary"><strong>New Character</strong></button>
       <div id="newCharForm">
         <form>
@@ -74,9 +74,42 @@
         <button id="createCharBtn" class="btn btn-primary">Submit</button>
       </form>
     </div>
-    
-    <div class="col-6">
-        <div class="chat-container">
+    <div class="col-4">
+      <form>
+        <h1>Search the text book!</h1>
+        <div class="form-row"> 
+          <div class="form-group col-md-6">
+            <label for="searchIn1">Search Type</label>
+            <select class="form-control" id="searchIn1">
+              <option>skills</option>
+              <option>ability-scores</option>
+              <option>proficiencies</option>
+              <option>languages</option>
+              <option>classes</option>
+              <option>subclasses</option>
+              <option>features</option>
+              <option>class levels</option>
+              <option>races</option>
+              <option>subraces</option>
+              <option>equipment</option>
+              <option>conditions</option>
+              <option>damage-types</option>
+              <option>magic-schools</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="searchIn2">Name</label>
+            <input class="form-control" id="searchIn2">
+          </div>
+        </div>
+        <button class="btn btn-primary" id="submitSearchQuery">Send</button>
+      </form>
+    </div>
+    <div class="col-4">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Want to join the conversation?</h1>
+          <p class="lead">submit your comment below. </p>
         </div>
       <div class="card text-white" style="background-color:rgba(0, 0, 0, 0.4)">
         <div class="card-header">

@@ -45,7 +45,7 @@ module.exports = function (app) {
     });
     
   });
-  app.get("/dm:id", (req, res) => {
+  app.get("/dm/:id", (req, res) => {
     db.Post.findAll({
     }).then(dbPost => {
       res.render("dm", { 
