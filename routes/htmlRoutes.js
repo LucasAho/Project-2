@@ -25,7 +25,7 @@ module.exports = function (app) {
     });  
   });
 
-  // //chat
+  
   app.get("/player/:user", (req, res) => {
     var thisUser = req.params.user;
     db.Char.findAll({ where: {user_id: thisUser} }).then(dbChars => {
@@ -36,18 +36,25 @@ module.exports = function (app) {
   });
   
 
-  app.get("/player/:id", (req, res) => {
+  app.get("/player/:user", (req, res) => {
+    db.Post.findAll({ where: {username: thisUser}
+    }).then(dbPost => {
+      res.render("player", { 
+        Post: dbPost
+      });
+    });   
+  });
+  app.get("/dm/:id", (req, res) => {
     db.Post.findAll({
     }).then(dbPost => {
       res.render("player", { 
         Post: dbPost
       });
-    });
-    
+    });   
   });
+
   app.get("/dm/:id", (req, res) => {
-    db.Post.findAll({
-    }).then(dbPost => {
+    db.Post.findAll({}).then(dbPost => {
       res.render("dm", { 
         Post: dbPost
       });
