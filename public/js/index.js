@@ -1,11 +1,21 @@
 $(document).ready(function() {
     $(".loginForm").show();
     $(".signupForm").hide();
-});
+
 $("#newSignUp").on("click", function() {
     $(".loginForm").hide();
     $(".signupForm").show();
 });
+
+acctCheck = (userIn) => {
+    if (userIn === "Dungeon Master") {
+        return 0;
+    } else if (userIn === "Player") {
+        return 1;
+    } else {
+        console.log("this isn't in my programming");
+    }
+}
 
 $("#sign-up").on("click", function(event) {
     event.preventDefault();
@@ -24,8 +34,9 @@ $("#sign-up").on("click", function(event) {
             username: $("#suUser").val().trim(),
             pass: passCheck($("#suPass").val().trim(), $("#suPass2").val().trim()),
             email: $("#suEmail").val().trim(), 
-            actType: 1,
+            actType: acctCheck($("#acctType").val())
         }
+    
 
         $.ajax("/api/users", {
             type: "POST",
@@ -45,14 +56,19 @@ $("#log-in").on("click", function(event) {
         pass: $("#passLog").val().trim(),
     }
 
-    $.ajax("/api/users/" + thisUser.email, {
-        type: "GET"
+    $.ajax("/api/logins", {
+        type: "POST",
+        data: thisUser
     }).then(res => {
         console.log(res);
-        if (res == null) {
-            alert("That user and password do not match");
+        if (res.actType == 0) {
+            location.href = "/dm/" + res.id;
         } else {
-            window.location.href = window.location.href + "player";
+            location.href = "/player/" + res.id;
         }
+        
     });
+    
+});
+
 });

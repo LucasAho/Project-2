@@ -2,13 +2,14 @@ var db = require("../models");
 
 module.exports = function(app) {
   // App gets
-  app.get("/api/users/:email", function(req, res) {
-    db.User.findOne({ where: { email: req.params.email } }).then(function(
-      dbUsers
-    ) {
+  app.get("/api/users", function(req, res) {
+    db.User.findAll({}).then(function(dbUsers) {
+      console.log("test regular one");
       res.json(dbUsers);
     });
   });
+
+
   app.get("/api/npcs", function(req, res) {
     db.NPC.findAll({}).then(function(dbNpcs) {
       res.json(dbNpcs);
@@ -29,6 +30,18 @@ module.exports = function(app) {
       res.json(dbNpcs);
     });
   });
+  app.get("/api/chats", function(req, res) {
+    db.Post.findAll({ include: [db.Post] }).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
+  app.get("/api/chats/:id", function(req, res) {
+    db.Post.findOne({ where: { id: req.params.id }, include: [db.Post] }).then(
+      function(dbPost) {
+        res.json(dbPost);
+      }
+    );
+  });
 
   // App posts
   app.post("/api/npcs", function(req, res) {
@@ -41,6 +54,12 @@ module.exports = function(app) {
       res.json(dbUser);
     });
   });
+  app.post("/api/logins", function(req, res) {
+    db.User.findOne({ where: { email: req.body.email, pass: req.body.pass } }).then(function(dbUsers) {
+      console.log("test regular two");
+      res.json(dbUsers);
+    });
+  });
   app.post("/api/chars", function(req, res) {
     db.Char.create(req.body).then(function(dbChar) {
       res.json(dbChar);
@@ -51,30 +70,16 @@ module.exports = function(app) {
       res.json(dbLocale);
     });
   });
+  app.post("/api/chats", function(req, res) {
+    db.Post.create(req.body).then(function(dbChats) {
+      res.json(dbChats);
+    });
+  });
 
   // App deletes
   app.delete("/api/examples/:id", function(req, res) {
     db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
       res.json(dbExample);
-    });
-  });
-
-  //chat
-  app.get("/api/chats", function(req, res) {
-    db.User.findAll({ include: [db.Post] }).then(function(dbChat) {
-      res.json(dbChat);
-    });
-  });
-  app.get("/api/chats/:id", function(req, res) {
-    db.User.findOne({ where: { id: req.params.id }, include: [db.Post] }).then(
-      function(dbChat) {
-        res.json(dbChat);
-      }
-    );
-  });
-  app.post("/api/chats", function(req, res) {
-    db.User.create(req.body).then(function(dbChat) {
-      res.json(dbChat);
     });
   });
 };

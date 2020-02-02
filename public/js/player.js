@@ -54,9 +54,10 @@ $("#createCharBtn").on("click", function(event) {
             .catch(function (error) {
                 console.log(error);
             }).then (res => {
+            console.log(res);
         });
     }
-    
+    var thisUser = "this is not a real variable";
     var newName = $("#charName").val().trim();
     var newClass = $("#classSelect").val().trim().toLowerCase();
     var newLvl = $("#startLvl").val().trim();
@@ -73,6 +74,7 @@ $("#createCharBtn").on("click", function(event) {
     dndSearch('classes', newClass);
 
     var newCharacter = {
+        user_id: thisUser,
         charName: newName, 
         class: newClass, 
         lvl: newLvl, 
