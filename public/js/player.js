@@ -36,9 +36,17 @@ watIsScope = (classes) => {
     }
 }
 
+dndSearch = (q1, q2) => {
+    $.get('/search/' + q1 + '/' + q2)
+        .catch(function (error) {
+            console.log(error);
+        }).then (res => {
+        console.log(res);
+    });
+}
+
+
 $(document).ready(function() {
-
-
 
 $(document).on("click", "#charMaker", function() {
     if ($("#newCharForm").css('display') == 'none') {
@@ -49,14 +57,7 @@ $(document).on("click", "#charMaker", function() {
   });
 $("#createCharBtn").on("click", function(event) {
     event.preventDefault();     
-    dndSearch = (q1, q2) => {
-        $.get('/search/' + q1 + '/' + q2)
-            .catch(function (error) {
-                console.log(error);
-            }).then (res => {
-            console.log(res);
-        });
-    }
+    
     var thisUser = "this is not a real variable";
     var newName = $("#charName").val().trim();
     var newClass = $("#classSelect").val().trim().toLowerCase();
@@ -71,7 +72,6 @@ $("#createCharBtn").on("click", function(event) {
     var newAC = $("#acIn").val();
     var newInv = "This is placeholder data";
     var newNote = "This is placeholder data";
-    dndSearch('classes', newClass);
 
     var newCharacter = {
         user_id: thisUser,
