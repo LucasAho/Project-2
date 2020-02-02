@@ -25,7 +25,7 @@ module.exports = function (app) {
     });  
   });
 
-  // //chat
+  
   app.get("/player/:user", (req, res) => {
     var thisUser = req.params.user;
     db.Char.findAll({ where: {user_id: thisUser} }).then(dbChars => {
@@ -37,7 +37,7 @@ module.exports = function (app) {
   
 
   app.get("/player/:id", (req, res) => {
-    db.Post.findAll({
+    db.Post.findAll({ where: {user_id: thisUser}
     }).then(dbPost => {
       res.render("player", { 
         Post: dbPost
@@ -46,7 +46,7 @@ module.exports = function (app) {
     
   });
   app.get("/dm:id", (req, res) => {
-    db.Post.findAll({
+    db.Post.findAll({where: {user_id: thisUser}
     }).then(dbPost => {
       res.render("dm", { 
         Post: dbPost

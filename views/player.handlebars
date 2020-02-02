@@ -90,21 +90,18 @@
           <p class="card-text">please be respectful of your fellow players.</p>
           <form class="create-form">
         <div class="form-group">
-          <label for="chat-message">comment:</label>
-          <textarea class="form-control" id="message-box" rows="3"></textarea>
+          <label for="content">comment:</label>
+          <textarea class="form-control" id="messageBox" rows="3"></textarea>
         </div>
-        <button type="post-submit" class="btn btn-primary" id="message-submit">Send</button>
+        <button type="send" class="btn btn-primary" id="sendMessage">Send</button>
       </form>
     </div>
   </div>
   <div class="card text-white bg-info mb-3">
-    <div class="message-board">
+    <div class="messageBboard">
       <div class="card-header">recent messages</div>
       <div class="card-body">
         {{#each Post}}
-        {{#unless removed}}
-        {{>chats/chat-block deleted=false}}
-        {{/unless}}
         {{/each}}
       </div>
     </div>

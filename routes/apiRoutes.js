@@ -31,16 +31,14 @@ module.exports = function(app) {
     });
   });
   app.get("/api/chats", function(req, res) {
-    db.Post.findAll({ include: [db.Post] }).then(function(dbPost) {
+    db.Post.findAll({}).then(function(dbPost) {
       res.json(dbPost);
     });
   });
   app.get("/api/chats/:id", function(req, res) {
-    db.Post.findOne({ where: { id: req.params.id }, include: [db.Post] }).then(
-      function(dbPost) {
-        res.json(dbPost);
-      }
-    );
+    db.Post.findOne({ where: { id: req.params.id }}).then(function(dbPost) {
+      res.json(dbPost);
+    });
   });
 
   // App posts
@@ -70,9 +68,9 @@ module.exports = function(app) {
       res.json(dbLocale);
     });
   });
-  app.post("/api/chats", function(req, res) {
-    db.Post.create(req.body).then(function(dbChats) {
-      res.json(dbChats);
+  app.post("/api/chat", function(req, res) {
+    db.Post.create(req.body).then(function(dbPost) {
+      res.json(dbPost);
     });
   });
 
