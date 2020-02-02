@@ -27,6 +27,7 @@ $("#sign-up").on("click", function(event) {
             actType: 1,
         }
 
+
         $.ajax("/api/users", {
             type: "POST",
             data: newUser
@@ -45,7 +46,7 @@ $("#log-in").on("click", function(event) {
         pass: $("#passLog").val().trim(),
     }
 
-    $.ajax("/api/users/", {
+    $.ajax("/api/logins", {
         type: "POST",
         data: thisUser
     }).then(res => {
@@ -53,4 +54,5 @@ $("#log-in").on("click", function(event) {
     });
     
 });
+
 });
