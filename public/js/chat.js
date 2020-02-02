@@ -1,17 +1,16 @@
-import { urlencoded } from "body-parser";
 
 /* eslint-disable indent */
 /* eslint-disable prettier/prettier */
 
-(function () {
+$(function () {
     //create message
     $(".create-form").on("send", function (event) {
         event.preventDefault();
         
 
         var newPost = {
-            user_id: $()
-            username:
+            user_id: this.user_id,
+            username: this.userName,
             content: $("#postBox").val().trim(),
             createdAt: moment().format("YYYY-MM-DD HH:mm:ss")
         };
