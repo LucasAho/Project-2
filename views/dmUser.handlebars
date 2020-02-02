@@ -122,6 +122,40 @@
 
         </div>
     </div>
-
+<div class="col-6">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Want to join the conversation?</h1>
+          <p class="lead">submit your comment below. </p>
+        </div>
+      <div class="card">
+        <div class="card-header">
+          Chat Message Center
+        </div>
+        <div class="card-body" id="order">
+          <h5 class="card-title"></h5>
+          <p class="card-text">please be respectful of your fellow players.</p>
+          <form class="create-form">
+        <div class="form-group">
+          <label for="content">comment:</label>
+          <textarea class="form-control" id="postBox" rows="3"></textarea>
+        </div>
+        <button type="send" class="btn btn-primary" id="sendPost" value={{id}}>Send</button>
+      </form>
+    </div>
+  </div>
+  <div class="card text-white bg-info mb-3">
+    <div class="postBboard">
+      <div class="card-header">recent messages</div>
+      <div class="card-body">
+        {{#each Post}}
+       <h4>{{post}}</h4>
+     <button type="button" class="change-delete btn btn-success" value={{id}} data-newdelete="{{delete}}">
+           Delete!
+           </button>
+        {{/each}}
+      </div>
+    </div>
+  </div>
 
 </div>

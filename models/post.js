@@ -1,20 +1,15 @@
 
 module.exports = function(sequelize, DataTypes) {
   var Post = sequelize.define("Post", {
+    userId: DataTypes.INTEGER,
     content: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
-    }
-    // username: DataTypes.STRING
+    },
+    // createdAt: DataTypes.INTEGER
   });
 
-  Post.associate = function(models) {
-    Post.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
+  
 
   return Post;
 };

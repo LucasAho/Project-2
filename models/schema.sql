@@ -36,7 +36,7 @@ CREATE TABLE users (
 
 CREATE TABLE characters (
     id INT AUTO_INCREMENT NOT NULL,
-    ownerId VARCHAR(25) NOT NULL,
+    user_id int NOT NULL,
     charName VARCHAR (300) NOT NULL,
     class VARCHAR (300) NOT NULL,
     lvl INTEGER NOT NULL,
@@ -55,14 +55,16 @@ CREATE TABLE characters (
     charisma INTEGER NOT NULL,
     inventory VARCHAR (100) NOT NULL,
     notes VARCHAR (200) NOT NULL,
-    FOREIGN KEY (ownderId) REFERENCES users(id),
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 CREATE TABLE chats (
     id INT AUTO_INCREMENT NOT NULL,
-    message_content VARCHAR(150) NOT NULL,
-    user_id int NOT NULL,
+	user_id INTEGER NOT NULL,
+    username VARCHAR(25) NOT NULL,
+   	content VARCHAR(150) NOT NULL,
+    createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id)
 );

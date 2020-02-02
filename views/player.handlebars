@@ -171,26 +171,22 @@
           <p class="card-text">Please be respectful of your fellow players.</p>
           <form class="create-form">
         <div class="form-group">
-          <label for="chat-message">comment:</label>
-          <textarea class="form-control" id="message-box" rows="3"></textarea>
+          <label for="content">comment:</label>
+          <textarea class="form-control" id="postBox" rows="3"></textarea>
+          <button type="send" class="btn btn-primary" style="background-color:rgba(0, 0, 0, 0.8)" id="sendPost">Send</button>
         </div>
-        <button type="post-submit" class="btn btn-primary" id="message-submit">Send</button>
       </form>
     </div>
   </div>
-  <div class="card text-white bg-info mb-3">
-    <div class="message-board">
-      <div class="card-header">recent messages</div>
+  <div class="card text-white" style="background-color:rgba(0, 0, 0, 0.4)">
+    <div class="card-header">recent messages</div>
       <div class="card-body">
+        <div class="postBboard">
         {{#each Post}}
-        {{#unless removed}}
-        {{>chats/chat-block deleted=false}}
-        {{/unless}}
         {{/each}}
-      
+        </div>
       </div>
     </div>
   </div>
-  </div>
-  </div>
+</div>
       <script src="/js/player.js"></script>
