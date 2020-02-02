@@ -93,3 +93,11 @@ body {
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
+
+.card {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: purple; 
+}
