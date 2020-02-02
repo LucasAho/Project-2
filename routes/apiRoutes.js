@@ -30,12 +30,12 @@ module.exports = function(app) {
       res.json(dbNpcs);
     });
   });
-  app.get("/api/chats", function(req, res) {
+  app.get("/api/post", function(req, res) {
     db.Post.findAll({}).then(function(dbPost) {
       res.json(dbPost);
     });
   });
-  app.get("/api/chats/:id", function(req, res) {
+  app.get("/api/post/:id", function(req, res) {
     db.Post.findOne({ where: { id: req.params.id }}).then(function(dbPost) {
       res.json(dbPost);
     });
@@ -68,7 +68,7 @@ module.exports = function(app) {
       res.json(dbLocale);
     });
   });
-  app.post("/api/chat", function(req, res) {
+  app.post("/api/post", function(req, res) {
     db.Post.create(req.body).then(function(dbPost) {
       res.json(dbPost);
     });

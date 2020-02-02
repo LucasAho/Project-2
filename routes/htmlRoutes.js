@@ -36,15 +36,23 @@ module.exports = function (app) {
   });
   
 
+  app.get("/player/:user", (req, res) => {
+    db.Post.findAll({ where: {username: thisUser}
+    }).then(dbPost => {
+      res.render("player", { 
+        Post: dbPost
+      });
+    });   
+  });
   app.get("/player/:id", (req, res) => {
     db.Post.findAll({ where: {user_id: thisUser}
     }).then(dbPost => {
       res.render("player", { 
         Post: dbPost
       });
-    });
-    
+    });   
   });
+
   app.get("/dm:id", (req, res) => {
     db.Post.findAll({where: {user_id: thisUser}
     }).then(dbPost => {

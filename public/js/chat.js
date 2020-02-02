@@ -1,56 +1,62 @@
+import { urlencoded } from "body-parser";
+
 /* eslint-disable indent */
 /* eslint-disable prettier/prettier */
 
 (function () {
     //create message
-    $(".create-form").on("submit", function (event) {
+    $(".create-form").on("send", function (event) {
         event.preventDefault();
+        
 
-        var newMessage = {
-            content: $("#messageBox").val().trim(),
+        var newPost = {
+            user_id: $()
+            username:
+            content: $("#postBox").val().trim(),
             createdAt: moment().format("YYYY-MM-DD HH:mm:ss")
         };
         
         $.ajax("api/chats", {
           type: "POST",
-          data: newMessage
-        }).then(function () {
+          data: newPost
+        })
+        .then(function () {
             console.log("new message posted");
-            // var row = $("<div>");
-            // row.addClass("Message");
 
-            // row.append("<p>" + newMessage.userName + " Messaged: </p>");
-            // row.append("<p>" + newMessage.content + "</p>");
-            // row.append(
-            //     "<p>At " +
-            //     moment(newMessage.created_at).format("h:mma on dddd") + "</p >"); 
-            //      $(".messageBboard").prepend(row);
+            var row = $("<div>");
+            row.addClass("postMessage");
+
+            row.append("<p>" + newPost.userName + " Messaged: </p>");
+            row.append("<p>" + newPost.content + "</p>");
+            row.append("<p>At " + moment(newPost.created_at).format("h:mma on dddd") + "</p >"); 
+            $(".postBboard").prepend(row);
     
-                  });
+        });
     });
     //Empty each input box by replacing the value with an empty string
     $("#message-box").val("");
 });
 
-// $.get("/api/chats", function (data) {
 
-//     if (data.length !== 0) {
+$.get("/api/post", function (data) {
 
-//         for (var i = 0; i < data.length; i++) {
+    if (data.length !== 0) {
 
-//             var row = $("<div>");
-//             row.addClass("message");
+        for (var i = 0; i < data.length; i++) {
 
-//             row.append("<p>" + data[i].userName + " message.. </p>");
-//             row.append("<p>" + data[i].content + "</p>");
-//             row.append("<p>At " + moment(data[i].createdAt).format("h:mma on dddd") + "</p>");
+            var row = $("<div>");
+            row.addClass("postMessage");
 
-//             $("#message-board").prepend(row);
+            row.append("<p>" + data[i].userName + " message.. </p>");
+            row.append("<p>" + data[i].content + "</p>");
+            row.append("<p>At " + moment(data[i].createdAt).format("h:mma on dddd") + "</p>");
 
-//         }
+            $(".postboard").prepend(row);
 
-//     }
+        }
 
-// });
+    }
+
+});
     
 

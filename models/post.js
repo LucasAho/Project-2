@@ -1,6 +1,6 @@
 
 module.exports = function(sequelize, DataTypes) {
-  var Chats = sequelize.define("Chats", {
+  var Post = sequelize.define("Post", {
     content: {
       type: DataTypes.STRING,
       allowNull: false
@@ -8,13 +8,13 @@ module.exports = function(sequelize, DataTypes) {
     // username: DataTypes.STRING
   });
 
-  Chats.associate = function(models) {
-    Chats.belongsTo(models.User, {
+  Post.associate = function(models) {
+    Post.belongsTo(models.User, {
       foreignKey: {
         allowNull: false
       }
     });
   };
 
-  return Chats;
+  return Post;
 };
