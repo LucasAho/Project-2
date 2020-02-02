@@ -44,17 +44,13 @@ dndSearch = (q1, q2) => {
         console.log(res);
     });
 }
-
+$(document).on("click", "#charMaker", function() {
+    $("#newCharForm").show('fast');
+});
 
 $(document).ready(function() {
+    $("#newCharForm").hide();
 
-$(document).on("click", "#charMaker", function() {
-    if ($("#newCharForm").css('display') == 'none') {
-      $("#newCharForm").show('fast');
-    } else {
-      $("#newCharForm").hide('fast');
-    }
-  });
 $("#createCharBtn").on("click", function(event) {
     event.preventDefault();     
     
