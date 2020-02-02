@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-6">
+    <div class="col-4">
       <button id="charMaker" class="btn btn-primary"><strong>New Character</strong></button>
       <div id="newCharForm">
         <form>
@@ -74,24 +74,71 @@
         <button id="createCharBtn" class="btn btn-primary">Submit</button>
       </form>
     </div>
-    
-    <div class="col-6">
+    <div class="col-4">
+      <form>
+        <h1>Search the text book!</h1>
+        <div class="form-row"> 
+          <div class="form-group col-md-6">
+            <label for="searchIn1">Search Type</label>
+            <select class="form-control" id="searchIn1">
+              <option>skills</option>
+              <option>ability-scores</option>
+              <option>proficiencies</option>
+              <option>languages</option>
+              <option>classes</option>
+              <option>subclasses</option>
+              <option>features</option>
+              <option>class levels</option>
+              <option>races</option>
+              <option>subraces</option>
+              <option>equipment</option>
+              <option>conditions</option>
+              <option>damage-types</option>
+              <option>magic-schools</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="searchIn2">Name</label>
+            <input class="form-control" id="searchIn2">
+          </div>
+        </div>
+        <button class="btn btn-primary" id="submitSearchQuery">Send</button>
+      </form>
+    </div>
+    <div class="col-4">
       <div class="jumbotron jumbotron-fluid">
         <div class="container">
           <h1 class="display-4">Want to join the conversation?</h1>
           <p class="lead">submit your comment below. </p>
         </div>
-      <div class="card">
+      <div class="card text-white" style="background-color:rgba(0, 0, 0, 0.4)">
         <div class="card-header">
           Chat Message Center
         </div>
         <div class="card-body" id="order">
           <h5 class="card-title"></h5>
-          <p class="card-text">please be respectful of your fellow players.</p>
+          <p class="card-text">Please be respectful of your fellow players.</p>
           <form class="create-form">
         <div class="form-group">
+<<<<<<< HEAD
           <label for="content">comment:</label>
           <textarea class="form-control" id="postBox" rows="3"></textarea>
+=======
+<<<<<<< HEAD
+          <label for="chat-message">Comment:</label>
+          <textarea class="form-control" id="message-content" rows="3"></textarea>
+        </div>
+        <button type="post-submit" class="btn btn-primary" style="background-color:rgba(0, 0, 0, 0.8)">Send</button>
+      </form>
+    </div>
+  </div>
+  <div class="card text-white" style="background-color:rgba(0, 0, 0, 0.4)">
+    <div class="messaged">
+      <div class="card-header">Recent Messages:</div>
+=======
+          <label for="chat-message">comment:</label>
+          <textarea class="form-control" id="message-box" rows="3"></textarea>
+>>>>>>> a2ff98606082d68941af0b16475ceada24ba5284
         </div>
         <button type="send" class="btn btn-primary" id="sendPost">Send</button>
       </form>
@@ -100,9 +147,11 @@
   <div class="card text-white bg-info mb-3">
     <div class="postBboard">
       <div class="card-header">recent messages</div>
+>>>>>>> d7a0793d26e8004e1c8634d407581e226aaa1e4a
       <div class="card-body">
         {{#each Post}}
         {{/each}}
+      
       </div>
     </div>
   </div>
