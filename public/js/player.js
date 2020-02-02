@@ -53,8 +53,7 @@ $(document).ready(function() {
 
 $("#createCharBtn").on("click", function(event) {
     event.preventDefault();     
-    
-    var thisUser = "this is not a real variable";
+    var thisUser = $(this).val();
     var newName = $("#charName").val().trim();
     var newClass = $("#classSelect").val().trim().toLowerCase();
     var newLvl = $("#startLvl").val().trim();
@@ -66,8 +65,8 @@ $("#createCharBtn").on("click", function(event) {
     var newProf = getProfBonus(newLvl);
     var newSpeed = speedFinder(newRace);
     var newAC = $("#acIn").val();
-    var newInv = "This is placeholder data";
-    var newNote = "This is placeholder data";
+    var newInv = $("#invForm").val().trim();
+    var newNote = $("#noteForm").val().trim();
 
     var newCharacter = {
         user_id: thisUser,
@@ -90,6 +89,7 @@ $("#createCharBtn").on("click", function(event) {
         inventory: newInv, 
         notes: newNote
     }  
+    console.log(newCharacter);
     $.ajax("api/chars", {
         type: "POST",
         data: newCharacter
