@@ -8,8 +8,6 @@ module.exports = function(app) {
       res.json(dbUsers);
     });
   });
-
-
   app.get("/api/npcs", function(req, res) {
     db.NPC.findAll({}).then(function(dbNpcs) {
       res.json(dbNpcs);
@@ -59,6 +57,7 @@ module.exports = function(app) {
     });
   });
   app.post("/api/chars", function(req, res) {
+    console.log("we made it");
     db.Char.create(req.body).then(function(dbChar) {
       res.json(dbChar);
     });

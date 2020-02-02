@@ -24,11 +24,26 @@ module.exports = function (app) {
       });
     });  
   });
+  app.get("/dm/:id", (req, res) => {
+    var thisId = req.params.id;
+    db.User.findOne({ where: {user_id: thisId}  }).then(dbUser => {
+      res.render("dmUser", {
+        user: dbUser
+      });
+    });  
+  });
+  app.get("/player/:id", (req, res) => {
+    var thisId = req.params.id;
+    db.User.findOne({ where: {id: thisId}  }).then(dbUser => {
+      res.render("player", {
+        user: dbUser.id
+      });
+    });  
+  });
 
-  
   app.get("/player/:user", (req, res) => {
     var thisUser = req.params.user;
-    db.Char.findAll({ where: {user_id: thisUser} }).then(dbChars => {
+    db.Char.findAll({ where: {id: thisUser} }).then(dbChars => {
       res.render("player", { 
         chars: dbChars
       });
