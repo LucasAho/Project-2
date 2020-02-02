@@ -29,9 +29,10 @@ $(function () {
             $(".postBboard").prepend(row);
     
         });
+        $("#postBox").val("");
     });
     //Empty each input box by replacing the value with an empty string
-    $("#postbox").val("");
+   
 });
 
 
