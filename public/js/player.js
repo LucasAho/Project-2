@@ -69,8 +69,22 @@ $("#submitSearchQuery").on("click", event => {
             searchContent: thisSearch2
         }
     }).then(function(res) {
-        console.log(res);
-});
+
+        if (thisSearch1 ===  'skills') {
+            $("#searchResults").empty();
+            let head = "<h5 class='ApiResult'>" + res.name;
+
+            Object.entries(res).forEach(([key, value]) => {
+                if (`${key}` == "desc") {
+                    console.log(`${value}`);
+                    $("#searchResults").append(head, `${value}` );
+                }
+            });
+        } else {
+
+        }
+
+    });
 });
 
 

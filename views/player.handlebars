@@ -127,42 +127,56 @@
       </div>
     </div>
     <div class="col-4">
-      <form>
-        <h1>Search the text book!</h1>
-        <div class="form-row"> 
-          <div class="form-group col-md-6">
-            <label for="searchIn1">Search Type</label>
-            <select class="form-control" id="searchIn1">
-              <option>skills</option>
-              <option>ability-scores</option>
-            <option>proficiencies</option>
-              <option>languages</option>
-              <option>classes</option>
-              <option>subclasses</option>
-              <option>features</option>
-              <option>class levels</option>
-              <option>races</option>
-              <option>subraces</option>
-              <option>equipment</option>
-              <option>conditions</option>
-              <option>damage-types</option>
-              <option>magic-schools</option>-->
-            </select>
-            <button class="btn btn-primary" id="submitSearch1">Confirm</button>
-          </div>
-          
-          <div class="form-group col-md-6" id="search2Form">
-            <label for="searchIn2">Search Title</label>
-            <select class="form-control" id="searchIn2">
-              
-            </select>
-            <button class="btn btn-primary" id="submitSearchQuery">Submit</button>
-          </div>  
-          
+      <div class="card text-white" style="background-color:rgba(0, 0, 0, 0.4)">
+        <form>
+          <div class="card-header">
+          <h1>Search the text book!</h1>
         </div>
-        
-      </form>
-      <div id="searchResultDiv"></div>
+          
+          <div class="form-row"> 
+            <div class="form-group col-md-6">
+              <label for="searchIn1">Search Type</label>
+              <select class="form-control" id="searchIn1">
+                <option>skills</option>
+                <option>ability-scores</option>
+                <option>proficiencies</option>
+                <option>languages</option>
+                <option>classes</option>
+                <option>subclasses</option>
+                <option>features</option>
+                <option>races</option>
+                <option>subraces</option>
+                <option>equipment</option>
+                <option>conditions</option>
+                <option>damage-types</option>
+                <option>magic-schools</option>
+              </select>
+              <button class="btn btn-primary" id="submitSearch1">Confirm</button>
+            </div>
+            
+            <div class="form-group col-md-6" id="search2Form">
+              <label for="searchIn2">Search Title</label>
+              <select class="form-control" id="searchIn2">
+                
+              </select>
+              <button class="btn btn-primary" id="submitSearchQuery">Submit</button>
+            </div>  
+            
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-12" id="searchResultsGroup">
+              <label for="searchIn3">Search Title</label>
+              <select class="form-control" id="searchIn3">
+                
+              </select>
+            </div> 
+            <div class="col-12" id="searchResults">
+
+            </div>
+          </div>
+        </form>
+      </div>    
     </div>
     <div class="col-4">
       <div class="jumbotron jumbotron-fluid">
