@@ -32,16 +32,20 @@ module.exports = function (app) {
                 });
     });
     app.get("/player/:id", (req, res) => {
-        db.Char.findAll({ where: { UserId: req.params.id } })
-        .then(dbChars => {
-            db.Post.findAll({ where: { UserId: req.params.id } })
-            .then(dbSelfPost => {
-                db.Post.findAll({ where: { UserId: !req.params.id} })
-                .then(function(dbOtherPost) {
-                    res.render("player", {
-                        Char: dbChars,
-                        Post: dbSelfPost,
-                        PostFrom: dbOtherPost
+        db.User.findOne({ where: {id: req.params.id}})
+        .then(dbUser => {
+            db.Char.findAll({ where: { UserId: req.params.id } })
+            .then(dbChars => {
+                db.Post.findAll({ where: { UserId: req.params.id } })
+                .then(dbSelfPost => {
+                    db.Post.findAll({ where: { UserId: !req.params.id} })
+                    .then(function(dbOtherPost) {
+                        res.render("player", {
+                            user: dbUser,
+                            Char: dbChars,
+                            Post: dbSelfPost,
+                            PostFrom: dbOtherPost
+                        });
                     });
                 });
             });

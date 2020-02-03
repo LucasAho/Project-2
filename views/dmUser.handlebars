@@ -156,12 +156,17 @@
                         </div>
                         <h2>NPCs</h2>
                         <ul>
-                            {{#with user}}{{email}}{{/with}}
+                            {{#each npcs}}
+                            <li>
+                                {{dataValues.fullname}}
+                            </li>
+                            {{/each}}
+                        </ul>
                         <h2>Locales</h2>
                         <ul>
                             {{#each locales}}
                             <li>
-                                {{id}}
+                                {{dataValues.title}}
                             </li>
                             {{/each}}
                         </ul>
