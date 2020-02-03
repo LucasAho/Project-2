@@ -3,6 +3,8 @@ CREATE DATABASE dnds_db;
 
 USE dnds_db;
 
+# This file is no longer correct
+
 CREATE TABLE npcs (
     id INT AUTO_INCREMENT NOT NULL,
     fullname VARCHAR(30) NOT NULL,

@@ -52,7 +52,6 @@ module.exports = function(app) {
   });
   app.post("/api/logins", function(req, res) {
     db.User.findOne({ where: { email: req.body.email, pass: req.body.pass } }).then(function(dbUsers) {
-      console.log("test regular two");
       res.json(dbUsers);
     });
   });

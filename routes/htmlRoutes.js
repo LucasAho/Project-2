@@ -6,7 +6,6 @@ module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
     res.render("index", {
-      msg: "Welcome!"
     });
   });
 
@@ -28,7 +27,8 @@ module.exports = function (app) {
     var thisId = req.params.id;
     db.User.findOne({ where: {user_id: thisId}  }).then(dbUser => {
       res.render("dmUser", {
-        user: dbUser
+        user: dbUser.id,
+        userName : dbUser.username
       });
     });  
   });
@@ -36,7 +36,8 @@ module.exports = function (app) {
     var thisId = req.params.id;
     db.User.findOne({ where: {id: thisId}  }).then(dbUser => {
       res.render("player", {
-        user: dbUser.id
+        user: dbUser.id,
+        userName : dbUser.username
       });
     });  
   });
@@ -53,14 +54,6 @@ module.exports = function (app) {
 
   app.get("/player/:user", (req, res) => {
     db.Post.findAll({ where: {username: thisUser}
-    }).then(dbPost => {
-      res.render("player", { 
-        Post: dbPost
-      });
-    });   
-  });
-  app.get("/dm/:id", (req, res) => {
-    db.Post.findAll({
     }).then(dbPost => {
       res.render("player", { 
         Post: dbPost
@@ -88,15 +81,6 @@ module.exports = function (app) {
 
   });
 
-  
-  // // Load example page and pass in an example by id
-  // app.get("/npcs/:id", function(req, res) {
-  //   db.NPC.findOne({ where: { id: req.params.id } }).then(function(npcs) {
-  //     res.render("npcs", {
-  //       npcs: npcs
-  //     });
-  //   });
-  // });
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {

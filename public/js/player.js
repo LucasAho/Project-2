@@ -53,18 +53,18 @@ $(document).ready(function() {
 
 $("#createCharBtn").on("click", function(event) {
     event.preventDefault();     
-    var thisUser = $(this).val();
+    var thisUser = parseInt($(this).val());
     var newName = $("#charName").val().trim();
     var newClass = $("#classSelect").val().trim().toLowerCase();
-    var newLvl = $("#startLvl").val().trim();
-    var newExp = $("#startExp").val().trim();
+    var newLvl = parseInt($("#startLvl").val().trim());
+    var newExp = parseInt($("#startExp").val().trim());
     var newRace = $("#raceSelect").val().trim().toLowerCase();
     var newAlign = $("#alignment").val().trim();
     var newHd = watIsScope(newClass);
-    var newScores = [$("#str").val(),$("#dex").val(),$("#con").val(),$("#int").val(),$("#wis").val(),$("#cha").val()];
+    var newScores = [parseInt($("#str").val()),parseInt($("#dex").val()),parseInt($("#con").val()),parseInt($("#int").val()),parseInt($("#wis").val()),parseInt($("#cha").val())];
     var newProf = getProfBonus(newLvl);
     var newSpeed = speedFinder(newRace);
-    var newAC = $("#acIn").val();
+    var newAC = parseInt($("#acIn").val());
     var newInv = $("#invForm").val().trim();
     var newNote = $("#noteForm").val().trim();
 
@@ -90,7 +90,7 @@ $("#createCharBtn").on("click", function(event) {
         notes: newNote
     }  
     console.log(newCharacter);
-    $.ajax("api/chars", {
+    $.ajax("/api/chars", {
         type: "POST",
         data: newCharacter
       }).then(function() {
