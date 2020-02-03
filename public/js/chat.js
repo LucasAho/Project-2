@@ -1,62 +1,58 @@
+/* eslint-disable indent */
+/* eslint-disable prettier/prettier */
 
-$(document).ready(function () {
+$(function () {
     //create message
-    $("#message-submit").on("click", function (event) {
+    $("#sendPost").on("click", function(event) {
         event.preventDefault();
-
-
-        var newMessage = {
-            content: $("#message-box").val().trim(),
-            created_at: moment().format("YYYY-MM-DD HH:mm:ss")
+        var thisUser = parseInt($(this).val());
+        var newPost = {
+            userId: thisUser,
+            content: $("#postBox").val().trim(),
         };
-
-        console.log(newMessage);
-
-        $.ajax("api/chats", {
-            type: "POST",
-            data: newMessage
-        }).then(function () {
-
-            // $.post("/api/chats", newMessage)
-            //     // On success, run the following code
-            //     .then(function () {
-
-                    var row = $("<div>");
-                    row.addClass("Message");
-
-
-                    // row.append("<p>" + newMessage.userName + " Messaged: </p>");
-                    row.append("<p>" + newMessage.content + "</p>");
-                    row.append(
-                        "<p>At " +
-                        moment(newMessage.created_at).format("h:mma on dddd") +
-                        "</p>"
-                $("#message-board").prepend(row));
-
-                // });
+        console.log(newPost);
+        $.ajax("/api/chat", {
+          type: "POST",
+          data: newPost
         })
-        // Empty each input box by replacing the value with an empty string
-        $("#message-box").val("");
+        .then(function () {
+            console.log("new message posted");
+
+            var row = $("<div>");
+            row.addClass("postMessage");
+
+            row.append("<p>" + newPost.userName + " Messaged: </p>");
+            row.append("<p>" + newPost.content + "</p>");
+            // row.append("<p>At " + moment(newPost.createdAt).format("h:mma on dddd") + "</p >"); 
+            $(".postBboard").prepend(row);
+    
+        });
+        $("#postBox").val("");
     });
+    //Empty each input box by replacing the value with an empty string
+   
+});
 
-    $.get("/api/chats", function (data) {
 
-        if (data.length !== 0) {
+// $.get("/api/post", function (data) {
 
-            for (var i = 0; i < data.length; i++) {
+//     if (data.length !== 0) {
 
-                var row = $("<div>");
-                row.addClass("message");
+//         for (var i = 0; i < data.length; i++) {
 
-                row.append("<p>" + data[i].userName + " message.. </p>");
-                row.append("<p>" + data[i].content + "</p>");
-                row.append("<p>At " + moment(data[i].created_at).format("h:mma on dddd") + "</p>");
+//             var row = $("<div>");
+//             row.addClass("postMessage");
 
-                $("#message-board").prepend(row);
+//             row.append("<p>" + data[i].userName + " message.. </p>");
+//             row.append("<p>" + data[i].content + "</p>");
+//             row.append("<p>At " + moment(data[i].createdAt).format("h:mma on dddd") + "</p>");
 
-            }
+//             $(".postboard").prepend(row);
 
-        }
+//         }
 
-    });
-})
+//     }
+
+// });
+    
+

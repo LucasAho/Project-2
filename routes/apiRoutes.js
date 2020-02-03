@@ -8,8 +8,6 @@ module.exports = function(app) {
       res.json(dbUsers);
     });
   });
-
-
   app.get("/api/npcs", function(req, res) {
     db.NPC.findAll({}).then(function(dbNpcs) {
       res.json(dbNpcs);
@@ -30,17 +28,15 @@ module.exports = function(app) {
       res.json(dbNpcs);
     });
   });
-  app.get("/api/chats", function(req, res) {
-    db.Post.findAll({ include: [db.Post] }).then(function(dbPost) {
+  app.get("/api/post", function(req, res) {
+    db.Post.findAll({}).then(function(dbPost) {
       res.json(dbPost);
     });
   });
-  app.get("/api/chats/:id", function(req, res) {
-    db.Post.findOne({ where: { id: req.params.id }, include: [db.Post] }).then(
-      function(dbPost) {
-        res.json(dbPost);
-      }
-    );
+  app.get("/api/post/:id", function(req, res) {
+    db.Post.findOne({ where: { id: req.params.id }}).then(function(dbPost) {
+      res.json(dbPost);
+    });
   });
 
   // App posts
@@ -56,11 +52,11 @@ module.exports = function(app) {
   });
   app.post("/api/logins", function(req, res) {
     db.User.findOne({ where: { email: req.body.email, pass: req.body.pass } }).then(function(dbUsers) {
-      console.log("test regular two");
       res.json(dbUsers);
     });
   });
   app.post("/api/chars", function(req, res) {
+    console.log("we made it");
     db.Char.create(req.body).then(function(dbChar) {
       res.json(dbChar);
     });
@@ -70,9 +66,10 @@ module.exports = function(app) {
       res.json(dbLocale);
     });
   });
-  app.post("/api/chats", function(req, res) {
-    db.Post.create(req.body).then(function(dbChats) {
-      res.json(dbChats);
+  app.post("/api/chat", function(req, res) {
+    console.log("checking");
+    db.Post.create(req.body).then(function(dbPost) {
+      res.json(dbPost);
     });
   });
 

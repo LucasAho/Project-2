@@ -6,7 +6,6 @@ module.exports = function (app) {
   // Load index page
   app.get("/", function (req, res) {
     res.render("index", {
-      msg: "Welcome!"
     });
   });
 
@@ -24,11 +23,28 @@ module.exports = function (app) {
       });
     });  
   });
+  app.get("/dm/:id", (req, res) => {
+    var thisId = req.params.id;
+    db.User.findOne({ where: {user_id: thisId}  }).then(dbUser => {
+      res.render("dmUser", {
+        user: dbUser.id,
+        userName : dbUser.username
+      });
+    });  
+  });
+  app.get("/player/:id", (req, res) => {
+    var thisId = req.params.id;
+    db.User.findOne({ where: {id: thisId}  }).then(dbUser => {
+      res.render("player", {
+        user: dbUser.id,
+        userName : dbUser.username
+      });
+    });  
+  });
 
-  // //chat
   app.get("/player/:user", (req, res) => {
     var thisUser = req.params.user;
-    db.Char.findAll({ where: {user_id: thisUser} }).then(dbChars => {
+    db.Char.findAll({ where: {id: thisUser} }).then(dbChars => {
       res.render("player", { 
         chars: dbChars
       });
@@ -36,18 +52,17 @@ module.exports = function (app) {
   });
   
 
-  app.get("/player/:id", (req, res) => {
-    db.Post.findAll({
+  app.get("/player/:user", (req, res) => {
+    db.Post.findAll({ where: {username: thisUser}
     }).then(dbPost => {
       res.render("player", { 
         Post: dbPost
       });
-    });
-    
+    });   
   });
-  app.get("/dm:id", (req, res) => {
-    db.Post.findAll({
-    }).then(dbPost => {
+
+  app.get("/dm/:id", (req, res) => {
+    db.Post.findAll({}).then(dbPost => {
       res.render("dm", { 
         Post: dbPost
       });
@@ -66,15 +81,6 @@ module.exports = function (app) {
 
   });
 
-  
-  // // Load example page and pass in an example by id
-  // app.get("/npcs/:id", function(req, res) {
-  //   db.NPC.findOne({ where: { id: req.params.id } }).then(function(npcs) {
-  //     res.render("npcs", {
-  //       npcs: npcs
-  //     });
-  //   });
-  // });
 
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {

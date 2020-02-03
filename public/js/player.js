@@ -36,42 +36,37 @@ watIsScope = (classes) => {
     }
 }
 
-$(document).ready(function() {
-
-
-
+dndSearch = (q1, q2) => {
+    $.get('/search/' + q1 + '/' + q2)
+        .catch(function (error) {
+            console.log(error);
+        }).then (res => {
+        console.log(res);
+    });
+}
 $(document).on("click", "#charMaker", function() {
-    if ($("#newCharForm").css('display') == 'none') {
-      $("#newCharForm").show('fast');
-    } else {
-      $("#newCharForm").hide('fast');
-    }
-  });
+    $("#newCharForm").show('fast');
+});
+
+$(document).ready(function() {
+    $("#newCharForm").hide();
+
 $("#createCharBtn").on("click", function(event) {
     event.preventDefault();     
-    dndSearch = (q1, q2) => {
-        $.get('/search/' + q1 + '/' + q2)
-            .catch(function (error) {
-                console.log(error);
-            }).then (res => {
-            console.log(res);
-        });
-    }
-    var thisUser = "this is not a real variable";
+    var thisUser = parseInt($(this).val());
     var newName = $("#charName").val().trim();
     var newClass = $("#classSelect").val().trim().toLowerCase();
-    var newLvl = $("#startLvl").val().trim();
-    var newExp = $("#startExp").val().trim();
+    var newLvl = parseInt($("#startLvl").val().trim());
+    var newExp = parseInt($("#startExp").val().trim());
     var newRace = $("#raceSelect").val().trim().toLowerCase();
     var newAlign = $("#alignment").val().trim();
     var newHd = watIsScope(newClass);
-    var newScores = [$("#str").val(),$("#dex").val(),$("#con").val(),$("#int").val(),$("#wis").val(),$("#cha").val()];
+    var newScores = [parseInt($("#str").val()),parseInt($("#dex").val()),parseInt($("#con").val()),parseInt($("#int").val()),parseInt($("#wis").val()),parseInt($("#cha").val())];
     var newProf = getProfBonus(newLvl);
     var newSpeed = speedFinder(newRace);
-    var newAC = $("#acIn").val();
-    var newInv = "This is placeholder data";
-    var newNote = "This is placeholder data";
-    dndSearch('classes', newClass);
+    var newAC = parseInt($("#acIn").val());
+    var newInv = $("#invForm").val().trim();
+    var newNote = $("#noteForm").val().trim();
 
     var newCharacter = {
         user_id: thisUser,
@@ -94,7 +89,8 @@ $("#createCharBtn").on("click", function(event) {
         inventory: newInv, 
         notes: newNote
     }  
-    $.ajax("api/chars", {
+    console.log(newCharacter);
+    $.ajax("/api/chars", {
         type: "POST",
         data: newCharacter
       }).then(function() {
