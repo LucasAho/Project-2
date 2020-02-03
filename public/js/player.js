@@ -95,6 +95,7 @@ $("#createCharBtn").on("click", function(event) {
         data: newCharacter
       }).then(function() {
         console.log("new character added");
+        location.reload();
       });
     // $(".form-control").val("");
 });

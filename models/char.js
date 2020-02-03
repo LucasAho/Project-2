@@ -1,6 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
     var Char = sequelize.define("Char", {
-        user_id: DataTypes.INTEGER,
         charName: DataTypes.STRING,
         class: DataTypes.STRING,
         lvl: DataTypes.INTEGER,
@@ -20,6 +19,13 @@ module.exports = function(sequelize, DataTypes) {
         inventory: DataTypes.STRING,
         notes: DataTypes.STRING
     });
+    Char.associate = function(models) {
+        Char.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    }
 
     return Char;
 }

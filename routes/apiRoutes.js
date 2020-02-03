@@ -18,26 +18,14 @@ module.exports = function(app) {
       res.json(dbLocales);
     });
   });
-  app.get("/api/chars", function(req, res) {
-    db.Char.findAll({}).then(function(dbChars) {
-      res.json(dbChars);
-    });
-  });
+
   app.get("/api/npcs/:id", function(req, res) {
     db.NPC.findOne({ where: { id: req.params.id } }).then(function(dbNpcs) {
       res.json(dbNpcs);
     });
   });
-  app.get("/api/post", function(req, res) {
-    db.Post.findAll({}).then(function(dbPost) {
-      res.json(dbPost);
-    });
-  });
-  app.get("/api/post/:id", function(req, res) {
-    db.Post.findOne({ where: { id: req.params.id }}).then(function(dbPost) {
-      res.json(dbPost);
-    });
-  });
+  
+ 
 
   // App posts
   app.post("/api/npcs", function(req, res) {
@@ -55,21 +43,10 @@ module.exports = function(app) {
       res.json(dbUsers);
     });
   });
-  app.post("/api/chars", function(req, res) {
-    console.log("we made it");
-    db.Char.create(req.body).then(function(dbChar) {
-      res.json(dbChar);
-    });
-  });
+
   app.post("/api/locales", function(req, res) {
     db.Locale.create(req.body).then(function(dbLocale) {
       res.json(dbLocale);
-    });
-  });
-  app.post("/api/chat", function(req, res) {
-    console.log("checking");
-    db.Post.create(req.body).then(function(dbPost) {
-      res.json(dbPost);
     });
   });
 

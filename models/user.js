@@ -5,7 +5,14 @@ module.exports = function(sequelize, DataTypes) {
     email: DataTypes.STRING,
     actType: DataTypes.BOOLEAN
   });
+  User.associate = function(models) {
+    User.hasMany(models.Char, {
+      onDelete: "cascade"
+    });
+    User.hasMany(models.Post, {
+      onDelete: "cascade"
+    });
+  };
 
- 
   return User;
 };
