@@ -122,12 +122,12 @@ body {
 }
 
 .created {
-  text-align: center; 
+  text-align: center;  
 }
 
 .npcName {
   text-align: center; 
-  height: 180px; 
+  size: 100%; 
 }
 
 .display {
@@ -147,10 +147,5 @@ body {
   text-align: center; 
 }
 .postBboard {
-  float: right; 
-  bottom: 50%; 
-}
-.npcNames {
-  width: 120%; 
-  margin: 5px; 
+
 }
