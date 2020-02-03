@@ -39,12 +39,13 @@ module.exports = function (app) {
     });
 
 
-    app.get('/search/:category/:search', (req, res) => {
-        var queryURL = "http://dnd5eapi.co/api/" + req.params.category + '/' + req.params.search;
+    app.post("/search/5e", (req, res) => {
+        var queryURL = "http://dnd5eapi.co/api/" + req.body.searchType + '/' + req.body.searchContent;
+        console.log(req.body);
         axios.get(queryURL).then(function (response) {
             res.json(response.data);
         }).catch(err => {
-            console.log(err);
+            //console.log(err);
         });
 
     });

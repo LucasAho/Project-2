@@ -36,14 +36,22 @@ watIsScope = (classes) => {
     }
 }
 
+var thisSearch1;
+var thisSearch2;
 $("#submitSearchQuery").on("click", event => {
-    console.log('yup');
-    // $.get('/search/' + q1 + '/' + q2)
-    //     .catch(function (error) {
-    //         console.log(error);
-    //     }).then (res => {
-    //     console.log(res);
-    // });
+    event.preventDefault();
+    thisSearch1 = $("#searchIn1").val().trim();
+    thisSearch2 = $("#searchIn2").val().trim();
+    console.log($("#searchIn2").val().trim() );
+    $.ajax("/search/5e", {
+        type: "POST",
+        data: {
+            searchType: thisSearch1,
+            searchContent: thisSearch2 
+        }
+    }).then(function(res) {
+        console.log(res);
+    })
 })
 
 
