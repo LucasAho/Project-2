@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
     actType: {
       type: DataTypes.BOOLEAN,
       allowNull: false
-    },
+    }
   });
   User.associate = function(models) {
     User.hasMany(models.Char, {

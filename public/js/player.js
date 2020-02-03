@@ -1,7 +1,8 @@
 /* eslint-disable indent */
 /* eslint-disable prettier/prettier */
 
-
+var currentUser = $("#secretBtn").val();
+console.log(currentUser);
 
 getProfBonus = function (lvl) {
     if (lvl < 5) {
@@ -185,7 +186,6 @@ $("#createCharBtn").on("click", function(event) {
     var newNote = $("#noteForm").val().trim();
 
     var newCharacter = {
-        user_id: thisUser,
         charName: newName, 
         class: newClass, 
         lvl: newLvl, 
@@ -205,14 +205,14 @@ $("#createCharBtn").on("click", function(event) {
         inventory: newInv, 
         notes: newNote
     }  
-    console.log(newCharacter);
-    $.ajax("/api/chars", {
+    console.log(currentUser);
+    $.ajax("/api/chars/" + currentUser, {
         type: "POST",
         data: newCharacter
       }).then(function() {
         console.log("new character added");
         location.reload();
       });
-    // $(".form-control").val("");
+    $(".npcForm").val("");
 });
 });
