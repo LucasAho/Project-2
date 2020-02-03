@@ -4,7 +4,6 @@ var bcrypt = require("bcryptjs");
 module.exports = function(app) {
   app.get("/api/users", function(req, res) {
     db.User.findAll({}).then(function(dbUsers) {
-      console.log("test regular one");
       res.json(dbUsers);
     });
   });
@@ -27,7 +26,7 @@ module.exports = function(app) {
         email: req.body.email
       }
     }).then(function(user) {
-      if (!user) {
+      if (user == '') {
         res.send("Sorry, that doesn't match");
       } else {
         bcrypt.compare(req.body.pass, user.pass, function(err, result) {

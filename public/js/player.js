@@ -205,7 +205,7 @@ $("#createCharBtn").on("click", function(event) {
         inventory: newInv, 
         notes: newNote
     }  
-    console.log(newCharacter);
+    console.log(currentUser);
     $.ajax("/api/chars/" + currentUser, {
         type: "POST",
         data: newCharacter

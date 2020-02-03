@@ -18,7 +18,6 @@ module.exports = function (app) {
                 db.Locale.findAll({})
                     .then(dbLocales => {
                         db.Post.findAll({}).then(dbPost => {
-                            console.log(dbNpcs);
                             res.render("dmUser", {
                                 user: dbUser,
                                 locales: dbLocales,
