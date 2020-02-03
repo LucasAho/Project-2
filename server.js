@@ -31,9 +31,11 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
+require("./routes/userRoutes")(app);
 require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
-
+require("./routes/htmlRoutesb")(app);
+require("./routes/characterRoutes")(app);
+require("./routes/chatRoutes")(app);
 var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true

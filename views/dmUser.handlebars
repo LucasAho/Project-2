@@ -1,211 +1,229 @@
-<div id="Dungeons">
-    <div class="container" style="font-family: 'Uncial Antiqua', cursive;">
-        <div class="row">
-            <div class="col-8 offset-2">
-            </div>
-            <div class="overlay">
-                <div class="container text-center">
-                    <h1 style="color:white;">Dungeon Master's Workshop</h1>
-                    <div class="row">
-                        <div class="col-9">
-                            <div class="card text-white w-85" style="background-color:rgba(0, 0, 0, 0.4)">
-                                <div class="card-body">
-                                    <div id="npcGroup">
-                                        <button class="btn btn-secondary my-2" id="npcNewBtn" style="background-color:rgba(0, 0, 0, 0.6)">
-                                            New NPC
-                                        </button>
-                                        <div class="row mt-3" id="npcBtns">
-                                            <div class="dropdown" id="nameHover">
-                                                <a class="btn btn-secondary btn-info dropdown-toggle" href="#" role="button"
-                                                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false" style="background-color:rgba(0, 0, 0, 0.6)">
-                                                    Name
-                                                </a>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" id="randomName">Random</a>
-                                                    <a class="dropdown-item" href="#"><input type="text" class="npcAttr"
-                                                            id="nameForm" placeholder="Custom Name"></a>
-                                                    <a id="nameIn"
-                                                        class="btn-sm btn-secondary float-right mr-2">Submit</a>
-                                                </div>
-                                            </div>
-                                            <div class="dropdown mx-1" id="raceHover">
-                                                <a class="btn btn-info dropdown-toggle" href="#" role="button"
-                                                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false" style="background-color:rgba(0, 0, 0, 0.6)">
-                                                    Race
-                                                </a>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" id="randomRace">Random</a>
-                                                    <a class="dropdown-item" href="#"><input type="text" class="npcAttr"
-                                                            id="raceForm" placeholder="Custom Race"></a>
-                                                    <a id="raceIn"
-                                                        class="btn-sm btn-secondary float-right mr-2">Submit</a>
-                                                </div>
-                                            </div>
-                                            <div class="dropdown mx-1" id="descriptHover">
-                                                <a class="btn btn-info dropdown-toggle" href="#" role="button"
-                                                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false" style="background-color:rgba(0, 0, 0, 0.6)">
-                                                    Description
-                                                </a>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" id="randomDescript">Random</a>
-                                                    <a class="dropdown-item" href="#"><input type="text" class="npcAttr"
-                                                            id="descriptForm" placeholder="Custom Description"></a>
-                                                    <a id="descriptIn"
-                                                        class="btn-sm btn-secondary float-right mr-2">Submit</a>
-                                                </div>
-                                            </div>
-                                            <div class="dropdown mx-1" id="personHover">
-                                                <a class="btn btn-info dropdown-toggle" href="#" role="button"
-                                                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false" style="background-color:rgba(0, 0, 0, 0.6)">
-                                                    Personality
-                                                </a>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" id="randomPerson">Random</a>
-                                                    <a class="dropdown-item" href="#"><input type="text" class="npcAttr"
-                                                            id="personForm" placeholder="Custom Personality"></a>
-                                                    <a id="personIn"
-                                                        class="btn-sm btn-secondary float-right mr-2">Submit</a>
-                                                </div>
-                                            </div>
-                                            <div class="dropdown" id="professHover">
-                                                <a class="btn btn-info dropdown-toggle" href="#" role="button"
-                                                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false" style="background-color:rgba(0, 0, 0, 0.6)">
-                                                    Profession
-                                                </a>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" id="randomProfess">Random</a>
-                                                    <a class="dropdown-item" href="#"><input type="text" class="npcAttr"
-                                                            id="professForm" placeholder="Custom Profession"></a>
-                                                    <a id="professIn"
-                                                        class="btn-sm btn-secondary float-right mr-2" style="background-color:rgba(0, 0, 0, 0.6)">Submit</a>
-                                                </div>
-                                            </div>
+<!--View Container-->
+<div class="container" id="Dungeons" style="font-family: 'Raleway', sans-serif;">
+    <div class="col-8 offset-2">
+    </div>
 
-                                            <hr>
+    <!--Overlay container-->
+    <!--Site Header-->
+    <div class="dmw">
+        <h1>Dungeon Master's Workshop</h1>
+    </div>
+    <div class="row">
+        <!--New creation column-->
+        <div class="col-9">
+            <!--New data card-->
+            <div class="card text-white w-85" style="background-color:rgba(0, 0, 0, 0.4)">
+                <div class="card-body">
+                    <!--NPC creation form-->
+                    <div id="npcGroup">
+                        <!--Button reveals form for new npc-->
+                        <button class="btn btn-secondary my-2" id="npcNewBtn"
+                            style="background-color:rgba(0, 0, 0, 0.6)">
+                            New NPC
+                        </button>
 
-                    <label class="sr-only" for="localeParent">Parent Locale</label>
-                    <input type="text" class="form-control locale mb-2 mr-sm-2" id="localeParent" placeholder="Parent Location">
-                    <button type="submit" id="submitLocale" class="btn btn-primary mb-2">Submit</button>
-                </form>
-            </div>
-                                        </div>
-                                    </div>
-                                    <div id="localeGroup">
-                                        <button class="btn btn-secondary my-2" id="localeNewBtn" style="background-color:rgba(0, 0, 0, 0.6)">
-                                            New Location
-                                        </button>
-                                        <form class="form-inline" id="localeForm">
-                                            <label class="sr-only" for="localeTitle">Title</label>
-                                            <input type="text" class="form-control locale mb-2 mr-sm-2" id="localeTitle"
-                                                placeholder="Title">
-
-                                            <label class="sr-only" for="localeNotes">Notes</label>
-                                            <input type="text" class="form-control locale mb-2 mr-sm-2" id="localeNotes"
-                                                placeholder="Notes">
-
-                                            <label class="sr-only" for="localeParent">Parent Locale</label>
-                                            <input type="text" class="form-control locale mb-2 mr-sm-2"
-                                                id="localeParent" placeholder="Parent Location">
-                                            <button type="submit" id="submitLocale"
-                                                class="btn btn-secondary mb-2" style="background-color:rgba(0, 0, 0, 0.6)">Submit</button>
-                                        </form>
-                                    </div>
-
+                        <!--Dropdowns for npc table data-->
+                        <div class="row mt-3" id="npcBtns">
+                            <!--Name dropdown for custom and random-->
+                            <div class="dropdown" id="nameHover">
+                                <a class="btn btn-secondary btn-info dropdown-toggle" href="#" role="button"
+                                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false" style="background-color:rgba(0, 0, 0, 0.4)">
+                                    Name
+                                </a>
+                                <div class="dropdown-menu" style="black" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" styleid="randomName">Random</a>
+                                    <a class="dropdown-item" href="#"><input type="text" class="npcAttr" id="nameForm"
+                                            placeholder="Custom Name"></a>
+                                    <a id="nameIn" class="btn-sm btn-secondary float-right mr-2">Submit</a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-3 py-3 d-flex justify-content-center">
-                            <div class="card" style="width: 18rem; background-color:rgba(0, 0, 0, 0.4)">
-            <ul>
-            {{#each npcs}}
-                <li>{{fullname}}</li>
-            {{/each}}
-            </ul>
-        
-        </div>
-
-                                <div class="card-body">
-                                    <h5 class="card-title npcCard" id="npcCardTitle" style="color:white;">NPC Name</h5>
-                                    <p class="card-text npcCard" id="npcRace" style="color:"></p>
-                                    <p class="card-text npcCard" id="npcDescript"></p>
-                                    <p class="card-text npcCard" id="npcPerson"></p>
-                                    <p class="card-text npcCard" id="npcProfess"></p>
-                                    <button id="finalizeNpc" class="btn btn-secondary" style="background-color:rgba(0, 0, 0, 0.6)">Create</button>
+                            <!--Race dropdown for custom and random-->
+                            <div class="dropdown mx-1" id="raceHover">
+                                <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    style="background-color:rgba(0, 0, 0, 0.4)">
+                                    Race
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" id="randomRace">Random</a>
+                                    <a class="dropdown-item" href="#"><input type="text" class="npcAttr" id="raceForm"
+                                            placeholder="Custom Race"></a>
+                                    <a id="raceIn" class="btn-sm btn-secondary float-right mr-2">Submit</a>
                                 </div>
                             </div>
+                            <!--Description dropdown for custom and random-->
+                            <div class="dropdown mx-1" id="descriptHover">
+                                <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    style="background-color:rgba(0, 0, 0, 0.4)">
+                                    Description
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" id="randomDescript">Random</a>
+                                    <a class="dropdown-item" href="#"><input type="text" class="npcAttr"
+                                            id="descriptForm" placeholder="Custom Description"></a>
+                                    <a id="descriptIn" class="btn-sm btn-secondary float-right mr-2">Submit</a>
+                                </div>
+                            </div>
+                            <!--Personality dropdown for custom and random-->
+                            <div class="dropdown mx-1" id="personHover">
+                                <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    style="background-color:rgba(0, 0, 0, 0.4)">
+                                    Personality
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" id="randomPerson">Random</a>
+                                    <a class="dropdown-item" href="#"><input type="text" class="npcAttr" id="personForm"
+                                            placeholder="Custom Personality"></a>
+                                    <a id="personIn" class="btn-sm btn-secondary float-right mr-2">Submit</a>
+                                </div>
+                            </div>
+                            <!--Profession dropdown for custom and random-->
+                            <div class="dropdown" id="professHover">
+                                <a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                    style="background-color:rgba(0, 0, 0, 0.4)">
+                                    Profession
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" id="randomProfess">Random</a>
+                                    <a class="dropdown-item" href="#"><input type="text" class="npcAttr"
+                                            id="professForm" placeholder="Custom Profession"></a>
+                                    <a id="professIn" class="btn-sm btn-secondary float-right mr-2"
+                                        style="background-color:rgba(0, 0, 0, 0.4)">Submit</a>
+                                </div>
+                            </div>
+                            <!--Close npc form-->
                         </div>
+                        <!--Close npc group-->
                     </div>
-                    
-                    <div class="row my-5">
-                        <div class="col-8">
-                            <div class="col-9">
-                                <div class="card text-white" style="background-color:rgba(0, 0, 0, 0.4)">
-                                <div class="card-body">
-                                <h2>Created Content</h2>
-                            </div>
-
-                            <div class="col-9 btn-group-vertical mx-auto">
-                                {{#each npcs}}
-                                <button class="btn-md displayNpc btn-info my-1" value={{id}} type="submit">
-                                    {{fullname}}
-                                </button>
-                                {{/each}}
-                            </div>
-                        </div>
-                    </div>
-                                </div>
-                        <div class="col-6">
-                            Display
-                            <span id="displayName"></span>
-                            <span id="displayRace"></span>
-                            <span id="displayDescript"></span>
-                            <span id="displayPerson"></span>
-                            <span id="displayProfess"></span>
-
-                        </div>
+                    <hr>
+                    <!--Location group and buttons-->
+                    <div id="localeGroup">
+                        <!--Button opens locale form-->
+                        <button class="btn btn-secondary my-2" id="localeNewBtn"
+                            style="background-color:rgba(0, 0, 0, 0.6)">
+                            New Location
+                        </button>
+                        <!--Location title-->
+                        <form class="form-inline" id="localeForm">
+                            <!--Location title-->
+                            <label class="sr-only" for="localeTitle">Title</label>
+                            <input type="text" class="form-control locale mb-2 mr-sm-2" id="localeTitle"
+                                placeholder="Title">
+                            <!--Location notes-->
+                            <label class="sr-only" for="localeNotes">Notes</label>
+                            <input type="text" class="form-control locale mb-2 mr-sm-2" id="localeNotes"
+                                placeholder="Notes">
+                            <!--Location parent-->
+                            <label class="sr-only" for="localeParent">Parent Locale</label>
+                            <input type="text" class="form-control locale mb-2 mr-sm-2" id="localeParent"
+                                placeholder="Parent Location">
+                            <button id="submitLocale" class="btn btn-secondary mb-2"
+                                style="background-color:rgba(0, 0, 0, 0.6)">Submit</button>
+                        </form>
+                        <!--Closes locale form-->
                     </div>
                 </div>
-        </div>
-    </div>
-<div class="col-6">
-      <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4">Want to join the conversation?</h1>
-          <p class="lead">submit your comment below. </p>
-        </div>
-      <div class="card">
-        <div class="card-header">
-          Chat Message Center
-        </div>
-        <div class="card-body" id="order">
-          <h5 class="card-title"></h5>
-          <p class="card-text">please be respectful of your fellow players.</p>
-          <form class="create-form">
-        <div class="form-group">
-          <label for="content">comment:</label>
-          <textarea class="form-control" id="postBox" rows="3"></textarea>
-        </div>
-        <button class="btn btn-primary" id="sendPost" value={{user}}>Send</button>
-      </form>
-    </div>
-  </div>
-  <div class="card text-white bg-info mb-3">
-    <div class="postBboard">
-      <div class="card-header">recent messages</div>
-      <div class="card-body">
-        {{#each Post}}
-       <h4>{{post}}</h4>
-     <button class="change-delete btn btn-success" value={{id}} data-newdelete="{{delete}}">
-           Delete!
-           </button>
-        {{/each}}
-      </div>
-    </div>
-  </div>
-
             </div>
+        </div>
+        <!--Display card-->
+        <div class="col-3 py-3 d-flex justify-content-center">
+        <div class="npcNames">
+            <div class="card" style="background-color:rgba(0, 0, 0, 0.4)">
+                <div class="npcName">
+                    <div class="card-body">
+                        <h5 class="card-title npcCard" id="npcCardTitle" style="color:white;">NPC Name</h5>
+                        <p class="card-text npcCard" id="npcRace" style="color:"></p>
+                        <p class="card-text npcCard" id="npcDescript"></p>
+                        <p class="card-text npcCard" id="npcPerson"></p>
+                        <p class="card-text npcCard" id="npcProfess"></p>
+                        <button id="finalizeNpc" class="btn btn-secondary"
+                            style="background-color:rgba(0, 0, 0, 0.4)">Create</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Closing tag of row 1-->
+</div>
+<div class="created">
+    <div class="row my-5">
+        <div class="col-9">
+            <div class="card text-white" style="background-color:rgba(0, 0, 0, 0.4)">
+                <div class="card-body">
+                    <h3>Created Content</h3>
+                </div>
+                <h5>NPCs</h5>
+                <ul>
+                    {{#each npcs}}
+                    <li>
+                        {{id}}
+                    </li>
+                    {{/each}}
+                </ul>
+                <h5>Locales</h5>
+                <ul>
+                    {{#each locales}}
+                    <li>
+                        {{id}}
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card" style="width: 18rem; background-color:rgba(0, 0, 0, 0.4)">
+                <div class="display">
+                    <h5>Display</h5>
+                    <span id="displayName"></span>
+                    <span id="displayRace"></span>
+                    <span id="displayDescript"></span>
+                    <span id="displayPerson"></span>
+                    <span id="displayProfess"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-9">
+        <div class="card text-white" style="background-color:rgba(0, 0, 0, 0.4)">
+            <div class="card-header">
+                Chat Message Center
+            </div>
+            <div class="card-body" id="order">
+                <h5 class="card-title"></h5>
+                <p class="card-text">Please be respectful of your fellow players.</p>
+                <form class="create-form">
+                    <div class="form-group">
+                        <label for="content">Comment:</label>
+                        <textarea class="form-control" id="postBox" rows="3"></textarea>
+                    </div>
+                    <button class="btn btn-secondary" style="background-color:rgba(0, 0, 0, 0.4)" id="sendPost"
+                        value={{user}}>Send</button>
+                </form>
+            </div>
+        </div>
+        <div class="card text-white bg-info mb-3">
+            <div class="col-3">
+                <div class="postBboard">
+                    <div class="card-header">Recent Messages</div>
+                    <div class="card-body">
+                        {{#each Post}}
+                        <h4>{{post}}</h4>
+                        <button class="change-delete btn btn-success" value={{id}} data-newdelete="{{delete}}">
+                            Delete!
+                        </button>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>

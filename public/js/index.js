@@ -42,7 +42,7 @@ $(document).ready(function() {
     //Code runs when user presses sign up form
     $("#sign-up").on("click", function(event) {
         event.preventDefault();
-
+        
         //Function checks that user's passwords match
         var passCheck = (p1,p2) => {
             if (p1 === p2 && p1.length !== 0) {
@@ -69,23 +69,21 @@ $(document).ready(function() {
             }
             
             //AJAX post adds a new user to the database
-            $.ajax("/api/users", {
+            $.ajax("/api/register", {
                 type: "POST",
                 data: newUser
-            }).then(function() {
-                //After player account is added, they will be brought back to the login
-                $(".loginForm").show();
-                $(".signupForm").hide();
-                $("#newSignUp").hide();
-                $("#returnLogin").show();
-                console.log("New User added");
+            }).then(res => {
+                if (!res) {
+                    alert("Something went wrong");
+                }
+                    location.reload();
             });
 
-            //Clears sign up form
-            $("#suUser").val("");
-            $("#suPass").val("");
-            $("#suPass2").val("");
-            $("#suEmail").val(""); 
+            // //Clears sign up form
+            // $("#suUser").val("");
+            // $("#suPass").val("");
+            // $("#suPass2").val("");
+            // $("#suEmail").val(""); 
         }
     });
     
@@ -108,7 +106,7 @@ $(document).ready(function() {
             }
 
             //Ajax post runs user login into user database
-            $.ajax("/api/logins", {
+            $.ajax("/logins", {
                 type: "POST",
                 data: thisUser
             }).then(res => {
@@ -116,7 +114,8 @@ $(document).ready(function() {
                 if (res == null) {
                     alert("Sorry, that email and password don't match");
                 //Condition runs if user has a DM account
-                } else if (res.actType == 0) {
+                 } 
+                 else if (res.actType == 0) {
                     location.href = "/dm/" + res.id;
                 //Condition runs if user has player account
                 } else {
