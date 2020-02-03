@@ -105,7 +105,7 @@
 
             <div class="col-9 btn-group-vertical mx-auto">
             {{#each npcs}}
-                <button class="btn-md displayNpc btn-info my-1" value={{id}} type="submit">
+                <button class="btn-md displayNpc btn-info my-1" value={{id}}>
                     {{fullname}}
                 </button>
             {{/each}}
@@ -140,7 +140,7 @@
           <label for="content">comment:</label>
           <textarea class="form-control" id="postBox" rows="3"></textarea>
         </div>
-        <button type="send" class="btn btn-primary" id="sendPost" value={{id}}>Send</button>
+        <button class="btn btn-primary" id="sendPost" value={{user}}>Send</button>
       </form>
     </div>
   </div>
@@ -150,7 +150,7 @@
       <div class="card-body">
         {{#each Post}}
        <h4>{{post}}</h4>
-     <button type="button" class="change-delete btn btn-success" value={{id}} data-newdelete="{{delete}}">
+     <button class="change-delete btn btn-success" value={{id}} data-newdelete="{{delete}}">
            Delete!
            </button>
         {{/each}}

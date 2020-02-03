@@ -28,7 +28,8 @@ module.exports = function (app) {
     var thisId = req.params.id;
     db.User.findOne({ where: {user_id: thisId}  }).then(dbUser => {
       res.render("dmUser", {
-        user: dbUser
+        user: dbUser.id,
+        userName : dbUser.username
       });
     });  
   });
@@ -36,7 +37,8 @@ module.exports = function (app) {
     var thisId = req.params.id;
     db.User.findOne({ where: {id: thisId}  }).then(dbUser => {
       res.render("player", {
-        user: dbUser.id
+        user: dbUser.id,
+        userName : dbUser.username
       });
     });  
   });
@@ -53,14 +55,6 @@ module.exports = function (app) {
 
   app.get("/player/:user", (req, res) => {
     db.Post.findAll({ where: {username: thisUser}
-    }).then(dbPost => {
-      res.render("player", { 
-        Post: dbPost
-      });
-    });   
-  });
-  app.get("/dm/:id", (req, res) => {
-    db.Post.findAll({
     }).then(dbPost => {
       res.render("player", { 
         Post: dbPost

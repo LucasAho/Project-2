@@ -1,16 +1,14 @@
-
 /* eslint-disable indent */
 /* eslint-disable prettier/prettier */
 
 $(function () {
     //create message
-    $("#sendPost").on("click", function (event) {
+    $("#sendPost").on("click", function(event) {
         event.preventDefault();
-
+        var thisUser = parseInt($(this).val());
         var newPost = {
-            userId: 1,
+            userId: thisUser,
             content: $("#postBox").val().trim(),
-            // createdAt: moment().format("YYYY-MM-DD HH:mm:ss")
         };
         console.log(newPost);
         $.ajax("/api/chat", {

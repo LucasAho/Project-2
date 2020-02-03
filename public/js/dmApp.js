@@ -1,3 +1,4 @@
+
 let newName = "";
 let newRace = "";
 let newDescript = [];
@@ -97,7 +98,6 @@ $(function() {
   $("#randomDescript").on("click", event => {
     event.preventDefault();
     newDescript = descriptList.golgiApp();
-    console.log(newDescript)
     $("#npcDescript").text(newDescript);
   });
 
@@ -133,8 +133,9 @@ $(function() {
         personality: newPerson,
         profession: newProfess
       }
+      //Working to here
       $(".npcAttr").val("");
-      $.ajax("api/npcs", {
+      $.ajax("/api/npcs", {
         type: "POST",
         data: newNpc
       }).then(function() {
@@ -144,7 +145,7 @@ $(function() {
   $(".displayNpc").on("click", function(event) {
     event.preventDefault();
     btnVal = $(this).val();
-    $.ajax("api/npcs/" + btnVal, {
+    $.ajax("/api/npcs/" + btnVal, {
         type: "GET"
     }).then(res => {
         $("#displayName").text(res.fullname);
@@ -174,7 +175,7 @@ $(function() {
 
     console.log(newLocale);
     $(".locale").val("");
-    $.ajax("api/locales", {
+    $.ajax("/api/locales", {
       type: "POST",
       data: newLocale
     }).then(function() {

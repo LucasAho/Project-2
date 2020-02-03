@@ -21,13 +21,5 @@ module.exports = function(sequelize, DataTypes) {
         notes: DataTypes.STRING
     });
 
-    Char.associate = function(models) {
-        Char.belongsTo(models.User, {
-            foreignKey: {
-                allowNull: false
-            } 
-        });
-    }
-
     return Char;
 }
