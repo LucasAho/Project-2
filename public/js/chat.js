@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 /* eslint-disable prettier/prettier */
-
+var currentUser = $("#secretBtn").val();
 $(function () {
     //create message
     $("#sendPost").on("click", function(event) {
@@ -9,7 +9,7 @@ $(function () {
             content: $("#postBox").val().trim(),
         };
 
-        $.ajax("/api/chat/" + 1, {
+        $.ajax("/api/chat/" + currentUser, {
           type: "POST",
           data: newPost
         })

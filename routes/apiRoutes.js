@@ -35,7 +35,17 @@ module.exports = function(app) {
   
 
   // App deletes
-  app.delete("/api/examples/:id", function(req, res) {
+  app.delete("/api/npcs/:id", function(req, res) {
+    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
+      res.json(dbExample);
+    });
+  });
+  app.delete("/api/locales/:id", function(req, res) {
+    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
+      res.json(dbExample);
+    });
+  });
+  app.delete("/api/chars/:id", function(req, res) {
     db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
       res.json(dbExample);
     });

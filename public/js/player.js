@@ -1,7 +1,8 @@
 /* eslint-disable indent */
 /* eslint-disable prettier/prettier */
 
-
+var currentUser = $("#secretBtn").val();
+console.log(currentUser);
 
 getProfBonus = function (lvl) {
     if (lvl < 5) {
@@ -205,7 +206,7 @@ $("#createCharBtn").on("click", function(event) {
         notes: newNote
     }  
     console.log(newCharacter);
-    $.ajax("/api/chars/" + 1, {
+    $.ajax("/api/chars/" + currentUser, {
         type: "POST",
         data: newCharacter
       }).then(function() {
