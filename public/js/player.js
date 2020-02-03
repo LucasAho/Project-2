@@ -205,7 +205,7 @@ $("#createCharBtn").on("click", function(event) {
         notes: newNote
     }  
     console.log(newCharacter);
-    $.ajax("/api/chars/", {
+    $.ajax("/api/chars/" + 1, {
         type: "POST",
         data: newCharacter
       }).then(function() {

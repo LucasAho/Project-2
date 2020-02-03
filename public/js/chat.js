@@ -8,12 +8,13 @@ $(function () {
         var newPost = {
             content: $("#postBox").val().trim(),
         };
-        console.log(this.val);
-        $.ajax("/api/chat/", {
+
+        $.ajax("/api/chat/" + 1, {
           type: "POST",
           data: newPost
         })
-        .then(function () {
+        .then(function (res) {
+            console.log(res);
             console.log("new message posted");
 
             var row = $("<div>");

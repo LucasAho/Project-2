@@ -156,12 +156,7 @@
                         </div>
                         <h2>NPCs</h2>
                         <ul>
-                            {{#each npcs}}
-                            <li>
-                                {{id}}
-                            </li>
-                            {{/each}}
-                        </ul>
+                            {{#with user}}{{email}}{{/with}}
                         <h2>Locales</h2>
                         <ul>
                             {{#each locales}}
@@ -197,7 +192,7 @@
                                     <label for="content">comment:</label>
                                     <textarea class="form-control" id="postBox" rows="3"></textarea>
                                 </div>
-                                <button class="btn btn-primary" id="sendPost" value={{user}}>Send</button>
+                                <button class="btn btn-primary" id="sendPost" value={{Post.id}}>Send</button>
                             </form>
                         </div>
                     </div>
@@ -205,12 +200,12 @@
                         <div class="postBboard">
                             <div class="card-header">recent messages</div>
                             <div class="card-body">
-                                {{#each Post}}
-                                <h4>{{post}}</h4>
-                                <button class="change-delete btn btn-success" value={{id}} data-newdelete="{{delete}}">
+                         
+                                <h4></h4>
+                                <button class="change-delete btn btn-success">
                                     Delete!
                                 </button>
-                                {{/each}}
+                               
                             </div>
                         </div>
                     </div>
