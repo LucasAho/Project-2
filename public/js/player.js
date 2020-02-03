@@ -95,23 +95,63 @@ $("#submitSearchQuery").on("click", event => {
                     if (`${key}` == 'typical_speakers') {
                         
                         console.log(`${value}`);
-                        $("#searchResults").append(head, "<p>Typical Speakers: </p>", `${value}` );
+                        $("#searchResults").append(head, "<p><strong>Typical Speakers: </strong></p>", `${value}` );
                     } else if (`${key}` == 'type') {
-                        $("#searchResults").append( "<p>Language Type: </p>", `${value}` );
+                        $("#searchResults").append( "<p><strong>Language Type: </strong></p>", `${value}` );
                     }
                 });
                 break;
             case 'classes':
-                console.log(res.proficiencies);
-                // Object.entries(res).forEach(([key, value]) => {
-                //     if (`${key}` == 'hit_die') {
-                //         $("#searchResults").append(head, "<p>Hit Die: </p>", `${value}` );
-                //     } else if (`${key}` == 'proficiencies') {
-                    
+                $("#searchResults").append(head, "<p><strong>Proficiencies: </strong></p>");
+                res.proficiencies.forEach(el => {
+                    $("#searchResults").append("<p>" + el.name + "</p>");
+                    console.log(el.name);
+                });
+                $("#searchResults").append("<p><strong>Subclasses: </strong></p>");
+                res.subclasses.forEach(el => {
+                    $("#searchResults").append("<p>" + el.name + "</p>");
+                    console.log(el.name);
+                });
+                break;
+            case 'features':
+                $("#searchResults").append(head, "<p><strong>Description: </strong></p>");
+                res.desc.forEach(el => {
+                    $("#searchResults").append("<p>" + el + "</p>");
+
+                });
+                $("#searchResults").append("<p><strong>Level: </strong></p>", "<p>" + res.level + "</p>");
+                Object.entries(res.class).forEach(([key, value]) => {
+                    if (`${key}` == 'name')
+                    $("#searchResults").append("<p>" +  `${value}`+ "</p>");
+                });
                 
-                //         $("#searchResults").append( "<p>Proficiencies: </p>",`${value}`);
-                //     }
-     
+                break;
+            case 'races':
+                $("#searchResults").append(head, "<p><strong>Languages: </strong></p>");
+                res.languages.forEach(el => {
+                    $("#searchResults").append("<p>" + el.name + "</p>");
+    
+                });
+                 $("#searchResults").append("<p><strong>Alignment: </strong></p>", "<p>" + res.alignment + "</p>","<p><strong>Speed: </strong></p>", "<p>" + res.speed + "</p>", "<p><strong>Size </strong></p>", "<p>" + res.size_description + "</p>");
+                break;
+            case 'equipment':
+                $("#searchResults").append("<p><strong>Cost: </strong></p>");
+                $("#searchResults").append(head, "<p><strong>Type: </strong>" + res.equipment_category + "</p>");
+                Object.entries(res.cost).forEach(([key, value]) => {
+                    $("#searchResults").append(`${value}`);
+                });
+                res.desc.forEach(el => {
+                    $("#searchResults").append("<p>" + el + "</p>");
+    
+                });
+                $("#searchResults").append("<p><strong>Weight: </strong></p>" + res.weight);
+                break;
+            case 'conditions':
+                $("#searchResults").append("<p><strong>Description: </strong></p>");
+                res.desc.forEach(el => {
+                    $("#searchResults").append("<p>" + el + "</p>");
+    
+                });
                 break;
 
         };
