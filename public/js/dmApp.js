@@ -151,7 +151,7 @@ $(function() {
         type: "POST",
         data: newNpc
       }).then(function() {
-        console.log("new npc added");
+        location.reload();
       });
     }
   });
@@ -194,7 +194,7 @@ $(function() {
       type: "POST",
       data: newLocale
     }).then(function() {
-      console.log("new locale added");
+      location.reload();
     });
   });
 
