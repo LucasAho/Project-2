@@ -1,11 +1,19 @@
 $(document).ready(function() {
     $(".loginForm").show();
     $(".signupForm").hide();
-
-$("#newSignUp").on("click", function() {
-    $(".loginForm").hide();
-    $(".signupForm").show();
-});
+    $("#returnLogin").hide();
+    $("#newSignUp").on("click", function() {
+        $(".loginForm").hide();
+        $(".signupForm").show();
+        $("#newSignUp").hide();
+        $("#returnLogin").show();
+    });
+    $("#returnLogin").on("click", function() {
+        $(".loginForm").show();
+        $(".signupForm").hide();
+        $("#newSignUp").show();
+        $("#returnLogin").hide();
+    });
 
 acctCheck = (userIn) => {
     if (userIn === "Dungeon Master") {
@@ -51,24 +59,31 @@ $("#sign-up").on("click", function(event) {
 
 $("#log-in").on("click", function(event) {
     event.preventDefault();
-    var thisUser = {
-        email: $("#emailLog").val().trim(),
-        pass: $("#passLog").val().trim(),
-    }
-
-    $.ajax("/api/logins", {
-        type: "POST",
-        data: thisUser
-    }).then(res => {
-        console.log(res);
-        if (res.actType == 0) {
-            location.href = "/dm/" + res.id;
-        } else {
-            location.href = "/player/" + res.id;
-        }
-        
-    });
+    var thisEmail = $("#emailLog").val().trim();
+    var thisPass = $("#passLog").val().trim();
     
+    if (thisEmail == 0 || thisPass == 0) {
+        alert("Please fill out the form");
+    } else {
+        var thisUser = {
+            email: thisEmail,
+            pass: thisPass,
+        }
+
+        $.ajax("/api/logins", {
+            type: "POST",
+            data: thisUser
+        }).then(res => {
+            console.log(res);
+            if (res == null) {
+                alert("Sorry, that email and password don't match");
+            } else if (res.actType == 0) {
+                location.href = "/dm/" + res.id;
+            } else {
+                location.href = "/player/" + res.id;
+            }
+        });
+    }    
 });
 
 });
