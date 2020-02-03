@@ -26,7 +26,7 @@ module.exports = function (app) {
             });
     });
     app.get("/player/:id", (req, res) => {
-        db.Char.findAll({ where: { user_id: req.params.id } })
+        db.Char.findAll({ where: { userId: req.params.id } })
         .then(dbChars => {
             db.Post.findAll({})
             .then(dbPost => {

@@ -9,12 +9,21 @@ module.exports = function(sequelize, DataTypes) {
       autoIncrement: true
     },
     username: {
-     type: DataTypes.STRING,
-     allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false
     },
-    pass: DataTypes.STRING,
-    email: DataTypes.STRING,
-    actType: DataTypes.BOOLEAN
+    pass: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    actType: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
   });
   User.associate = function(models) {
     User.hasMany(models.Char, {
@@ -25,11 +34,11 @@ module.exports = function(sequelize, DataTypes) {
     });
   };
 
-  User.generateHash = function(pass) {
+  User.generateHash = function (pass) {
     return bcrypt.hashSync(pass, bycrpt.genSaltSync(8), null);
   };
 
-  User.prototype.validPassword = function(pass) {
+  User.prototype.validPassword = function (pass) {
     console.log(pass, this.localPassword);
     return bcrypt.compareSync(pass, this.localPassword);
   }

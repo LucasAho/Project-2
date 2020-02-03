@@ -36,14 +36,17 @@ watIsScope = (classes) => {
     }
 }
 
-dndSearch = (q1, q2) => {
-    $.get('/search/' + q1 + '/' + q2)
-        .catch(function (error) {
-            console.log(error);
-        }).then (res => {
-        console.log(res);
-    });
-}
+$("#submitSearchQuery").on("click", event => {
+    console.log('yup');
+    // $.get('/search/' + q1 + '/' + q2)
+    //     .catch(function (error) {
+    //         console.log(error);
+    //     }).then (res => {
+    //     console.log(res);
+    // });
+})
+
+
 $(document).on("click", "#charMaker", function() {
     $("#newCharForm").show('fast');
 });
