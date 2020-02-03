@@ -26,13 +26,17 @@ module.exports = function (app) {
             });
     });
     app.get("/player/:id", (req, res) => {
-        db.Char.findAll({ where: { userId: req.params.id } })
+        db.Char.findAll({ where: { UserId: req.params.id } })
         .then(dbChars => {
-            db.Post.findAll({})
-            .then(dbPost => {
-                res.render("player", {
-                    Char: dbChars,
-                    Post: dbPost
+            db.Post.findAll({ where: { UserId: req.params.id } })
+            .then(dbSelfPost => {
+                db.Post.findAll({ where: { UserId: !req.params.id} })
+                .then(function(dbOtherPost) {
+                    res.render("player", {
+                        Char: dbChars,
+                        Post: dbSelfPost,
+                        PostFrom: dbOtherPost
+                    });
                 });
             });
         });

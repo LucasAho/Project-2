@@ -185,7 +185,6 @@ $("#createCharBtn").on("click", function(event) {
     var newNote = $("#noteForm").val().trim();
 
     var newCharacter = {
-        user_id: thisUser,
         charName: newName, 
         class: newClass, 
         lvl: newLvl, 
@@ -206,13 +205,13 @@ $("#createCharBtn").on("click", function(event) {
         notes: newNote
     }  
     console.log(newCharacter);
-    $.ajax("/api/chars", {
+    $.ajax("/api/chars/", {
         type: "POST",
         data: newCharacter
       }).then(function() {
         console.log("new character added");
         location.reload();
       });
-    // $(".form-control").val("");
+    $(".npcForm").val("");
 });
 });

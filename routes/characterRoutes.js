@@ -8,7 +8,7 @@ module.exports = function (app) {
     });
   });
   app.post("/api/chars", function(req, res) {
-    //need to set userid here
+    console.log(req.body);
     db.Char.create(req.body).then(function(dbChar) {
       res.json(dbChar);
     });

@@ -5,13 +5,11 @@ $(function () {
     //create message
     $("#sendPost").on("click", function(event) {
         event.preventDefault();
-        var thisUser = parseInt($(this).val());
         var newPost = {
-            userId: thisUser,
             content: $("#postBox").val().trim(),
         };
-        console.log(newPost);
-        $.ajax("/api/chat", {
+        console.log(this.val);
+        $.ajax("/api/chat/", {
           type: "POST",
           data: newPost
         })
