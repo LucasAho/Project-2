@@ -135,7 +135,7 @@
             <select class="form-control" id="searchIn1">
               <option>skills</option>
               <option>ability-scores</option>
-              <option>proficiencies</option>
+            <option>proficiencies</option>
               <option>languages</option>
               <option>classes</option>
               <option>subclasses</option>
@@ -146,16 +146,23 @@
               <option>equipment</option>
               <option>conditions</option>
               <option>damage-types</option>
-              <option>magic-schools</option>
+              <option>magic-schools</option>-->
             </select>
+            <button class="btn btn-primary" id="submitSearch1">Confirm</button>
           </div>
-          <div class="form-group col-md-6">
-            <label for="searchIn2">Name</label>
-            <input class="form-control" id="searchIn2">
-          </div>
+          
+          <div class="form-group col-md-6" id="search2Form">
+            <label for="searchIn2">Search Title</label>
+            <select class="form-control" id="searchIn2">
+              
+            </select>
+            <button class="btn btn-primary" id="submitSearchQuery">Submit</button>
+          </div>  
+          
         </div>
-        <button class="btn btn-primary" id="submitSearchQuery">Send</button>
+        
       </form>
+      <div id="searchResultDiv"></div>
     </div>
     <div class="col-4">
       <div class="jumbotron jumbotron-fluid">

@@ -41,7 +41,7 @@ module.exports = function (app) {
 
     app.post("/search/5e", (req, res) => {
         var queryURL = "http://dnd5eapi.co/api/" + req.body.searchType + '/' + req.body.searchContent;
-        console.log(req.body);
+        console.log(queryURL);
         axios.get(queryURL).then(function (response) {
             res.json(response.data);
         }).catch(err => {

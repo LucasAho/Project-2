@@ -38,22 +38,41 @@ watIsScope = (classes) => {
 
 var thisSearch1;
 var thisSearch2;
-$("#submitSearchQuery").on("click", event => {
+$("#submitSearch1").on("click", event => {
     event.preventDefault();
+    
     thisSearch1 = $("#searchIn1").val().trim();
-    thisSearch2 = $("#searchIn2").val().trim();
-    console.log($("#searchIn2").val().trim() );
+    
+   
     $.ajax("/search/5e", {
         type: "POST",
         data: {
             searchType: thisSearch1,
-            searchContent: thisSearch2 
+            searchContent: ""
+        }
+    }).then(function(res) {
+        for (var i = 0; i < res.results.length; i++) {
+            $("#searchIn2").append("<option>" + res.results[i].index + "</option>")
+            $("#search2Form").show();
+        }
+
+    });
+    $("#searchIn2").empty(); 
+});
+$("#submitSearchQuery").on("click", event => {
+    event.preventDefault();
+    thisSearch2 = $("#searchIn2").val().trim();
+    $.ajax("/search/5e", {
+        type: "POST",
+        data: {
+            searchType: thisSearch1,
+            searchContent: thisSearch2
         }
     }).then(function(res) {
         console.log(res);
-        
-    })
-})
+});
+});
+
 
 
 $(document).on("click", "#charMaker", function() {
@@ -62,7 +81,7 @@ $(document).on("click", "#charMaker", function() {
 
 $(document).ready(function() {
     $("#newCharForm").hide();
-
+    $("#search2Form").hide();
 $("#createCharBtn").on("click", function(event) {
     event.preventDefault();     
     var thisUser = parseInt($(this).val());
