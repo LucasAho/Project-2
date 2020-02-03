@@ -34,6 +34,11 @@ $(document).ready(function() {
         }
     }
 
+    function validateEmail(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+    
     //Code runs when user presses sign up form
     $("#sign-up").on("click", function(event) {
         event.preventDefault();
@@ -51,6 +56,8 @@ $(document).ready(function() {
         if ($("#suUser").val().trim() == "" || $("#suEmail").val().trim() == "") {
             alert("Please complete the signup form")
         //Else statement runs when form is finished
+        } else if (validateEmail($("#suEmail").val().trim()) == false) {
+            alert("Please enter a valid email");
         } else {
 
             //Info needed for signing up is stored in newUser object
