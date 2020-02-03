@@ -67,7 +67,7 @@ $(document).ready(function() {
                 email: $("#suEmail").val().trim(), 
                 actType: acctCheck($("#acctType").val())
             }
-        
+            
             //AJAX post adds a new user to the database
             $.ajax("/api/users", {
                 type: "POST",
@@ -76,8 +76,16 @@ $(document).ready(function() {
                 //After player account is added, they will be brought back to the login
                 $(".loginForm").show();
                 $(".signupForm").hide();
+                $("#newSignUp").hide();
+                $("#returnLogin").show();
                 console.log("New User added");
             });
+
+            //Clears sign up form
+            $("#suUser").val("");
+            $("#suPass").val("");
+            $("#suPass2").val("");
+            $("#suEmail").val(""); 
         }
     });
     

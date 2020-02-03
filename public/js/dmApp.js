@@ -1,10 +1,11 @@
-
+//Declaring variables to be used for making NPCs
 let newName = "";
 let newRace = "";
 let newDescript = [];
 let newPerson = "";
 let newProfess = "";
 
+//Array of first names to be randomly selected from
 const namesList = [
   "Alden", "Alec", "Anton", "Arden", "Arlen", "Armand", "Arron", "Augustus", "Avery", "Benedict", "Bennett", "Branden", "Brendon", "Britt", 
 "Broderick", "Carter", "Chadwick", "Chas", "Chet", "Colby", "Cole", "Cordell", "Dalton", "Damien", "Dante", "Darell", "Darius", "Darron", "Darwin", 
@@ -22,22 +23,25 @@ const namesList = [
 //"Pope", "Nelson", "Ferguson", "Schaefer", "James", "Stewart", "Whitehead", "Glass", "Ball", "Ayala", "Faulkner", "Lambert", "Duncan", "Andrews", "Garrett", 
 //"Logan", "Summers", "Randolph", "Carrillo", "Petty", "Carpenter", "Miller", "Carney", "Hardy", "Bender", "Collins", "Paul", "Jenkins", "Harper", "Mullen", 
 //"Lucero", "Hale", "Jarvis", "Madden", "Cochran", "Molina", "Ochoa", "Hoover", "Edwards"
+
+//Array of DnD 5e Races to be randomly selected from
 const raceList = [
   "Dragonborn", "Dwarf", "Elf", "Gnome", "Half-Elf", "Half-Orc", "Halfling", "Human", "Tiefling"
 ];
 
+//Array of personalities to be randomly selected from
 const personList = [
   "Arrogant", "Patient", "Well-Spoken", "Untrustworthy", "Rude", "Loud/Outgoing", "Helpful", "Cynical", "Shy", "Loyal"
 ];
 
-//List of random professions
+//Array of professions to be randomly selected from
 const professList = [
   "Farmer", "Blacksmith", "Ranger", "Guard", "Politician", "Merchant", "Servant", "Smuggler", "Fletcher", "Chef", "Royal", "Cleric", "Carpenter", 
   "Rogue", "Herbalist", "Historian", "Alchemist", "Shop Owner", "Sheppard", "Miner", "Banker", "Bandit", "Sailor", "Veteran", "Beggar", "Fisherman",
   "Peddler", "Bard", "Wizard", "Pickpocket"
 ];
 
-//Builds a combination of 3 descriptors
+//Object builds a combination of face types, build types, and misc features
 const descriptList = {
   face: ["ragged looking ", "large nose ", "attractive ", "missing teeth ", "ugly ", "sharp face ", "square face ", "exhausted looking ", "plain face "],
   build: ["athletic ", "muscular ", "skinny ", "lean ", "round ", "average ", "stocky "],
@@ -50,14 +54,13 @@ const descriptList = {
   }
 }
 
-//Runs when doc loads
+//Hides dropdown forms on page load
 $(document).ready(function() {
   $("#npcBtns").hide();
   $("#localeForm").hide();
-  console.log("jquery ready");
-  
 });
-//Npc Create on click
+
+//Displays or hides npc maker 
 $(document).on("click", "#npcNewBtn", function() {
   if ($("#npcBtns").css('display') == 'none') {
     $("#npcBtns").show('fast');
@@ -68,6 +71,8 @@ $(document).on("click", "#npcNewBtn", function() {
 });
 
 $(function() {
+
+  //Function adds random or custom name to card
   $("#nameIn").on("click", event => {
     event.preventDefault();
     newName = $("#nameForm").val().trim();
@@ -78,7 +83,7 @@ $(function() {
     newName = namesList[Math.floor(Math.random() * namesList.length)];
     $("#npcCardTitle").text(newName);
   });
-
+  //Function adds random or custom race to card
   $("#raceIn").on("click", event => {
     event.preventDefault();
     newRace = $("#raceForm").val().trim();
@@ -89,7 +94,7 @@ $(function() {
     newRace = raceList[Math.floor(Math.random() * raceList.length)];
     $("#npcRace").text(newRace);
   });
-
+  //Function adds random or custom description to card
   $("#descriptIn").on("click", event => {
     event.preventDefault();
     newDescript = $("#descriptForm").val().trim();
@@ -100,7 +105,7 @@ $(function() {
     newDescript = descriptList.golgiApp();
     $("#npcDescript").text(newDescript);
   });
-
+  //Function adds random or custom personality to card
   $("#personIn").on("click", event => {
     event.preventDefault();
     newPerson = $("#personForm").val().trim();
@@ -111,7 +116,7 @@ $(function() {
     newPerson = personList[Math.floor(Math.random() * personList.length)];
     $("#npcPerson").text(newPerson);
   });
-
+  //Function adds random or custom profession to card
   $("#professIn").on("click", event => {
     event.preventDefault();
     newProfess = $("#professForm").val().trim();
@@ -123,9 +128,15 @@ $(function() {
     $("#npcProfess").text(newProfess);
   });
 
+  //This on click uses the information generated to POST a new NPC to database
   $("#finalizeNpc").on("click", event => {
     event.preventDefault();
-  
+
+    //Ensures that npc card has been filled out
+    if (newName == 0 || newRace == 0  || newDescript == 0 || newPerson == 0 || newProfess == 0) {
+      alert("Please fill out all of the NPC's details before submitting");
+    } else {
+      //Creates an object to be sent to database
       var newNpc = {
         fullname: newName,
         race: newRace,
@@ -133,15 +144,19 @@ $(function() {
         personality: newPerson,
         profession: newProfess
       }
-      //Working to here
+      //Empties input boxes used
       $(".npcAttr").val("");
+      $(".npcCard").val("");
       $.ajax("/api/npcs", {
         type: "POST",
         data: newNpc
       }).then(function() {
         console.log("new npc added");
       });
+    }
   });
+
+  //On click pulls up existing NPCs
   $(".displayNpc").on("click", function(event) {
     event.preventDefault();
     btnVal = $(this).val();
