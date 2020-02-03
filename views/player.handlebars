@@ -1,4 +1,5 @@
 <div class="container" style="font-family: 'Raleway', sans-serif;">
+  <button id="secretBtn" value={{#with user}}{{dataValues.id}}{{/with}}></button>
   <div class="row">
     <div class="col-4">
       <div class="row">
@@ -13,6 +14,7 @@
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {{#each Char}}
+            <a href="#" id={{dataValues.id}}>{{dataValues.charName}}</a>
             {{/each}}
           </div>
         </div>
@@ -185,8 +187,8 @@
             <div class="form-group">
               <label for="content">Comment:</label>
               <textarea class="form-control" id="postBox" rows="3"></textarea>
-              <button value={{user}} class="btn btn-secondary" style="background-color:rgba(0, 0, 0, 0.4); color:white"
-                id="sendPost">Send</button>
+              <button value={{#with user}}{{dataValues.id}}{{/with}} class="btn btn-secondary"
+                style="background-color:rgba(0, 0, 0, 0.4); color:white" id="sendPost">Send</button>
             </div>
           </form>
         </div>
@@ -196,10 +198,12 @@
           <div class="card-header">Recent Messages:</div>
 
           <div class="card-body">
-            <div class="postBboard">
-              {{#each Post}}
-              {{/each}}
-            </div>
+            {{#each Post}}
+            <h4>{{dataValues.UserId}}</h4>
+            <button class="change-delete btn btn-success" value={{dataValues.UserId}}>
+              {{dataValues.content}}
+            </button>
+            {{/each}}
           </div>
         </div>
       </div>

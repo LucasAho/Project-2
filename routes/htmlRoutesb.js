@@ -9,13 +9,17 @@ module.exports = function (app) {
         });
     });
     app.get("/dm/:id", (req, res) => {
+        db.User.findOne({ where: {id: req.params.id}})
+        .then(dbUser => {
+
+        
         db.NPC.findAll({})
             .then(dbNpcs => {
                 db.Locale.findAll({})
                     .then(dbLocales => {
                         db.Post.findAll({}).then(dbPost => {
-                            console.log(dbNpcs);
                             res.render("dmUser", {
+                                user: dbUser,
                                 locales: dbLocales,
                                 npcs: dbNpcs,
                                 npcName: dbNpcs.fullname,
@@ -23,16 +27,25 @@ module.exports = function (app) {
                             });
                         });
                     });
-            });
+                })
+                });
     });
     app.get("/player/:id", (req, res) => {
-        db.Char.findAll({ where: { userId: req.params.id } })
-        .then(dbChars => {
-            db.Post.findAll({})
-            .then(dbPost => {
-                res.render("player", {
-                    Char: dbChars,
-                    Post: dbPost
+        db.User.findOne({ where: {id: req.params.id}})
+        .then(dbUser => {
+            db.Char.findAll({ where: { UserId: req.params.id } })
+            .then(dbChars => {
+                db.Post.findAll({ where: { UserId: req.params.id } })
+                .then(dbSelfPost => {
+                    db.Post.findAll({ where: { UserId: !req.params.id} })
+                    .then(function(dbOtherPost) {
+                        res.render("player", {
+                            user: dbUser,
+                            Char: dbChars,
+                            Post: dbSelfPost,
+                            PostFrom: dbOtherPost
+                        });
+                    });
                 });
             });
         });

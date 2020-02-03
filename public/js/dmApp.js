@@ -81,6 +81,7 @@ $(function() {
   $("#randomName").on("click", event => {
     event.preventDefault();
     newName = namesList[Math.floor(Math.random() * namesList.length)];
+    console.log(newName);
     $("#npcCardTitle").text(newName);
   });
   //Function adds random or custom race to card

@@ -2,7 +2,7 @@
 <div class="container" id="Dungeons" style="font-family: 'Raleway', sans-serif;">
     <div class="col-8 offset-2">
     </div>
-
+    <button id="secretBtn" value={{#with user}}{{dataValues.id}}{{/with}}></button>
     <!--Overlay container-->
     <!--Site Header-->
     <div class="dmw">
@@ -32,7 +32,7 @@
                                     Name
                                 </a>
                                 <div class="dropdown-menu" style="black" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" styleid="randomName">Random</a>
+                                    <a class="dropdown-item" id="randomName">Random</a>
                                     <a class="dropdown-item" href="#"><input type="text" class="npcAttr" id="nameForm"
                                             placeholder="Custom Name"></a>
                                     <a id="nameIn" class="btn-sm btn-secondary float-right mr-2">Submit</a>
@@ -157,21 +157,21 @@
                     <h3>Created Content</h3>
                 </div>
                 <h5>NPCs</h5>
-                <ul>
+                <div>
                     {{#each npcs}}
-                    <li>
-                        {{id}}
-                    </li>
+                    <button>
+                        {{dataValues.fullname}}
+                    </button>
                     {{/each}}
-                </ul>
+                </div>
                 <h5>Locales</h5>
-                <ul>
+                <div>
                     {{#each locales}}
-                    <li>
-                        {{id}}
-                    </li>
+                    <button>
+                        {{dataValues.title}}
+                    </button>
                     {{/each}}
-                </ul>
+                </div>
             </div>
         </div>
         <div class="col-3">
@@ -202,6 +202,7 @@
                         <label for="content">Comment:</label>
                         <textarea class="form-control" id="postBox" rows="3"></textarea>
                     </div>
+
                     <button class="btn btn-secondary" style="background-color:rgba(0, 0, 0, 0.4)" id="sendPost"
                         value={{user}}>Send</button>
               
@@ -209,9 +210,9 @@
                     <div class="card-header">Recent Messages</div>
                     <div class="card-body">
                         {{#each Post}}
-                        <h4>{{post}}</h4>
-                        <button class="change-delete btn btn-success" value={{id}} data-newdelete="{{delete}}">
-                            Delete!
+                        <h4>{{dataValues.UserId}}</h4>
+                        <button class="change-delete btn btn-success" value={{dataValues.UserId}}>
+                            {{dataValues.content}}
                         </button>
                         {{/each}}
                     </div>

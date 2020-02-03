@@ -1,21 +1,20 @@
 /* eslint-disable indent */
 /* eslint-disable prettier/prettier */
-
+var currentUser = $("#secretBtn").val();
 $(function () {
     //create message
     $("#sendPost").on("click", function(event) {
         event.preventDefault();
-        var thisUser = parseInt($(this).val());
         var newPost = {
-            userId: thisUser,
             content: $("#postBox").val().trim(),
         };
-        console.log(newPost);
-        $.ajax("/api/chat", {
+
+        $.ajax("/api/chat/" + currentUser, {
           type: "POST",
           data: newPost
         })
-        .then(function () {
+        .then(function (res) {
+            console.log(res);
             console.log("new message posted");
 
             var row = $("<div>");
