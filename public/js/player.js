@@ -51,6 +51,7 @@ $("#submitSearchQuery").on("click", event => {
         }
     }).then(function(res) {
         console.log(res);
+        
     })
 })
 
