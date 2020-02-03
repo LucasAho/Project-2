@@ -115,12 +115,12 @@ $(document).ready(function() {
                     alert("Sorry, that email and password don't match");
                 //Condition runs if user has a DM account
                  } 
-                 //else if (res.actType == 0) {
-                //     location.href = "/dm/" + res.id;
-                // //Condition runs if user has player account
-                // } else {
-                //     location.href = "/player/" + res.id;
-                // }
+                 else if (res.actType == 0) {
+                    location.href = "/dm/" + res.id;
+                //Condition runs if user has player account
+                } else {
+                    location.href = "/player/" + res.id;
+                }
             });
         }    
     });

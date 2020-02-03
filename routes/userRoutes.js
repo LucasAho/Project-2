@@ -31,14 +31,8 @@ module.exports = function(app) {
         res.send("Sorry, that doesn't match");
       } else {
         bcrypt.compare(req.body.pass, user.pass, function(err, result) {
-          if (result == true) {
-            if (user.actType == 0) {
-              res.redirect("/dm/" + user.id);
-            } else if (result == 1) {
-              res.redirect("/player/" + user.id);
-            } else {
-              res.send("Incorrect Password");
-            }
+          if (result === true) {
+            res.json(user);
           }
         });
       }
