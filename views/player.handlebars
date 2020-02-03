@@ -1,32 +1,31 @@
-<div class="container">
-
-    
-
+<div class="container" style="font-family: 'Raleway', sans-serif;">
   <div class="row">
     <div class="col-4">
       <div class="row">
         <!--This button opens the new character form-->
-        <button id="charMaker" class="btn btn-primary"><strong>New Character</strong></button>
+        <button id="charMaker" class="btn btn-secondary"
+          style="background-color:rgba(0, 0, 0, 0.4); color:white"><strong>New Character</strong></button>
         <!--This dropdown provides a list of the user's existing characters-->
         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-secondary dropdown-toggle" style="background-color:rgba(0, 0, 0, 0.4); color:white"
+            type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Existing Characters
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              {{#each Char}}
-              {{/each}}
+            {{#each Char}}
+            {{/each}}
           </div>
         </div>
       </div>
       <div id="newCharForm">
         <form>
           <div class="form-group">
-            <label for="charName">Character Name</label>
+            <label for="charName" style="color:white">Character Name</label>
             <input class="form-control" id="charName" placeholder="Charles Bettleman">
           </div>
           <div class="form-row">
             <div class="form-group col-9">
-              <label for="classSelect">Class</label>
+              <label for="classSelect" style="color:white">Class</label>
               <select class="form-control" id="classSelect">
                 <option>Barbarian</option>
                 <option>Bard</option>
@@ -43,18 +42,18 @@
               </select>
             </div>
             <div class="form-group col-3">
-              <label for="startLvl">Level</label>
+              <label for="startLvl" style="color:white">Level</label>
               <input class="form-control" id="startLvl" placeholder="1-20">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-6">
-              <label for="startExp">Starting Experience</label>
+              <label for="startExp" style="color:white">Starting Experience</label>
               <input class="form-control" id="startExp" placeholder="">
             </div>
-            
+
             <div class="form-group col-6">
-              <label for="alignment">Alignment</label>
+              <label for="alignment" style="color:white">Alignment</label>
               <select class="form-control" id="alignment">
                 <option>LG</option>
                 <option>NG</option>
@@ -70,7 +69,7 @@
           </div>
           <div class="form-row">
             <div class="form-group col-6">
-              <label for="raceSelect">Race</label>
+              <label for="raceSelect" style="color:white">Race</label>
               <select class="form-control" id="raceSelect">
                 <option>Dragonborn</option>
                 <option>Dwarf</option>
@@ -83,57 +82,61 @@
                 <option>Tiefling</option>
               </select>
             </div>
-            
+
             <div class="form-group col-6">
-              <label for="raceSelect">Background</label>
+              <label for="raceSelect" style="color:white">Background</label>
               <input class="form-control" id="bckGrndSelect">
             </div>
           </div>
-       
+
           <div class="form-group">
-            <label for="acIn">Armor Class</label>
+            <label for="acIn" style="color:white">Armor Class</label>
             <input class="form-control" id="acIn" placeholder="Armor + Dex/Con">
           </div>
           <div class="form-row">
-            <div class="form-group col-2">
-              <label for="str">Strength</label><input class="form-control" id="str">
+            <div class="form-group col-3">
+              <label for="str" style="color:white">Strength</label><input class="form-control" id="str">
             </div>
-            <div class="form-group col-2">
-              <label for="dex">Dexterity</label><input class="form-control" id="dex">
+            <div class="form-group col-3">
+              <label for="dex" style="color:white">Dexterity</label><input class="form-control" id="dex">
             </div>
-            <div class="form-group col-2">
-              <label for="con">Constitution</label><input class="form-control" id="con">
+            <div class="form-group col-4">
+              <label for="con" style="color:white">Constitution</label><input class="form-control" id="con">
             </div>
-            <div class="form-group col-2">
-              <label for="int">Intelligence</label><input class="form-control" id="int">
+
+            <div class="form-group col-3">
+              <label for="int" style="color:white">Intelligence</label><input class="form-control" id="int">
             </div>
-            <div class="form-group col-2">
-              <label for="wis">Wisdom</label><input class="form-control" id="wis">
+            <div class="form-group col-3">
+              <label for="wis" style="color:white">Wisdom</label><input class="form-control" id="wis">
             </div>
-            <div class="form-group col-2">
-              <label for="cha">Charisma</label><input class="form-control" id="cha">
+            <div class="form-group col-4">
+              <label for="cha" style="color:white">Charisma</label><input class="form-control" id="cha">
             </div>
           </div>
           <div class="form-group">
-            <label for="invForm">Inventory Items</label>
+            <label for="invForm" style="color:white">Inventory Items</label>
             <input class="form-control" id="invForm" placeholder="Rope, Backpack, 10gp">
           </div>
           <div class="form-group">
-            <label for="noteForm">Notes</label>
+            <label for="noteForm" style="color:white">Notes</label>
             <input class="form-control" id="noteForm" placeholder="Dark vision (60ft), Immune to sleep effects">
           </div>
-          <button id="createCharBtn" class="btn btn-primary" value={{user}}>Submit</button>
+          <button id="createCharBtn" class="btn btn-secondary" style="background-color:rgba(0, 0, 0, 0.4); color:white"
+            value={{user}}>Submit</button>
         </form>
       </div>
     </div>
     <div class="col-4">
-      <div class="card text-white" style="background-color:rgba(0, 0, 0, 0.4)">
+      <div class="card-a" style="background-color:rgba(0, 0, 0, 0.4); color:white; position:center">
+        <div class="card-body align-items-center d-flex justify-content-center"></div>
         <form>
-          <div class="card-header">
-          <h1>Search the text book!</h1>
-        </div>
-          
-          <div class="form-row"> 
+          <i class="fab fa-d-and-d fa-5x"></i>
+          <div class="card-header" style="text-align: center">
+            <h1>Search the text book!</h1>
+          </div>
+
+          <div class="form-row">
             <div class="form-group col-md-6">
               <label for="searchIn1">Search Type</label>
               <select class="form-control" id="searchIn1">
@@ -146,34 +149,31 @@
                 <option>equipment</option>
                 <option>conditions</option>
               </select>
-              <button class="btn btn-primary" id="submitSearch1">Confirm</button>
+              <button class="btn btn-secondary" style="background-color:rgba(0, 0, 0, 0.4); color:white"
+                id="submitSearch1">Confirm</button>
             </div>
-            
+
             <div class="form-group col-md-6" id="search2Form">
               <label for="searchIn2">Search Title</label>
               <select class="form-control" id="searchIn2">
-                
+
               </select>
-              <button class="btn btn-primary" id="submitSearchQuery">Submit</button>
-            </div>  
-            
+              <button class="btn btn-secondary" style="background-color:rgba(0, 0, 0, 0.4); color:white"
+                id="submitSearchQuery">Submit</button>
+            </div>
+
           </div>
 
           <div class="form-row">
-            
-            <div class="col-12" id="searchResults">
+
+            <div class="col-12" id="searchResults" style="text-align: center">
 
             </div>
           </div>
         </form>
-      </div>    
+      </div>
     </div>
     <div class="col-4">
-      <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4">Want to join the conversation?</h1>
-          <p class="lead">submit your comment below. </p>
-        </div>
       <div class="card text-white" style="background-color:rgba(0, 0, 0, 0.4)">
         <div class="card-header">
           Chat Message Center
@@ -182,25 +182,26 @@
           <h5 class="card-title"></h5>
           <p class="card-text">Please be respectful of your fellow players.</p>
           <form class="create-form">
-        <div class="form-group">
-          <label for="content">comment:</label>
-          <textarea class="form-control" id="postBox" rows="3"></textarea>
-          <button value={{user}} class="btn btn-secondary" style="background-color:rgba(0, 0, 0, 0.8)" id="sendPost">Send</button>
+            <div class="form-group">
+              <label for="content">Comment:</label>
+              <textarea class="form-control" id="postBox" rows="3"></textarea>
+              <button value={{user}} class="btn btn-secondary" style="background-color:rgba(0, 0, 0, 0.4); color:white"
+                id="sendPost">Send</button>
+            </div>
+          </form>
         </div>
-      </form>
-    </div>
-  </div>
-  <div class="card text-white" style="background-color:rgba(0, 0, 0, 0.4)">
-    <div class="messaged">
-      <div class="card-header">Recent Messages:</div>
+      </div>
+      <div class="card text-white" style="background-color:rgba(0, 0, 0, 0.4)">
+        <div class="messaged">
+          <div class="card-header">Recent Messages:</div>
 
-      <div class="card-body">
-        <div class="postBboard">
-        {{#each Post}}
-        {{/each}}
+          <div class="card-body">
+            <div class="postBboard">
+              {{#each Post}}
+              {{/each}}
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-      <script src="/js/player.js"></script>
+    <script src="/js/player.js"></script>

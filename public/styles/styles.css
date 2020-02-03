@@ -28,6 +28,7 @@ body {
 }
 
 .fa-d-and-d {
+  color: rgb(48, 47, 47); 
   height: 80px;
   width: 80px;
   position: absolute;
@@ -103,4 +104,53 @@ body {
 
 #npcCardTitle {
   top: 50%; 
+}
+
+.card-a {
+  position: absolute; 
+  top: 50%;  
+  left: 30%; 
+  margin-bottom: -50px; 
+  margin-top: -50px; 
+  margin-left: -100px; 
+}
+
+.dmw{
+  color: rgb(48, 47, 47); 
+  font-weight: bolder;  
+  text-align: center; 
+}
+
+.created {
+  text-align: center; 
+}
+
+.npcName {
+  text-align: center; 
+  height: 180px; 
+}
+
+.display {
+  text-align: center; 
+  color: white; 
+  height: 200px; 
+  padding-top: 5px; 
+}
+
+#npcGroup {
+  text-align: center; 
+}
+#localeGroup {
+  text-align: center; 
+}
+.dropdown {
+  text-align: center; 
+}
+.postBboard {
+  float: right; 
+  bottom: 50%; 
+}
+.npcNames {
+  width: 120%; 
+  margin: 5px; 
 }
