@@ -69,21 +69,52 @@ $("#submitSearchQuery").on("click", event => {
             searchContent: thisSearch2
         }
     }).then(function(res) {
-
-        if (thisSearch1 ===  'skills') {
-            $("#searchResults").empty();
-            let head = "<h5 class='ApiResult'>" + res.name;
-
+        console.log(res)
+        $("#searchResults").empty();
+        let head = "<h5 class='ApiResult'>" + res.name;
+        entryGetter = (q => {
             Object.entries(res).forEach(([key, value]) => {
-                if (`${key}` == "desc") {
+                if (`${key}` == q) {
+
                     console.log(`${value}`);
                     $("#searchResults").append(head, `${value}` );
                 }
+                
             });
-        } else {
+        });
 
-        }
+        switch (thisSearch1) {
+            case 'skills':
+                entryGetter('desc');
+                break;
+            case 'ability-scores':
+                entryGetter('desc');
+                break;
+            case 'languages':
+                Object.entries(res).forEach(([key, value]) => {
+                    if (`${key}` == 'typical_speakers') {
+                        
+                        console.log(`${value}`);
+                        $("#searchResults").append(head, "<p>Typical Speakers: </p>", `${value}` );
+                    } else if (`${key}` == 'type') {
+                        $("#searchResults").append( "<p>Language Type: </p>", `${value}` );
+                    }
+                });
+                break;
+            case 'classes':
+                console.log(res.proficiencies);
+                // Object.entries(res).forEach(([key, value]) => {
+                //     if (`${key}` == 'hit_die') {
+                //         $("#searchResults").append(head, "<p>Hit Die: </p>", `${value}` );
+                //     } else if (`${key}` == 'proficiencies') {
+                    
+                
+                //         $("#searchResults").append( "<p>Proficiencies: </p>",`${value}`);
+                //     }
+     
+                break;
 
+        };
     });
 });
 
