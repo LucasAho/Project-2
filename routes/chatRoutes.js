@@ -5,8 +5,8 @@ module.exports = function(app) {
     var reqBod = req.body;
     
     reqBod.UserId = parseInt(req.params.id);
-    console.log(parseInt(req.params.id));
-    db.Post.create(reqBod).then(function(dbPost) {
+    console.log(req.params.id);
+    db.Post.create({...req.body, UserId: req.params.id}).then(function(dbPost) {
       res.json(dbPost);
     });
   });
