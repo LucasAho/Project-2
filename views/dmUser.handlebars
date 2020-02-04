@@ -208,14 +208,25 @@
               
                 <div class="postBboard">
                     <div class="card-header">Recent Messages</div>
-                    <div class="card-body">
-                        {{#each Post}}
-                        <h4>{{dataValues.UserId}}</h4>
-                        <button class="change-delete btn btn-success" value={{dataValues.UserId}}>
-                            {{dataValues.content}}
-                        </button>
-                        {{/each}}
-                    </div>
+                    <div class="row">
+            <div class="col-6">
+              {{#each Post}}
+                <h4>User: {{dataValues.UserId}}</h4>
+                <div>
+                  {{dataValues.content}}
+                </div>
+              {{/each}}
+              </div>
+              <div class="col-6">
+                {{#each PostFrom}}
+                  <h4>User: {{dataValues.UserId}}</h4>
+                  <div>
+                    {{dataValues.content}}
+                  </div>
+                {{/each}}
+              </div>
+          
+          </div>
                 </div>
                   </form>
             </div>

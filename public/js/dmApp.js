@@ -58,6 +58,7 @@ const descriptList = {
 $(document).ready(function() {
   $("#npcBtns").hide();
   $("#localeForm").hide();
+  $("#secretBtn").hide();
 });
 
 //Displays or hides npc maker 
