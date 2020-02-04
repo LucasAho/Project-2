@@ -198,5 +198,20 @@ $(function() {
       location.reload();
     });
   });
-
+  $(".getNpcBtn").on("click", event => {
+    
+    event.preventDefault();
+    $.ajax("/api/getNpc/" + $(".getNpcBtn").val(), {
+      type: "POST"
+    }).then(res => {
+      
+      console.log(res);
+      $("#displayName").text("Npc Name: " + res.fullname);
+      $("#displayRace").text("Race: " + res.race);
+      $("#displayDescript").text("Description: " + res.descript);
+      $("#displayPerson").text("Personality: " + res.personality);
+      $("#displayProfess").text("Profession: " + res.profession);
+    })
+  })
+ 
 });

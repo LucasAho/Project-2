@@ -25,6 +25,11 @@ module.exports = function(app) {
       res.json(dbNPC);
     });
   });
+  app.post("/api/getNpc/:id", function(req, res) {
+    db.NPC.findOne({ where: { id: req.params.id } }).then(function(dbNpcs) {
+      res.json(dbNpcs);
+    });
+  });
 
 
   app.post("/api/locales", function(req, res) {

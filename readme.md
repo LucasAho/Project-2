@@ -10,7 +10,8 @@ To give Dungeons & Dragons  Dungeon Masters and Players a place to create their 
 
 When a user navigates to the Dungeons & Dragons application they will be asked to either login or if they do not already have an existing account they can create one. When creating a user account they will be asked to identify as either a dungeon master or a player. These identifiers will direct the user to the appropriate page.
 
-<img src="public\styles\images\Login1.png">  <img src="public\styles\images\user.png"> 
+<img src="public\styles\images\Login1.png">  
+<img src="public\styles\images\user.png"> 
 
 ### Dungeon Master's Page:
 
