@@ -190,7 +190,6 @@ $(function() {
       parentLocale: newParent
     }
 
-    console.log(newLocale);
     $(".locale").val("");
     $.ajax("/api/locales", {
       type: "POST",

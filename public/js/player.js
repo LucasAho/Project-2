@@ -163,6 +163,7 @@ $("#submitSearchQuery").on("click", event => {
 
 $(document).on("click", "#charMaker", function() {
     $("#newCharForm").show('fast');
+    $("#charLoadForm").hide();
 });
 
 $(document).ready(function() {
@@ -170,7 +171,7 @@ $(document).ready(function() {
     $("#search2Form").hide();
 $("#createCharBtn").on("click", function(event) {
     event.preventDefault();     
-    var thisUser = parseInt($(this).val());
+
     var newName = $("#charName").val().trim();
     var newClass = $("#classSelect").val().trim().toLowerCase();
     var newLvl = parseInt($("#startLvl").val().trim());
@@ -205,14 +206,40 @@ $("#createCharBtn").on("click", function(event) {
         inventory: newInv, 
         notes: newNote
     }  
-    console.log(currentUser);
     $.ajax("/api/chars/" + currentUser, {
         type: "POST",
         data: newCharacter
       }).then(function() {
-        console.log("new character added");
         location.reload();
       });
     $(".npcForm").val("");
 });
+
+    $(".charGet").on('click', event => {
+        event.preventDefault();
+        $("#newCharForm").hide();
+        $("#charLoadForm").show();
+        $.ajax("/api/getChar/" + $(".charGet").attr('id'), {
+            type: "POST"
+        }).then(function(res) {
+            $("#loadName").text(res.charName);
+            $("#loadClass").text(res.class);
+            $("#loadLvl").text(res.lvl);
+            $("#loadRace").text(res.race);
+            $("#loadAlign").text(res.align);
+            $("#loadExp").text(res.experience);
+            $("#loadProf").text(res.profBonus);
+            $("#loadAC").text(res.AC);
+            $("#loadSpeed").text(res.speed);
+            $("#loadHd").text(res.maxHd);
+            $("#loadStr").text(res.strength);
+            $("#loadDex").text(res.dex);
+            $("#loadCon").text(res.constitution);
+            $("#loadInt").text(res.intelligence);
+            $("#loadWis").text(res.wisdom);
+            $("#loadCha").text(res.charisma);
+            $("#loadInv").text(res.inventory);
+            $("#loadNotes").text(res.notes);
+        })
+    })
 });
