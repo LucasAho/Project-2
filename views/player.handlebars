@@ -195,8 +195,25 @@
       </div>
       <div class="card text-white" style="background-color:rgba(0, 0, 0, 0.4)">
         <div class="messaged">
-          <div class="card-header">Recent Messages:</div>
-
+          <div class="row">Recent Messages:
+            <div class="col-6">
+              {{#each Post}}
+                <h4>User: {{dataValues.UserId}}</h4>
+                <div>
+                  {{dataValues.content}}
+                </div>
+              {{/each}}
+              </div>
+              <div class="col-6">
+                {{#each PostFrom}}
+                  <h4>User: {{dataValues.UserId}}</h4>
+                  <div>
+                    {{dataValues.content}}
+                  </div>
+                {{/each}}
+              </div>
+          
+          </div>
           <div class="card-body">
             {{#each Post}}
             <h4>{{dataValues.UserId}}</h4>
@@ -204,6 +221,7 @@
               {{dataValues.content}}
             </button>
             {{/each}}
+
           </div>
           </form>
         </div>

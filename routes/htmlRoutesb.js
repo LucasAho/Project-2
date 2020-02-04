@@ -11,20 +11,21 @@ module.exports = function (app) {
     app.get("/dm/:id", (req, res) => {
         db.User.findOne({ where: {id: req.params.id}})
         .then(dbUser => {
-
-        
-        db.NPC.findAll({})
-            .then(dbNpcs => {
-                db.Locale.findAll({})
-                    .then(dbLocales => {
-                        db.Post.findAll({}).then(dbPost => {
-                            res.render("dmUser", {
-                                user: dbUser,
-                                locales: dbLocales,
-                                npcs: dbNpcs,
-                                npcName: dbNpcs.fullname,
-                                Post: dbPost
-                            });
+            db.NPC.findAll({})
+                .then(dbNpcs => {
+                    db.Locale.findAll({})
+                        .then(dbLocales => {
+                            db.Post.findAll({ where: { UserId: req.params.id }})
+                            .then(dbSelfPost => {
+                                db.Post.findAll({ where: { UserId: 2} })
+                                .then(function(dbOtherPost) {
+                                    res.render("dmUser", {
+                                        user: dbUser,
+                                        locales: dbLocales,
+                                        npcs: dbNpcs,
+                                        Post: dbSelfPost,
+                                        PostFrom: dbOtherPost
+                            });});
                         });
                     });
                 })
@@ -37,7 +38,7 @@ module.exports = function (app) {
             .then(dbChars => {
                 db.Post.findAll({ where: { UserId: req.params.id } })
                 .then(dbSelfPost => {
-                    db.Post.findAll({ where: { UserId: !req.params.id} })
+                    db.Post.findAll({ where: { UserId: 1} })
                     .then(function(dbOtherPost) {
                         res.render("player", {
                             user: dbUser,

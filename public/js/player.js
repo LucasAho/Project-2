@@ -2,7 +2,7 @@
 /* eslint-disable prettier/prettier */
 
 var currentUser = $("#secretBtn").val();
-console.log(currentUser);
+$("#secretBtn").hide();
 
 getProfBonus = function (lvl) {
     if (lvl < 5) {
