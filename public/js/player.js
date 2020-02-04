@@ -240,6 +240,6 @@ $("#createCharBtn").on("click", function(event) {
             $("#loadCha").text(res.charisma);
             $("#loadInv").text(res.inventory);
             $("#loadNotes").text(res.notes);
-        })
-    })
+        });
+    });
 });
