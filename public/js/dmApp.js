@@ -198,12 +198,13 @@ $(function() {
       location.reload();
     });
   });
-  
   $(".getNpcBtn").on("click", event => {
+    
     event.preventDefault();
-    $.ajax("/api/getNpc/" + $(".getNpcBtn").attr('id'), {
+    $.ajax("/api/getNpc/" + $(".getNpcBtn").val(), {
       type: "POST"
     }).then(res => {
+      
       console.log(res);
       $("#displayName").text("Npc Name: " + res.fullname);
       $("#displayRace").text("Race: " + res.race);
@@ -212,5 +213,5 @@ $(function() {
       $("#displayProfess").text("Profession: " + res.profession);
     })
   })
-
+ 
 });
