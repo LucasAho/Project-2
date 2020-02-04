@@ -1,4 +1,4 @@
-# Project 2
+# Project-2
 # Dungeons & Dragons:
 Created by Lucas Aho, Alex Hampton, and Nicole Heersink
 
@@ -10,8 +10,7 @@ To give Dungeons & Dragons  Dungeon Masters and Players a place to create their 
 
 When a user navigates to the Dungeons & Dragons application they will be asked to either login or if they do not already have an existing account they can create one. When creating a user account they will be asked to identify as either a dungeon master or a player. These identifiers will direct the user to the appropriate page.
 
-<img src="public\styles\images\Login1.png">  
-<img src="public\styles\images\user.png"> 
+<img src="public\styles\images\Login1.png">  <img src="public\styles\images\user.png"> 
 
 ### Dungeon Master's Page:
 
@@ -46,6 +45,7 @@ On the Players page the user can create their own character by filling out and s
 * Sequelize
 * Axios
 * Handlebars
+* Travis
 
 
 ### New Technologies Used:
@@ -55,7 +55,7 @@ On the Players page the user can create their own character by filling out and s
 
 ## Links to application:
 
- Heroku:
+ Heroku: https://hidden-savannah-88913.herokuapp.com/
  GitHub: https://github.com/LucasAho/Project-2/tree/master/public/styles/images
 
  ## Thank you to everyone who helped our team complete this application!
