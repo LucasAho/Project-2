@@ -212,7 +212,7 @@ $("#createCharBtn").on("click", function(event) {
       }).then(function() {
         location.reload();
       });
-    $(".npcForm").val("");
+    $(".form-control").val("");
 });
 
     $(".charGet").on('click', event => {
@@ -222,24 +222,25 @@ $("#createCharBtn").on("click", function(event) {
         $.ajax("/api/getChar/" + $(".charGet").attr('id'), {
             type: "POST"
         }).then(function(res) {
-            $("#loadName").text(res.charName);
-            $("#loadClass").text(res.class);
-            $("#loadLvl").text(res.lvl);
-            $("#loadRace").text(res.race);
-            $("#loadAlign").text(res.align);
-            $("#loadExp").text(res.experience);
-            $("#loadProf").text(res.profBonus);
-            $("#loadAC").text(res.AC);
-            $("#loadSpeed").text(res.speed);
-            $("#loadHd").text(res.maxHd);
-            $("#loadStr").text(res.strength);
-            $("#loadDex").text(res.dex);
-            $("#loadCon").text(res.constitution);
-            $("#loadInt").text(res.intelligence);
-            $("#loadWis").text(res.wisdom);
-            $("#loadCha").text(res.charisma);
-            $("#loadInv").text(res.inventory);
-            $("#loadNotes").text(res.notes);
+            $("#loadName").text("Character Name: " + res.charName);
+            $("#loadClass").text("Class: " + res.class);
+            $("#loadLvl").text("Level: " + res.lvl);
+            $("#loadRace").text("Race: " + res.race);
+            $("#loadAlign").text("Alignment: " + res.align);
+            $("#loadExp").text("Experience: " + res.experience);
+            $("#loadProf").text("Proficiency Bonus: " + res.profBonus);
+            $("#loadAC").text("Armor Class: " + res.AC);
+            $("#loadSpeed").text("Move Speed: " + res.speed);
+            $("#loadHd").text("Max hit die: " + res.maxHd);
+            $("#loadStr").text("Strength: " + res.strength);
+            $("#loadDex").text("Dexterity: " + res.dex);
+            $("#loadCon").text("Constitution: " + res.constitution);
+            $("#loadInt").text("Intelligence: " + res.intelligence);
+            $("#loadWis").text("Wisdom: " + res.wisdom);
+            $("#loadCha").text("Charisma: " + res.charisma);
+            $("#loadInv").text("Inventory: " + res.inventory);
+            $("#loadNotes").text("Notes: " + res.notes);
         });
+        $(".form-control").val("");
     });
 });
