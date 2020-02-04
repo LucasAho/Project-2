@@ -14,10 +14,32 @@
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {{#each Char}}
-            <a href="#" id={{dataValues.id}}>{{dataValues.charName}}</a>
+            <a href="#" class="charGet" id={{dataValues.id}}>{{dataValues.charName}}</a>
             {{/each}}
+
           </div>
         </div>
+
+      </div>
+      <div id="charLoadForm">
+        <span id="loadName"></span>
+        <span id="loadClass"></span>
+        <span id="loadLvl"></span>
+        <span id="loadRace"></span>
+        <span id="loadAlign"></span>
+        <span id="loadExp"></span>
+        <span id="loadProf"></span>
+        <span id="loadAC"></span>
+        <span id="loadSpeed"></span>
+        <span id="loadHd"></span>
+        <span id="loadStr"></span>
+        <span id="loadDex"></span>
+        <span id="loadCon"></span>
+        <span id="loadInt"></span>
+        <span id="loadWis"></span>
+        <span id="loadCha"></span>
+        <span id="loadInv"></span>
+        <span id="loadNotes"></span>
       </div>
       <div id="newCharForm">
         <form>
