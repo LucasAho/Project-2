@@ -200,12 +200,15 @@
           <div class="card-body">
             {{#each Post}}
             <h4>{{dataValues.UserId}}</h4>
-            <button class="change-delete btn btn-success" value={{dataValues.UserId}}>
+            <button class="change-delete btn btn-secondary" style="background-color:rgba(0, 0, 0, 0.4)" value={{dataValues.UserId}}>
               {{dataValues.content}}
             </button>
             {{/each}}
           </div>
+          </form>
         </div>
       </div>
     </div>
-    <script src="/js/player.js"></script>
+  </div>
+</div>
+<script src="/js/player.js"></script>
