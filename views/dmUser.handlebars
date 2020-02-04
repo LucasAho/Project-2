@@ -159,7 +159,7 @@
                 <h5>NPCs</h5>
                 <div>
                     {{#each npcs}}
-                    <button>
+                    <button style= "background-color:rgba(0, 0, 0, 0.4); color:white">
                         {{dataValues.fullname}}
                     </button>
                     {{/each}}
@@ -167,7 +167,7 @@
                 <h5>Locales</h5>
                 <div>
                     {{#each locales}}
-                    <button>
+                    <button style= "background-color:rgba(0, 0, 0, 0.4); color:white">
                         {{dataValues.title}}
                     </button>
                     {{/each}}
@@ -208,6 +208,16 @@
               
                 <div class="postBboard">
                     <div class="card-header">Recent Messages</div>
+
+                    <div class="card-body">
+                        {{#each Post}}
+                        <h4>{{dataValues.UserId}}</h4>
+                        <button class="change-delete btn btn-secondary" style="background-color:rgba(0, 0, 0, 0.4)" value={{dataValues.UserId}}>
+                            {{dataValues.content}}
+                        </button>
+                        {{/each}}
+                    </div>
+
                     <div class="row">
             <div class="col-6">
               {{#each Post}}
@@ -227,6 +237,7 @@
               </div>
           
           </div>
+
                 </div>
                   </form>
             </div>

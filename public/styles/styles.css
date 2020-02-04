@@ -146,6 +146,7 @@ body {
 .dropdown {
   text-align: center; 
 }
-.postBboard {
 
+.messaged {
+  display: flex; 
 }
